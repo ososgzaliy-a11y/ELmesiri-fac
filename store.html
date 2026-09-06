@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مصنع المسيري للملابس الداخلية الرجالية | المتجر الإلكتروني</title>
+    <meta name="description" content="المصنع الرائد في صناعة وتوريد الملابس الداخلية الرجالية، الفانلات، السراويل الكلاسيكية، والقطنيات الفاخرة.">
+    <meta name="keywords" content="متجر ملابس داخلية رجالية, فانلات قطن, بوكسرات قطن مصري, ملابس داخلية">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Main Luxury CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <!-- Main Navigation Bar -->
+    <header class="site-navbar" id="site-navbar">
+        <div class="container">
+            <div class="navbar-inner">
+                <!-- Brand Logo -->
+                <a href="index.html" class="brand-logo">
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-vest-patches"></i>
+                    </div>
+                    <div class="brand-text">
+                        <h1>المسيري للملابس الداخلية</h1>
+                        <span>AL-MESIRI FACTORY</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Menu -->
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link">الرئيسية</a>
+                    <a href="store.html" class="nav-link active">المتجر الإلكتروني (B2C)</a>
+                    <a href="index.html#factory" class="nav-link">عن المصنع والجودة</a>
+                    <a href="b2b.html" class="nav-link b2b-highlight">
+                        <i class="fa-solid fa-handshake"></i> طلبات الجملة والتوريد
+                    </a>
+                    <a href="#contact" class="nav-link">تواصل معنا</a>
+                </nav>
+
+                <!-- Nav Actions -->
+                <div class="nav-actions">
+                    <button class="action-btn" onclick="document.getElementById('search-products-input')?.focus();" title="بحث سريع">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <button class="action-btn" onclick="openCartDrawer()" title="سلة المشتريات">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span class="action-badge" id="nav-cart-badge">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- B2C Retail Store Section -->
+    <section class="section-padding store-section" id="store">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-pill">
+                    <span class="badge badge-gold"><i class="fa-solid fa-bag-shopping"></i> تشكيلة الأفراد (B2C)</span>
+                </div>
+                    <h3 class="footer-title">المسيري</h3>
+                    <p class="footer-desc">المصنع الرائد في ابتكار أرقى الملابس الداخلية الرجالية، نفخر بالاعتماد الكلي على القطن المصري النقي لتوفير راحة لا تضاهى لكل رجل عربي.</p>
+            </div>
+
+            <!-- Store Toolbar / Filters -->
+            <div class="store-toolbar">
+                <div class="category-filter-tabs">
+                    <button class="cat-tab-btn active" data-cat="all">الكل</button>
+                    <button class="cat-tab-btn" data-cat="boxers">البوكسرات</button>
+                    <button class="cat-tab-btn" data-cat="briefs">السراويل الكلاسيكية</button>
+                    <button class="cat-tab-btn" data-cat="undershirts">الفانلات الداخلية</button>
+                </div>
+
+                <div class="store-search-sort">
+                    <div class="search-input-box">
+                        <input type="text" id="search-products-input" placeholder="ابحث باسم المنتج أو الخامة...">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <div class="sort-select-box">
+                        <select id="sort-products-select" aria-label="ترتيب المنتجات">
+                            <option value="default">الترتيب: الافتراضي</option>
+                            <option value="price-low">السعر: من الأقل للأعلى</option>
+                            <option value="price-high">السعر: من الأعلى للأقل</option>
+                            <option value="rating">الأعلى تقييماً</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Products Grid -->
+            <div class="products-grid" id="products-grid-container">
+                <!-- Products injected by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Cart Drawer (Offcanvas) -->
+    <div class="cart-drawer-overlay" id="cart-drawer-overlay" onclick="if(event.target === this) closeCartDrawer()">
+        <div class="cart-drawer">
+            <div class="cart-drawer-header">
+                <h3><i class="fa-solid fa-bag-shopping" style="color: var(--accent-gold);"></i> سلة المشتريات</h3>
+                <button class="modal-close-btn" style="position: static;" onclick="closeCartDrawer()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Dynamic Free Shipping Meter -->
+            <div class="free-shipping-meter">
+                <div class="meter-msg" id="free-shipping-msg">
+                    <i class="fa-solid fa-truck-fast"></i> التوصيل مجاني لأول طلب!
+                </div>
+                <div class="meter-bar-track">
+                    <div class="meter-bar-fill" id="free-shipping-progress" style="width: 60%;"></div>
+                </div>
+            </div>
+
+            <!-- Items List -->
+            <div class="cart-items-list" id="cart-drawer-items">
+                <!-- Cart items rendered by JS -->
+            </div>
+
+            <!-- Footer Summary -->
+            <div class="cart-drawer-footer">
+                <div class="coupon-input-group">
+                    <input type="text" id="cart-coupon-input" placeholder="كود الخصم (جرب: SAFWA10)">
+                    <button class="btn-apply-coupon" onclick="applyCouponCode()">تطبيق</button>
+                </div>
+
+                <div class="cart-summary-lines">
+                    <div class="summary-line">
+                        <span>المجموع الفرعي:</span>
+                        <span id="cart-subtotal-val">0 ر.س</span>
+                    </div>
+                    <div class="summary-line">
+                        <span>الخصم المطبق:</span>
+                        <span id="cart-discount-val" style="color: #34d399;">0 ر.س</span>
+                    </div>
+                    <div class="summary-line total">
+                        <span>الإجمالي الكلي:</span>
+                        <span id="cart-total-val">0 ر.س</span>
+                    </div>
+                </div>
+
+                <button class="btn-luxury-gold btn-proceed-checkout" onclick="openCheckoutModal()">
+                    <i class="fa-solid fa-lock"></i> إتمام الشراء والدفع الآمن
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick View / Product Detail Modal -->
+    <div class="modal-overlay" id="quick-view-modal" onclick="if(event.target === this) closeQuickView()">
+        <div class="modal-content-box">
+            <button class="modal-close-btn" onclick="closeQuickView()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="quick-view-body">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Stepped Checkout Modal -->
+    <div class="modal-overlay" id="checkout-modal">
+        <div class="modal-content-box checkout-modal-box">
+            <button class="modal-close-btn" onclick="closeCheckoutModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Unified Step 1: Customer Details, Shipping, Payment Method & Summary -->
+            <div class="checkout-step-content active" id="chk-step-content-1">
+                <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: 14px; margin-bottom: 20px;">
+                    <div>
+                        <h3 style="font-size: 1.35rem; font-weight: 900; color: var(--text-primary); margin-bottom: 4px;">
+                            <i class="fa-solid fa-shield-halved" style="color: var(--accent-gold); margin-left: 6px;"></i> إتمام الطلب والدفع الآمن
+                        </h3>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">يرجى كتابة تفاصيل التوصيل لاختيار وسيلة السداد المناسبة</p>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: center; color: var(--accent-gold); font-size: 0.85rem; font-weight: 700; background: rgba(197, 168, 128, 0.1); padding: 6px 12px; border-radius: 99px; border: 1px solid var(--border-gold);">
+                        <i class="fa-solid fa-lock"></i> تشفير بنكي 256-bit
+                    </div>
+                </div>
+
+                <!-- Customer Details Form -->
+                <h4 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 14px; color: var(--accent-gold);">
+                    <i class="fa-solid fa-location-dot" style="margin-left: 6px;"></i> 1. بيانات المستلم وعنوان التوصيل
+                </h4>
+                <div class="rfq-form-grid" style="margin-bottom: 20px;">
+                    <div class="rfq-input-group">
+                        <label for="chk-name">الاسم الكامل للمستلم *</label>
+                        <input type="text" id="chk-name" placeholder="محمد علي السعيد" required>
+                    </div>
+                    <div class="rfq-input-group">
+                        <label for="chk-phone">رقم الموبايل / الواتساب *</label>
+                        <input type="tel" id="chk-phone" placeholder="010XXXXXXXX" dir="ltr" style="text-align: right;" required>
+                    </div>
+                    <div class="rfq-input-group">
+                        <label for="chk-email">البريد الإلكتروني (لاستلام الفاتورة) *</label>
+                        <input type="email" id="chk-email" placeholder="customer@example.com" dir="ltr" style="text-align: right;" required>
+                    </div>
+                    <div class="rfq-input-group">
+                        <label for="chk-gov">المحافظة *</label>
+                        <select id="chk-gov" style="width: 100%; padding: 12px 14px; background: var(--bg-surface-elevated); border: 1.5px solid var(--border-subtle); border-radius: var(--radius-md); color: var(--text-primary); outline: none;">
+                            <option value="القاهرة">القاهرة</option>
+                            <option value="الجيزة">الجيزة</option>
+                            <option value="الإسكندرية">الإسكندرية</option>
+                            <option value="القليوبية">القليوبية</option>
+                            <option value="الشرقية">الشرقية</option>
+                            <option value="الدقهلية">الدقهلية</option>
+                            <option value="الغربية">الغربية</option>
+                            <option value="المنوفية">المنوفية</option>
+                            <option value="البحيرة">البحيرة</option>
+                            <option value="كفر الشيخ">كفر الشيخ</option>
+                            <option value="دمياط">دمياط</option>
+                            <option value="بورسعيد">بورسعيد</option>
+                            <option value="الإسماعيلية">الإسماعيلية</option>
+                            <option value="السويس">السويس</option>
+                            <option value="الفيوم">الفيوم</option>
+                            <option value="بني سويف">بني سويف</option>
+                            <option value="المنيا">المنيا</option>
+                            <option value="أسيوط">أسيوط</option>
+                            <option value="سوهاج">سوهاج</option>
+                            <option value="قنا">قنا</option>
+                            <option value="الأقصر">الأقصر</option>
+                            <option value="أسوان">أسوان</option>
+                            <option value="البحر الأحمر">البحر الأحمر</option>
+                            <option value="مطروح">مطروح</option>
+                            <option value="الوادي الجديد">الوادي الجديد</option>
+                            <option value="شمال سيناء">شمال سيناء</option>
+                            <option value="جنوب سيناء">جنوب سيناء</option>
+                        </select>
+                    </div>
+                    <div class="rfq-input-group full-width">
+                        <label for="chk-city">المدينة / المركز / الحي *</label>
+                        <input type="text" id="chk-city" placeholder="مدينة نصر / المعادي / المنتزه / الدقي" required>
+                    </div>
+                    <div class="rfq-input-group full-width">
+                        <label for="chk-address">العنوان بالتفصيل (اسم الشارع، رقم العمارة، الشقة، علامة مميزة) *</label>
+                        <input type="text" id="chk-address" placeholder="شارع التسعين - عمارة 45 - الدور الثالث - شقة 7 (بجوار مسجد...)" required>
+                    </div>
+                    <div class="rfq-input-group full-width">
+                        <label for="chk-notes">ملاحظات إضافية لشركة الشحن (اختياري)</label>
+                        <input type="text" id="chk-notes" placeholder="مواعيد التوصيل المفضلة أو تعليمات خاصة للمندوب">
+                    </div>
+                </div>
+
+                <!-- Payment Methods Section -->
+                <h4 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 14px; color: var(--accent-gold);">
+                    <i class="fa-solid fa-credit-card" style="margin-left: 6px;"></i> 2. طريقة السداد المفضلة
+                </h4>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px;">
+                    <div class="payment-option-card active" data-method="kashier" style="border: 2px solid var(--accent-gold); border-radius: var(--radius-md); padding: 14px; cursor: pointer; background: var(--bg-surface-elevated); transition: 0.2s;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                            <strong style="font-size: 0.98rem; color: var(--text-primary);">
+                                <i class="fa-solid fa-bolt" style="color: #38bdf8; margin-left: 6px;"></i> دفع إلكتروني (Kashier)
+                            </strong>
+                            <span style="font-size: 0.75rem; background: #0284c7; color: white; padding: 2px 8px; border-radius: 99px;">فوري وآمن</span>
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 6px;">فيزا، ماستركارد، ميزة، فودافون كاش، إنستاباي</p>
+                    </div>
+
+                    <div class="payment-option-card" data-method="cod" style="border: 1.5px solid var(--border-subtle); border-radius: var(--radius-md); padding: 14px; cursor: pointer; background: var(--bg-surface-elevated); transition: 0.2s;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                            <strong style="font-size: 0.98rem; color: var(--text-primary);">
+                                <i class="fa-solid fa-hand-holding-dollar" style="color: #10b981; margin-left: 6px;"></i> الدفع عند الاستلام
+                            </strong>
+                            <span style="font-size: 0.75rem; background: #374151; color: white; padding: 2px 8px; border-radius: 99px;">كاش للمندوب</span>
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 6px;">الدفع نقداً بعد استلام ومعاينة المنتجات</p>
+                    </div>
+                </div>
+
+                <!-- Order Summary Breakdown -->
+                <div style="background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px; margin-bottom: 20px;">
+                    <div class="calc-row" style="margin-bottom: 8px;">
+                        <span class="res-label" style="color: var(--text-secondary);">مجموع المنتجات:</span>
+                        <span class="res-value" id="chk-summary-subtotal" style="font-weight: 700;">-</span>
+                    </div>
+                    <div class="calc-row" style="margin-bottom: 8px;">
+                        <span class="res-label" style="color: var(--text-secondary);">تكلفة التوصيل:</span>
+                        <span class="res-value" id="chk-summary-shipping" style="color: #38bdf8; font-weight: 700;">-</span>
+                    </div>
+                    <div class="calc-row" style="margin-bottom: 8px;">
+                        <span class="res-label" style="color: #10b981;">خصم الكوبون / العرض:</span>
+                        <span class="res-value" id="chk-summary-discount" style="color: #10b981; font-weight: 700;">0 ج.م</span>
+                    </div>
+                    <div class="calc-row total-row" style="margin-top: 10px; padding-top: 12px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center;">
+                        <span class="res-label" style="font-size: 1.15rem; font-weight: 800; color: var(--text-primary);">المبلغ الإجمالي المستحق:</span>
+                        <span class="res-value" id="chk-summary-total" style="font-size: 1.4rem; font-weight: 900; color: var(--accent-gold); font-family: var(--font-latin);">-</span>
+                    </div>
+                </div>
+
+                <div>
+                    <button class="btn-luxury-gold full-width" id="kashier-pay-btn" onclick="processPaymentAndCompleteOrder()" style="font-size: 1.15rem; padding: 16px; font-weight: 800; box-shadow: var(--shadow-gold);">
+                        <i class="fa-solid fa-lock" style="margin-left: 8px;"></i> تأكيد الطلب والانتقال للدفع الآمن (Kashier)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Order Completed / Receipt -->
+            <div class="checkout-step-content" id="chk-step-content-3">
+                <div class="order-success-screen">
+                    <div class="success-icon-box">
+                        <i class="fa-solid fa-check-circle"></i>
+                    </div>
+                    <h2 style="font-size: 1.8rem; font-weight: 900; color: var(--text-primary); margin-bottom: 8px;">تهانينا! تم تأكيد طلبك بنجاح</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 20px;">
+                        رقم التتبع الخاص بطلبك: <strong id="order-receipt-id" style="color: var(--accent-gold); font-family: var(--font-latin);">#SAFWA-847291</strong>
+                    </p>
+
+                    <!-- Order Tracking Timeline Simulation -->
+                    <div style="background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 28px; text-align: right;">
+                        <h4 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 16px; color: var(--text-primary);">
+                            <i class="fa-solid fa-route" style="color: var(--accent-gold);"></i> مسار تجهيز وشحن الطلب:
+                        </h4>
+                        <div style="display: flex; flex-direction: column; gap: 14px; font-size: 0.88rem;">
+                            <div style="display: flex; align-items: center; gap: 10px; color: var(--color-success); font-weight: 700;">
+                                <i class="fa-solid fa-circle-check"></i> تم استلام الطلب وتأكيده بنجاح (<span id="order-receipt-date">اليوم</span>)
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px; color: var(--accent-gold);">
+                                <i class="fa-solid fa-spinner fa-spin"></i> جاري التجهيز وفحص الجودة النهائي في المصنع
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px; color: var(--text-muted);">
+                                <i class="fa-regular fa-circle"></i> التسليم لشركة الشحن السريع (خلال 24-48 ساعة)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+                        <button class="btn-luxury-gold" onclick="printOrderInvoice()">
+                            <i class="fa-solid fa-print"></i> طباعة الفاتورة الضريبية
+                        </button>
+                        <button class="btn-luxury-outline" onclick="closeCheckoutModal()">
+                            متابعة التسوق
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Support Button -->
+    <a href="https://api.whatsapp.com/send?phone=201010645449&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA%20%D9%85%D8%B5%D9%86%D8%B9%20%D8%A7%D9%84%D9%85%D8%B3%D9%8A%D8%B1%D9%8A" target="_blank" class="floating-whatsapp-btn" title="تواصل مباشر عبر الواتساب">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Bottom Mobile Nav Bar -->
+    <nav class="bottom-mobile-nav">
+        <div class="mobile-nav-inner">
+            <a href="index.html" class="mob-nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="store.html" class="mob-nav-item active">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span>المتجر</span>
+            </a>
+            <a href="b2b.html" class="mob-nav-item">
+                <i class="fa-solid fa-handshake"></i>
+                <span>الجملة</span>
+            </a>
+            <a href="javascript:void(0)" onclick="openCartDrawer()" class="mob-nav-item">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>السلة</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Luxury Footer -->
+    <footer class="site-footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="brand-logo" style="margin-bottom: 18px;">
+                        <div class="logo-icon"><i class="fa-solid fa-vest-patches"></i></div>
+                        <div class="brand-text">
+                            <h2 style="font-size: 1.25rem; font-weight: 800; color: #fff;">مصنع المسيري للملابس الداخلية</h2>
+                            <span>AL-MESIRI FACTORY</span>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.9rem; line-height: 1.7; margin-bottom: 20px;">
+                        المصنع الرائد في صناعة وتوريد أرقى الملابس الداخلية الرجالية والفانلات والقطنيات بمعايير عالمية.
+                    </p>
+                    <div style="display: flex; gap: 12px; font-size: 1.2rem;">
+                        <a href="#" class="action-btn"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="action-btn"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="action-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="action-btn"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h5>روابط المتجر (B2C)</h5>
+                    <ul class="footer-links">
+                        <li><a href="store.html">البوكسرات القطنية</a></li>
+                        <li><a href="store.html">السراويل الكلاسيكية</a></li>
+                        <li><a href="store.html">الفانلات الداخلية</a></li>
+                        <li><a href="b2b.html">طلبات الجملة والموزعين</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h5>قطاع الشركات (B2B)</h5>
+                    <ul class="footer-links">
+                        <li><a href="#b2b-portal">عقود التوريد والكميات</a></li>
+                        <li><a href="#b2b-portal">تصنيع البراند الخاص (Private Label)</a></li>
+                        <li><a href="#b2b-portal">حاسبة أسعار وتخفيضات الجملة</a></li>
+                        <li><a href="#b2b-portal">طلب عينات وفحص خامات</a></li>
+                        <li><a href="#b2b-portal">تطريز شعارات المؤسسات</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h5>معلومات المصنع والتواصل</h5>
+                    <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.9rem;">
+                        <div><i class="fa-solid fa-location-dot" style="color: var(--accent-gold); margin-left: 8px;"></i> المدينة الصناعية الثانية، الرياض / القاهرة</div>
+                        <div><i class="fa-solid fa-phone" style="color: var(--accent-gold); margin-left: 8px;"></i> 966500000000+ / 201000000000+</div>
+                        <div><i class="fa-solid fa-envelope" style="color: var(--accent-gold); margin-left: 8px;"></i> sales@alsafwa-menswear.com</div>
+                        <div><i class="fa-solid fa-clock" style="color: var(--accent-gold); margin-left: 8px;"></i> السبت - الخميس: 8:00 ص - 6:00 م</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>جميع الحقوق محفوظة © 2026 لمصنع الصفوة للملابس الرجالية.</div>
+                <div style="display: flex; gap: 16px; align-items: center;">
+                    <span>بوابات دفع معتمدة: Paymob | Mada | Visa | Apple Pay</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/firebase-config.js"></script>
+    <script src="assets/js/database.js"></script>
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/b2b.js"></script>
+    <script src="assets/js/checkout.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

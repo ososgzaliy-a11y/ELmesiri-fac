@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة الإدارة - مصنع المسيري</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts: Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body class="admin-body">
+
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+        <div class="sidebar-header">
+            <div class="logo-icon"><i class="fa-solid fa-vest-patches"></i></div>
+            <div class="brand-text">
+                <h2>المسيري</h2>
+                <span>لوحة التحكم والقاعدة</span>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="#" class="sidebar-link active" data-tab="dashboard">
+                <i class="fa-solid fa-chart-line"></i> نظرة عامة
+            </a>
+            <a href="#" class="sidebar-link" data-tab="orders">
+                <i class="fa-solid fa-cart-arrow-down"></i> طلبات الأفراد (B2C)
+            </a>
+            <a href="#" class="sidebar-link" data-tab="rfqs">
+                <i class="fa-solid fa-handshake"></i> طلبات الجملة (B2B)
+            </a>
+            <a href="#" class="sidebar-link" data-tab="products">
+                <i class="fa-solid fa-box-open"></i> المنتجات والمخزون
+            </a>
+            <a href="#" class="sidebar-link" data-tab="customers">
+                <i class="fa-solid fa-users"></i> بيانات العملاء
+            </a>
+            <a href="#" class="sidebar-link" data-tab="db-viewer">
+                <i class="fa-solid fa-database"></i> مستعرض قاعدة البيانات
+            </a>
+            <a href="#" class="sidebar-link" data-tab="finance">
+                <i class="fa-solid fa-wallet"></i> المالية والمرتجعات
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="index.html" class="btn-luxury-outline" style="width:100%; text-align:center; display:block; padding:10px;">
+                <i class="fa-solid fa-store"></i> زيارة المتجر
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <header class="admin-topbar">
+            <button class="menu-toggle-btn" id="menu-toggle-btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="topbar-title" id="topbar-title">نظرة عامة</div>
+            
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <button class="btn-small" onclick="exportDatabaseToSQL()" style="background: #4f46e5; color: white; border: none; padding: 7px 12px; border-radius: 8px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px;" title="تحميل ملف قاعدة البيانات بصيغة SQL (.sql)">
+                    <i class="fa-solid fa-file-code"></i> تحميل SQL (.sql)
+                </button>
+                <a href="/api/download/db" class="btn-small" style="background: #0284c7; color: white; border: none; padding: 7px 12px; border-radius: 8px; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 6px;" title="تحميل ملف قاعدة بيانات SQLite الفعلي (.db)">
+                    <i class="fa-solid fa-hard-drive"></i> تحميل DB (.db)
+                </a>
+                <button class="btn-small" onclick="exportOrdersToExcel()" style="background: #15803d; color: white; border: none; padding: 7px 12px; border-radius: 8px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px;" title="تصدير ملف Excel رسمي (.xls) بأعمدة منسقة">
+                    <i class="fa-solid fa-file-excel"></i> تصدير Excel (.xls)
+                </button>
+                <button class="btn-small" onclick="openFirebaseModal()" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.4); padding: 7px 12px; border-radius: 8px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px;" title="إعدادات الربط السحابي مع Firebase">
+                    <i class="fa-solid fa-fire"></i> ربط Firebase
+                </button>
+                <button class="btn-small btn-edit" onclick="refreshAdminData(true)" title="تحديث البيانات من السيرفر">
+                    <i class="fa-solid fa-rotate"></i> تحديث
+                </button>
+                <div class="topbar-user">
+                    <span class="user-role">المدير العام</span>
+                    <div class="user-avatar"><i class="fa-solid fa-user-tie"></i></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="admin-content-area" id="admin-content-area">
+            <!-- Dynamic Content Injected Here by JS -->
+        </div>
+    </main>
+
+    <!-- Modal for Firebase Cloud Integration -->
+    <div class="modal-overlay" id="firebase-modal" style="display: none;">
+        <div class="modal-content-box admin-modal-box" style="max-width: 580px;">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-fire" style="color: #f59e0b; margin-left: 8px;"></i>إعدادات الربط السحابي مع Google Firebase</h3>
+                <button class="close-modal-btn" onclick="closeFirebaseModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 16px;">
+                    قم بوضع بيانات مشروعك في Firebase (سواء Firestore أو Realtime Database المجانية) لمزامنة وتخزين جميع الطلبات في السحابة فوراً:
+                </p>
+                <form id="firebase-config-form" onsubmit="saveFirebaseSettings(event)">
+                    <div class="rfq-input-group full-width">
+                        <label>Firebase Project ID (معرف المشروع)</label>
+                        <input type="text" id="fb-project-id" placeholder="مثال: elmesiri-store-12345" dir="ltr">
+                    </div>
+                    <div class="rfq-input-group full-width">
+                        <label>Firebase Realtime Database URL (اختياري)</label>
+                        <input type="text" id="fb-db-url" placeholder="https://elmesiri-store-default-rtdb.firebaseio.com" dir="ltr">
+                    </div>
+                    <div class="rfq-input-group full-width">
+                        <label>Firebase Web API Key (مفتاح الـ API)</label>
+                        <input type="text" id="fb-api-key" placeholder="AIzaSy..." dir="ltr">
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                        <button type="submit" class="btn-luxury-gold" style="flex: 1; justify-content: center;">
+                            <i class="fa-solid fa-check"></i> حفظ وتفعيل الربط مع Firebase
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Adding New Product -->
+    <div class="modal-overlay" id="add-product-modal" style="display: none;">
+        <div class="modal-content-box admin-modal-box" style="max-width: 600px;">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-plus-circle" style="color: var(--accent-gold); margin-left: 8px;"></i>إضافة منتج جديد للمتجر</h3>
+                <button class="close-modal-btn" onclick="closeAddModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="add-product-form" onsubmit="handleAddNewProduct(event)">
+                    <div class="rfq-input-group">
+                        <label>اسم المنتج *</label>
+                        <input type="text" id="add-product-name" placeholder="مثال: بوكسر قطن مصري ملكي" required>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                        <div class="rfq-input-group">
+                            <label>القسم التصنيفي *</label>
+                            <select id="add-product-category" required>
+                                <option value="boxers">بوكسرات قطنية</option>
+                                <option value="undershirts">فانلات داخلية</option>
+                                <option value="briefs">سراويل كلاسيك</option>
+                            </select>
+                        </div>
+                        <div class="rfq-input-group">
+                            <label>السعر الأساسي (ج.م) *</label>
+                            <input type="number" id="add-product-price" placeholder="250" required>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                        <div class="rfq-input-group">
+                            <label>السعر قبل الخصم (ج.م)</label>
+                            <input type="number" id="add-product-orig-price" placeholder="320">
+                        </div>
+                        <div class="rfq-input-group">
+                            <label>الكمية في المخزون *</label>
+                            <input type="number" id="add-product-stock" placeholder="200" value="100" required>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                        <div class="rfq-input-group">
+                            <label>شارة المنتج (Badge)</label>
+                            <select id="add-product-badge">
+                                <option value="">بدون شارة</option>
+                                <option value="الأكثر مبيعاً">الأكثر مبيعاً</option>
+                                <option value="وصل حديثاً">وصل حديثاً</option>
+                                <option value="قطن 100%">قطن 100%</option>
+                                <option value="خصم خاص">خصم خاص</option>
+                            </select>
+                        </div>
+                        <div class="rfq-input-group">
+                            <label>المقاسات (مفصولة بفاصلة)</label>
+                            <input type="text" id="add-product-sizes" value="M, L, XL, 2XL, 3XL">
+                        </div>
+                    </div>
+                    <div class="rfq-input-group full-width">
+                        <label>وصف الخامة والقطن</label>
+                        <input type="text" id="add-product-fabric" value="100% قطن مصري فاخر فائق النعومة">
+                    </div>
+                    <div class="rfq-input-group full-width">
+                        <label>رابط الصورة الرئيسية</label>
+                        <select id="add-product-image">
+                            <option value="assets/images/product_boxer.jpg">صورة بوكسر قطني (product_boxer.jpg)</option>
+                            <option value="assets/images/product_undershirt.jpg">صورة فانلة داخلية (product_undershirt.jpg)</option>
+                            <option value="assets/images/product_briefs.jpg">صورة سروال كلاسيك (product_briefs.jpg)</option>
+                            <option value="assets/images/hero_mesiri.jpg">صورة عامة للمصنع (hero_mesiri.jpg)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-luxury-gold" style="width: 100%; justify-content: center; margin-top: 15px;">
+                        <i class="fa-solid fa-plus"></i> حفظ ونشر المنتج بقاعدة البيانات
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Editing Product -->
+    <div class="modal-overlay" id="edit-product-modal" style="display: none;">
+        <div class="modal-content-box admin-modal-box">
+            <div class="modal-header">
+                <h3>تعديل المنتج</h3>
+                <button class="close-modal-btn" onclick="closeEditModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="edit-product-form">
+                    <input type="hidden" id="edit-product-id">
+                    <div class="rfq-input-group">
+                        <label>اسم المنتج</label>
+                        <input type="text" id="edit-product-name" required>
+                    </div>
+                    <div class="rfq-input-group">
+                        <label>السعر (ج.م)</label>
+                        <input type="number" id="edit-product-price" required>
+                    </div>
+                    <div class="rfq-input-group">
+                        <label>الحالة والشارة</label>
+                        <select id="edit-product-badge">
+                            <option value="">متوفر (بدون شارة)</option>
+                            <option value="الأكثر مبيعاً">الأكثر مبيعاً</option>
+                            <option value="وصل حديثاً">وصل حديثاً</option>
+                            <option value="قطن 100%">قطن 100%</option>
+                            <option value="خصم خاص">خصم خاص</option>
+                            <option value="نفذت الكمية">نفذت الكمية</option>
+                        </select>
+                    </div>
+                    <div class="rfq-input-group full-width">
+                        <label>رابط الصورة الرئيسية</label>
+                        <input type="text" id="edit-product-image" required>
+                    </div>
+                    <button type="submit" class="btn-luxury-gold" style="width: 100%; justify-content: center; margin-top: 15px;">حفظ التعديلات</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Order Details -->
+    <div class="modal-overlay" id="order-details-modal" style="display: none;">
+        <div class="modal-content-box admin-modal-box" style="max-width: 650px;">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-file-invoice" style="color: var(--accent-gold); margin-left: 8px;"></i>تفاصيل الطلب الكاملة</h3>
+                <button class="close-modal-btn" onclick="closeOrderDetailsModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="order-details-body">
+                <!-- Injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/firebase-config.js"></script>
+    <script src="assets/js/database.js"></script>
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/admin.js"></script>
+</body>
+</html>

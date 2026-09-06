@@ -1,0 +1,3632 @@
+{
+  "products": [
+    {
+      "id": "boxer-premium-black",
+      "name": "بوكسر رجالي قطن مصري فاخر أسود",
+      "category": "boxers",
+      "categoryName": "بوكسرات قطنية",
+      "price": 250,
+      "originalPrice": 320,
+      "rating": 4.9,
+      "reviewsCount": 345,
+      "badge": "الأكثر مبيعاً",
+      "badgeType": "bestseller",
+      "image": "assets/images/product_boxer.jpg",
+      "gallery": [
+        "assets/images/product_boxer.jpg",
+        "assets/images/fabrics_rolls.jpg"
+      ],
+      "colors": [
+        {
+          "name": "أسود كلاسيك",
+          "hex": "#111113",
+          "inStock": true
+        },
+        {
+          "name": "كحلي داكن",
+          "hex": "#1c2841",
+          "inStock": true
+        },
+        {
+          "name": "رمادي ميلانج",
+          "hex": "#8c92ac",
+          "inStock": true
+        }
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL",
+        "3XL",
+        "4XL"
+      ],
+      "stock": 450,
+      "fabric": "95% قطن مصري ممشط (Combed Cotton) + 5% إيلاستين لمرونة استثنائية",
+      "details": [
+        "حزام خصر مرن ومريح لا يترك علامات على الجلد",
+        "تصميم داعم ومانع للاحتكاك للاستخدام اليومي المريح",
+        "نسيج يسمح بالتهوية ويمتص الرطوبة بكفاءة عالية",
+        "معالج ضد الانكماش والبهتان بعد الغسيل المتكرر"
+      ],
+      "careInstructions": "غسيل آلي بدرجة حرارة 40° مئوية كحد أقصى، يمكن استخدام التجفيف الآلي بدرجة حرارة منخفضة",
+      "b2b": {
+        "moq": 100,
+        "tiers": [
+          {
+            "min": 100,
+            "max": 499,
+            "price": 145,
+            "discount": "42%"
+          },
+          {
+            "min": 500,
+            "max": 999,
+            "price": 125,
+            "discount": "50%"
+          },
+          {
+            "min": 1000,
+            "max": 5000,
+            "price": 110,
+            "discount": "56%"
+          }
+        ],
+        "productionTime": "7 - 14 يوم عمل",
+        "customizationOptions": [
+          "تطريز شعار الماركة على الكمر",
+          "ألوان مخصصة",
+          "تغليف خاص بالبراند (Private Label)"
+        ]
+      }
+    },
+    {
+      "id": "undershirt-vneck-white",
+      "name": "فانلة داخلية نصف كم ياقة سبعة (V-Neck) بيضاء",
+      "category": "undershirts",
+      "categoryName": "فانلات داخلية",
+      "price": 180,
+      "originalPrice": 220,
+      "rating": 4.8,
+      "reviewsCount": 215,
+      "badge": "قطن 100%",
+      "badgeType": "featured",
+      "image": "assets/images/product_undershirt.jpg",
+      "gallery": [
+        "assets/images/product_undershirt.jpg",
+        "assets/images/hero_mesiri.jpg"
+      ],
+      "colors": [
+        {
+          "name": "أبيض ناصع",
+          "hex": "#ffffff",
+          "inStock": true
+        },
+        {
+          "name": "أسود",
+          "hex": "#111113",
+          "inStock": true
+        }
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL",
+        "3XL"
+      ],
+      "stock": 320,
+      "fabric": "100% قطن مصري جيزة فائق النعومة واللمعان",
+      "details": [
+        "ياقة V-Neck مثالية للارتداء أسفل القمصان المفتوحة دون أن تظهر",
+        "خياطة مزدوجة ناعمة عند الأكتاف لتجنب أي احتكاك",
+        "قصة (Slim Fit) مريحة تأخذ شكل الجسم",
+        "يمتص العرق بكفاءة للحفاظ على جفاف الجسم طوال اليوم"
+      ],
+      "careInstructions": "غسيل بالماء الدافئ، يمكن كيّه بدرجة حرارة متوسطة، لا تستخدم المبيضات بكثرة",
+      "b2b": {
+        "moq": 200,
+        "tiers": [
+          {
+            "min": 200,
+            "max": 999,
+            "price": 95,
+            "discount": "47%"
+          },
+          {
+            "min": 1000,
+            "max": 2999,
+            "price": 80,
+            "discount": "55%"
+          },
+          {
+            "min": 3000,
+            "max": 10000,
+            "price": 72,
+            "discount": "60%"
+          }
+        ],
+        "productionTime": "10 - 15 يوم عمل",
+        "customizationOptions": [
+          "تعديل شكل الياقة",
+          "طباعة الشعار حرارياً من الداخل",
+          "تصنيع لحساب الغير"
+        ]
+      }
+    },
+    {
+      "id": "briefs-classic-white",
+      "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+      "category": "briefs",
+      "categoryName": "سراويل كلاسيك",
+      "price": 120,
+      "originalPrice": 150,
+      "rating": 4.6,
+      "reviewsCount": 189,
+      "badge": "خصم خاص",
+      "badgeType": "sale",
+      "image": "assets/images/product_briefs.jpg",
+      "gallery": [
+        "assets/images/product_briefs.jpg",
+        "assets/images/factory_production.jpg"
+      ],
+      "colors": [
+        {
+          "name": "أبيض",
+          "hex": "#ffffff",
+          "inStock": true
+        },
+        {
+          "name": "رمادي فاتح",
+          "hex": "#d1d5db",
+          "inStock": true
+        }
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL",
+        "3XL"
+      ],
+      "stock": 280,
+      "fabric": "100% قطن مصري عالي الامتصاص",
+      "details": [
+        "قصة كلاسيكية تقليدية مريحة لأقصى درجات حرية الحركة",
+        "أستك داخلي مغطى بالقماش لحماية البشرة الحساسة",
+        "ثبات تام للألوان ومقاومة عالية للاهتراء",
+        "مناسب للاستخدام اليومي والرياضي"
+      ],
+      "careInstructions": "غسيل عادي، غسيل مع ألوان مماثلة",
+      "b2b": {
+        "moq": 300,
+        "tiers": [
+          {
+            "min": 300,
+            "max": 999,
+            "price": 65,
+            "discount": "45%"
+          },
+          {
+            "min": 1000,
+            "max": 4999,
+            "price": 55,
+            "discount": "54%"
+          },
+          {
+            "min": 5000,
+            "max": 20000,
+            "price": 48,
+            "discount": "60%"
+          }
+        ],
+        "productionTime": "7 - 12 يوم عمل",
+        "customizationOptions": [
+          "تغليف علب كرتونية متعددة (3 قطع / 6 قطع)",
+          "طباعة الباركود"
+        ]
+      }
+    }
+  ],
+  "orders": [
+    {
+      "id": "MESIRI-TEST-101",
+      "date": "2026-08-31T13:17:45.181Z",
+      "customer": {
+        "address": "المعادي، شارع 9",
+        "name": "عماد أحمد",
+        "phone": "01012345678",
+        "city": "القاهرة"
+      },
+      "items": [
+        {
+          "price": 250,
+          "color": "أسود كلاسيك",
+          "name": "بوكسر رجالي قطن مصري فاخر أسود",
+          "size": "L",
+          "qty": 2
+        }
+      ],
+      "summary": {
+        "subtotal": 500,
+        "shipping": 0,
+        "discount": 0,
+        "total": 500
+      },
+      "paymentMethod": "paymob",
+      "status": "قيد التحضير"
+    },
+    {
+      "id": "MESIRI-CASHIER-999",
+      "date": "2026-08-31T13:50:34.218Z",
+      "customer": {
+        "email": "emad@mesiri.com",
+        "address": "المعادي، شارع 9",
+        "name": "عماد أحمد",
+        "phone": "01012345678",
+        "city": "القاهرة"
+      },
+      "items": [
+        {
+          "price": 250,
+          "name": "بوكسر رجالي قطن مصري فاخر أسود",
+          "qty": 2
+        }
+      ],
+      "summary": {
+        "subtotal": 500,
+        "discount": 0,
+        "shipping": 0,
+        "total": 500
+      },
+      "paymentMethod": "cashier",
+      "paymentGateway": "Cashier Payment Gateway",
+      "status": "مكتمل (تم الدفع عبر Cashier)",
+      "transaction": {
+        "amount": 500,
+        "currency": "EGP",
+        "created_at": "2026-08-31T13:50:34.218Z",
+        "transaction_id": "CSH-TXN-882190",
+        "paid_at": "2026-08-31T13:50:55.314Z",
+        "status": "SUCCESS"
+      },
+      "paymentStatus": "PAID"
+    },
+    {
+      "id": "MESIRI-243913",
+      "date": "2026-08-31T14:05:46.930Z",
+      "customer": {
+        "name": "423424",
+        "phone": "2444233",
+        "city": "4234444",
+        "address": "2444",
+        "email": "2444233@mesiri.com"
+      },
+      "items": [
+        {
+          "cartItemId": "undershirt-vneck-white-أبيض ناصع-3XL",
+          "id": "undershirt-vneck-white",
+          "name": "فانلة داخلية نصف كم ياقة سبعة (V-Neck) بيضاء",
+          "price": 180,
+          "image": "assets/images/product_undershirt.jpg",
+          "color": "أبيض ناصع",
+          "size": "3XL",
+          "qty": 4
+        },
+        {
+          "cartItemId": "undershirt-tank-white-أبيض-3XL",
+          "id": "undershirt-tank-white",
+          "name": "فانلة داخلية بحمالات عريضة (Tank Top) بيضاء",
+          "price": 150,
+          "image": "assets/images/product_undershirt.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 870,
+        "discount": 0,
+        "shipping": 0,
+        "total": 870
+      },
+      "paymentMethod": "cashier",
+      "paymentGateway": "Cashier Payment Gateway",
+      "status": "مكتمل (تم الدفع عبر Cashier)",
+      "transaction": {
+        "amount": 870,
+        "currency": "EGP",
+        "created_at": "2026-08-31T14:05:46.930Z",
+        "transaction_id": "CASHIER-13894635",
+        "paid_at": "2026-08-31T14:05:57.817Z",
+        "status": "SUCCESS"
+      },
+      "paymentStatus": "PAID"
+    },
+    {
+      "id": "MESIRI-243913",
+      "date": "2026-08-31T14:05:46.926Z",
+      "customer": {
+        "name": "423424",
+        "phone": "2444233",
+        "city": "4234444",
+        "address": "2444",
+        "email": "2444233@mesiri.com"
+      },
+      "items": [
+        {
+          "cartItemId": "undershirt-vneck-white-أبيض ناصع-3XL",
+          "id": "undershirt-vneck-white",
+          "name": "فانلة داخلية نصف كم ياقة سبعة (V-Neck) بيضاء",
+          "price": 180,
+          "image": "assets/images/product_undershirt.jpg",
+          "color": "أبيض ناصع",
+          "size": "3XL",
+          "qty": 4
+        },
+        {
+          "cartItemId": "undershirt-tank-white-أبيض-3XL",
+          "id": "undershirt-tank-white",
+          "name": "فانلة داخلية بحمالات عريضة (Tank Top) بيضاء",
+          "price": 150,
+          "image": "assets/images/product_undershirt.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 870,
+        "discount": 0,
+        "shipping": 0,
+        "total": 870
+      },
+      "paymentMethod": "cashier",
+      "status": "معلق (بانتظار الدفع)"
+    },
+    {
+      "id": "MESIRI-LIVE-001",
+      "date": "2026-08-31T14:10:25.424Z",
+      "customer": {
+        "email": "emad@mesiri.com",
+        "address": "شارع 9 المعادي",
+        "name": "عماد أحمد",
+        "phone": "01099887766",
+        "city": "القاهرة"
+      },
+      "items": [
+        {
+          "price": 350,
+          "name": "فانلة نصف كم قطن مصري أبيض",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 350,
+        "discount": 0,
+        "shipping": 0,
+        "total": 350
+      },
+      "paymentMethod": "cashier",
+      "paymentGateway": "Cashier (Kashier Sandbox)",
+      "status": "معلق (بانتظار الدفع)",
+      "transaction": {
+        "amount": 350,
+        "currency": "EGP",
+        "created_at": "2026-08-31T14:10:25.424Z"
+      }
+    },
+    {
+      "id": "MESIRI-924545",
+      "date": "2026-08-31T14:11:59.492Z",
+      "customer": {
+        "name": "423424",
+        "phone": "2444233",
+        "city": "Damanhour",
+        "address": "2444",
+        "email": "2444233@mesiri.com"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-رمادي فاتح-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "رمادي فاتح",
+          "size": "3XL",
+          "qty": 3
+        }
+      ],
+      "summary": {
+        "subtotal": 360,
+        "discount": 0,
+        "shipping": 35,
+        "total": 395
+      },
+      "paymentMethod": "cashier",
+      "paymentGateway": "Cashier (Kashier Sandbox)",
+      "status": "معلق (بانتظار الدفع)",
+      "transaction": {
+        "amount": 395,
+        "currency": "EGP",
+        "created_at": "2026-08-31T14:11:59.492Z"
+      }
+    },
+    {
+      "id": "MESIRI-924545",
+      "date": "2026-08-31T14:11:59.486Z",
+      "customer": {
+        "name": "423424",
+        "phone": "2444233",
+        "city": "Damanhour",
+        "address": "2444",
+        "email": "2444233@mesiri.com"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-رمادي فاتح-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "رمادي فاتح",
+          "size": "3XL",
+          "qty": 3
+        }
+      ],
+      "summary": {
+        "subtotal": 360,
+        "discount": 0,
+        "shipping": 35,
+        "total": 395
+      },
+      "paymentMethod": "cashier",
+      "status": "معلق (بانتظار الدفع)"
+    },
+    {
+      "id": "MESIRI-ORD-778",
+      "merchant_order_id": "MESIRI-ORD-778",
+      "date": "2026-08-31T14:14:20.621Z",
+      "customer": {
+        "name": "عماد أحمد",
+        "email": "emad@mesiri.com",
+        "phone": "01012345678"
+      },
+      "items": [],
+      "summary": {
+        "subtotal": 550,
+        "discount": 0,
+        "shipping": 0,
+        "total": 550
+      },
+      "paymentMethod": "cashier",
+      "paymentGateway": "Cashier (Kashier Gateway)",
+      "status": "معلق (بانتظار الدفع)",
+      "transaction": {
+        "amount": 550,
+        "currency": "EGP",
+        "created_at": "2026-08-31T14:14:20.621Z"
+      }
+    },
+    {
+      "id": "MESIRI-147834",
+      "merchant_order_id": "MESIRI-147834",
+      "date": "2026-08-31T14:15:25.251Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "2444233"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 3
+        }
+      ],
+      "summary": {
+        "subtotal": 360,
+        "discount": 0,
+        "shipping": 35,
+        "total": 395
+      },
+      "paymentMethod": "cashier",
+      "paymentGateway": "Cashier (Kashier Gateway)",
+      "status": "مكتمل (تم الدفع عبر Cashier)",
+      "transaction": {
+        "amount": 395,
+        "currency": "EGP",
+        "created_at": "2026-08-31T14:15:25.251Z",
+        "transaction_id": "CSH-TXN-24356131",
+        "paid_at": "2026-08-31T14:15:51.835Z",
+        "status": "SUCCESS"
+      },
+      "paymentStatus": "PAID"
+    },
+    {
+      "id": "MESIRI-147834",
+      "date": "2026-08-31T14:15:25.246Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "2444233",
+        "city": "Damanhour",
+        "address": "2444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 3
+        }
+      ],
+      "summary": {
+        "subtotal": 360,
+        "discount": 0,
+        "shipping": 35,
+        "total": 395
+      },
+      "paymentMethod": "cashier",
+      "status": "معلق (بانتظار الدفع)"
+    },
+    {
+      "id": "MESIRI-SANDBOX-001",
+      "merchant_order_id": "MESIRI-SANDBOX-001",
+      "date": "2026-08-31T14:19:14.798Z",
+      "customer": {
+        "name": "Osama Test",
+        "email": "test@example.com",
+        "phone": "+201000000000"
+      },
+      "items": [],
+      "summary": {
+        "subtotal": 450,
+        "discount": 0,
+        "shipping": 0,
+        "total": 450
+      },
+      "paymentMethod": "cashier",
+      "paymentGateway": "Cashier Live Sandbox",
+      "status": "معلق (بانتظار الدفع)",
+      "transaction": {
+        "amount": 450,
+        "currency": "EGP",
+        "hash": "1ddd4f16b6ea4e0c6a41d25c7289ed262d4f32278b07513799001446165041a4",
+        "created_at": "2026-08-31T14:19:14.799Z"
+      }
+    },
+    {
+      "id": "MESIRI-200089",
+      "merchant_order_id": "MESIRI-200089",
+      "date": "2026-08-31T14:20:45.710Z",
+      "customer": {
+        "name": "423424 Test",
+        "email": "ossssas@gmail.com",
+        "phone": "+202444233"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "cashier",
+      "paymentGateway": "Cashier Live Sandbox",
+      "status": "معلق (بانتظار الدفع)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "hash": "d10f3489a0f11c4df4606854b02446cc8c12dda017f73a6370ddfc0245e2156d",
+        "created_at": "2026-08-31T14:20:45.710Z"
+      }
+    },
+    {
+      "id": "MESIRI-200089",
+      "date": "2026-08-31T14:20:45.662Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "2444233",
+        "city": "Damanhour",
+        "address": "2444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "cashier",
+      "status": "معلق (بانتظار الدفع)"
+    },
+    {
+      "id": "MESIRI-ORD-9911",
+      "merchant_order_id": "MESIRI-ORD-9911",
+      "date": "2026-08-31T14:23:45.119Z",
+      "customer": {
+        "name": "Osama Test",
+        "email": "test@example.com",
+        "phone": "+201000000000"
+      },
+      "items": [],
+      "summary": {
+        "subtotal": 500,
+        "discount": 0,
+        "shipping": 0,
+        "total": 500
+      },
+      "paymentMethod": "cashier",
+      "paymentGateway": "Cashier Live Sandbox",
+      "status": "معلق (بانتظار الدفع)",
+      "transaction": {
+        "amount": 500,
+        "currency": "EGP",
+        "hash": "9e9cf629885b7942ce1bd053045ba92bd0a451a96d67e457e57ea602f780e02f",
+        "created_at": "2026-08-31T14:23:45.120Z"
+      }
+    },
+    {
+      "id": "MESIRI-868010",
+      "merchant_order_id": "MESIRI-868010",
+      "date": "2026-08-31T14:25:49.132Z",
+      "customer": {
+        "name": "423424 Test",
+        "email": "ossssas@gmail.com",
+        "phone": "+202444233"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "cashier",
+      "paymentGateway": "Cashier Live Sandbox",
+      "status": "معلق (بانتظار الدفع)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "hash": "7658a1191a81c963f62b7d18cd1bf370073a42fd3d1fd8349b86a804a6aad79e",
+        "created_at": "2026-08-31T14:25:49.132Z"
+      }
+    },
+    {
+      "id": "MESIRI-868010",
+      "date": "2026-08-31T14:25:49.007Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "2444233",
+        "city": "Damanhour",
+        "address": "2444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "cashier",
+      "status": "معلق (بانتظار الدفع)"
+    },
+    {
+      "id": "MESIRI-HASH-TEST-01",
+      "merchant_order_id": "MESIRI-HASH-TEST-01",
+      "date": "2026-08-31T14:28:54.224Z",
+      "customer": {
+        "first_name": "Osama",
+        "last_name": "Test",
+        "name": "Osama Test",
+        "email": "test@example.com",
+        "phone": "+201000000000",
+        "phone_number": "+201000000000"
+      },
+      "items": [],
+      "summary": {
+        "subtotal": 500,
+        "discount": 0,
+        "shipping": 0,
+        "total": 500
+      },
+      "paymentMethod": "cashier",
+      "paymentGateway": "Cashier Hosted Checkout",
+      "status": "معلق (بانتظار الدفع)",
+      "transaction": {
+        "amount": 500,
+        "formatted_amount": "500",
+        "currency": "EGP",
+        "hash": "d917b5f91cc46c1e0c4691a46e358b9eec3e80731c004f27431a47d19f3af89c",
+        "created_at": "2026-08-31T14:28:54.225Z"
+      }
+    },
+    {
+      "id": "MESIRI-329528",
+      "merchant_order_id": "MESIRI-329528",
+      "date": "2026-08-31T14:30:02.220Z",
+      "customer": {
+        "first_name": "423424",
+        "last_name": "Test",
+        "name": "423424 Test",
+        "email": "ossssas@gmail.com",
+        "phone": "+202444233",
+        "phone_number": "+202444233"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 4
+        }
+      ],
+      "summary": {
+        "subtotal": 480,
+        "discount": 0,
+        "shipping": 35,
+        "total": 515
+      },
+      "paymentMethod": "cashier",
+      "paymentGateway": "Cashier Hosted Checkout",
+      "status": "معلق (بانتظار الدفع)",
+      "transaction": {
+        "amount": 515,
+        "formatted_amount": "515",
+        "currency": "EGP",
+        "hash": "bc8dc0a2b82997371f643590be05054282789d611a3a423a087ee5fb0b6393a5",
+        "created_at": "2026-08-31T14:30:02.220Z"
+      }
+    },
+    {
+      "id": "MESIRI-329528",
+      "date": "2026-08-31T14:30:02.215Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "2444233",
+        "city": "Damanhour",
+        "address": "2444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 4
+        }
+      ],
+      "summary": {
+        "subtotal": 480,
+        "discount": 0,
+        "shipping": 35,
+        "total": 515
+      },
+      "paymentMethod": "cashier",
+      "status": "معلق (بانتظار الدفع)"
+    },
+    {
+      "id": "MESIRI-XPAY-TEST-001",
+      "merchant_order_id": "MESIRI-XPAY-TEST-001",
+      "date": "2026-08-31T14:52:48.334Z",
+      "customer": {
+        "name": "عماد أحمد",
+        "email": "emad@mesiri.com",
+        "phone": "+201012345678"
+      },
+      "items": [
+        {
+          "price": 650,
+          "name": "طقم داخلي قطن فاخر",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 650,
+        "discount": 0,
+        "shipping": 0,
+        "total": 650
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Payment Gateway",
+      "status": "مكتمل (تم الدفع عبر XPay)",
+      "transaction": {
+        "amount": 650,
+        "currency": "EGP",
+        "created_at": "2026-08-31T14:52:48.335Z",
+        "transaction_id": "XPAY-TXN-998822",
+        "gateway": "XPay",
+        "paid_at": "2026-08-31T14:53:11.527Z",
+        "status": "SUCCESS"
+      },
+      "paymentStatus": "PAID"
+    },
+    {
+      "id": "MESIRI-389409",
+      "merchant_order_id": "MESIRI-389409",
+      "date": "2026-08-31T14:54:37.117Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "2444233"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        },
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 240,
+        "discount": 0,
+        "shipping": 35,
+        "total": 275
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Payment Gateway",
+      "status": "مكتمل (تم الدفع عبر XPay)",
+      "transaction": {
+        "amount": 275,
+        "currency": "EGP",
+        "created_at": "2026-08-31T14:54:37.117Z",
+        "transaction_id": "XPAY-TXN-11757396",
+        "gateway": "XPay",
+        "paid_at": "2026-08-31T14:54:44.836Z",
+        "status": "SUCCESS"
+      },
+      "paymentStatus": "PAID"
+    },
+    {
+      "id": "MESIRI-389409",
+      "date": "2026-08-31T14:54:37.112Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "2444233",
+        "city": "Damanhour",
+        "address": "2444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        },
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 240,
+        "discount": 0,
+        "shipping": 35,
+        "total": 275
+      },
+      "paymentMethod": "xpay",
+      "status": "معلق (بانتظار الدفع عبر XPay)"
+    },
+    {
+      "id": "MESIRI-120427",
+      "merchant_order_id": "MESIRI-120427",
+      "date": "2026-08-31T14:55:46.788Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "2444233"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 4
+        }
+      ],
+      "summary": {
+        "subtotal": 480,
+        "discount": 0,
+        "shipping": 35,
+        "total": 515
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Payment Gateway",
+      "status": "مكتمل (تم الدفع عبر XPay)",
+      "transaction": {
+        "amount": 515,
+        "currency": "EGP",
+        "created_at": "2026-08-31T14:55:46.788Z",
+        "transaction_id": "XPAY-TXN-14246462",
+        "gateway": "XPay",
+        "paid_at": "2026-08-31T14:56:23.093Z",
+        "status": "SUCCESS"
+      },
+      "paymentStatus": "PAID"
+    },
+    {
+      "id": "MESIRI-120427",
+      "date": "2026-08-31T14:55:46.784Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "2444233",
+        "city": "Damanhour",
+        "address": "2444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 4
+        }
+      ],
+      "summary": {
+        "subtotal": 480,
+        "discount": 0,
+        "shipping": 35,
+        "total": 515
+      },
+      "paymentMethod": "xpay",
+      "status": "معلق (بانتظار الدفع عبر XPay)"
+    },
+    {
+      "id": "XPAY-882153",
+      "merchant_order_id": "XPAY-882153",
+      "date": "2026-08-31T15:01:57.670Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "01010645449"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Payment Gateway",
+      "status": "مكتمل (تم الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T15:01:57.670Z",
+        "transaction_id": "XPAY-TXN-68499458",
+        "gateway": "XPay",
+        "paid_at": "2026-08-31T15:02:23.421Z",
+        "status": "SUCCESS"
+      },
+      "paymentStatus": "PAID"
+    },
+    {
+      "id": "XPAY-882153",
+      "date": "2026-08-31T15:01:57.664Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "01010645449",
+        "city": "Damanhour",
+        "address": "2444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "status": "معلق (بانتظار الدفع عبر XPay)"
+    },
+    {
+      "id": "MESIRI-HOSTED-001",
+      "merchant_order_id": "MESIRI-HOSTED-001",
+      "date": "2026-08-31T15:27:39.578Z",
+      "customer": {
+        "name": "عماد أحمد",
+        "email": "emad@mesiri.com",
+        "phone": "+201012345678"
+      },
+      "items": [],
+      "summary": {
+        "subtotal": 550,
+        "discount": 0,
+        "shipping": 0,
+        "total": 550
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Hosted Checkout",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 550,
+        "currency": "EGP",
+        "created_at": "2026-08-31T15:27:39.579Z"
+      }
+    },
+    {
+      "id": "XPAY-118515",
+      "merchant_order_id": "XPAY-118515",
+      "date": "2026-08-31T15:28:37.582Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "01010645449"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Hosted Checkout",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T15:28:37.582Z"
+      }
+    },
+    {
+      "id": "XPAY-118515",
+      "date": "2026-08-31T15:28:37.577Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "01010645449",
+        "city": "Damanhour",
+        "address": "2444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "status": "معلق (بانتظار الدفع عبر XPay)"
+    },
+    {
+      "id": "MESIRI-LIVE-XPAY-001",
+      "merchant_order_id": "MESIRI-LIVE-XPAY-001",
+      "date": "2026-08-31T15:34:10.156Z",
+      "customer": {
+        "name": "عماد أحمد",
+        "email": "emad@mesiri.com",
+        "phone": "+201012345678"
+      },
+      "items": [],
+      "summary": {
+        "subtotal": 450,
+        "discount": 0,
+        "shipping": 0,
+        "total": 450
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Official Gateway",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 450,
+        "currency": "EGP",
+        "created_at": "2026-08-31T15:34:10.157Z"
+      }
+    },
+    {
+      "id": "XPAY-807306",
+      "merchant_order_id": "XPAY-807306",
+      "date": "2026-08-31T15:35:05.283Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "01010645449"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 4
+        }
+      ],
+      "summary": {
+        "subtotal": 480,
+        "discount": 0,
+        "shipping": 35,
+        "total": 515
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Official Gateway",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 515,
+        "currency": "EGP",
+        "created_at": "2026-08-31T15:35:05.287Z"
+      }
+    },
+    {
+      "id": "XPAY-807306",
+      "date": "2026-08-31T15:35:05.249Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "01010645449",
+        "city": "Damanhour",
+        "address": "2444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 4
+        }
+      ],
+      "summary": {
+        "subtotal": 480,
+        "discount": 0,
+        "shipping": 35,
+        "total": 515
+      },
+      "paymentMethod": "xpay",
+      "status": "معلق (بانتظار الدفع عبر XPay)"
+    },
+    {
+      "id": "XPAY-894547",
+      "merchant_order_id": "XPAY-894547",
+      "date": "2026-08-31T15:35:55.198Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "01010645449"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Official Gateway",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T15:35:55.198Z"
+      }
+    },
+    {
+      "id": "XPAY-894547",
+      "date": "2026-08-31T15:35:55.194Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "01010645449",
+        "city": "Damanhour",
+        "address": "2444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "status": "معلق (بانتظار الدفع عبر XPay)"
+    },
+    {
+      "id": "MESIRI-GUEST-001",
+      "merchant_order_id": "MESIRI-GUEST-001",
+      "date": "2026-08-31T15:38:13.716Z",
+      "customer": {
+        "name": "عماد أحمد",
+        "email": "emad@mesiri.com",
+        "phone": "+201012345678"
+      },
+      "items": [],
+      "summary": {
+        "subtotal": 450,
+        "discount": 0,
+        "shipping": 0,
+        "total": 450
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Official Gateway",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 450,
+        "currency": "EGP",
+        "created_at": "2026-08-31T15:38:13.722Z"
+      }
+    },
+    {
+      "id": "XPAY-280566",
+      "merchant_order_id": "XPAY-280566",
+      "date": "2026-08-31T15:38:57.285Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "01010645449"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 4
+        }
+      ],
+      "summary": {
+        "subtotal": 480,
+        "discount": 0,
+        "shipping": 35,
+        "total": 515
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Official Gateway",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 515,
+        "currency": "EGP",
+        "created_at": "2026-08-31T15:38:57.285Z"
+      }
+    },
+    {
+      "id": "XPAY-280566",
+      "date": "2026-08-31T15:38:57.281Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "01010645449",
+        "city": "Damanhour",
+        "address": "2444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 4
+        }
+      ],
+      "summary": {
+        "subtotal": 480,
+        "discount": 0,
+        "shipping": 35,
+        "total": 515
+      },
+      "paymentMethod": "xpay",
+      "status": "معلق (بانتظار الدفع عبر XPay)"
+    },
+    {
+      "id": "MESIRI-LIVE-XPAY-002",
+      "merchant_order_id": "MESIRI-LIVE-XPAY-002",
+      "date": "2026-08-31T15:41:33.786Z",
+      "customer": {
+        "name": "عماد أحمد",
+        "email": "emad@mesiri.com",
+        "phone": "+201012345678"
+      },
+      "items": [],
+      "summary": {
+        "subtotal": 500,
+        "discount": 0,
+        "shipping": 0,
+        "total": 500
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Official Gateway",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 500,
+        "currency": "EGP",
+        "created_at": "2026-08-31T15:41:33.787Z"
+      }
+    },
+    {
+      "id": "XPAY-588222",
+      "merchant_order_id": "XPAY-588222",
+      "date": "2026-08-31T15:42:53.365Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "01010645449"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 4
+        }
+      ],
+      "summary": {
+        "subtotal": 480,
+        "discount": 0,
+        "shipping": 35,
+        "total": 515
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Official Gateway",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 515,
+        "currency": "EGP",
+        "created_at": "2026-08-31T15:42:53.365Z"
+      }
+    },
+    {
+      "id": "XPAY-588222",
+      "date": "2026-08-31T15:42:53.362Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "01010645449",
+        "city": "Damanhour",
+        "address": "2444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 4
+        }
+      ],
+      "summary": {
+        "subtotal": 480,
+        "discount": 0,
+        "shipping": 35,
+        "total": 515
+      },
+      "paymentMethod": "xpay",
+      "status": "معلق (بانتظار الدفع عبر XPay)"
+    },
+    {
+      "id": "MESIRI-ORD-SESSION-001",
+      "merchant_order_id": "MESIRI-ORD-SESSION-001",
+      "date": "2026-08-31T15:46:18.742Z",
+      "customer": {
+        "name": "عماد أحمد",
+        "email": "emad@mesiri.com",
+        "phone": "+201012345678",
+        "address": "شارع النيل",
+        "city": "القاهرة"
+      },
+      "items": [
+        {
+          "price": 550,
+          "name": "طقم داخلي قطن فاخر",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 550,
+        "discount": 0,
+        "shipping": 0,
+        "total": 550
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 550,
+        "currency": "EGP",
+        "created_at": "2026-08-31T15:46:18.743Z"
+      }
+    },
+    {
+      "id": "XPAY-634195",
+      "merchant_order_id": "XPAY-634195",
+      "date": "2026-08-31T15:47:20.215Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "01010645449",
+        "address": "2444",
+        "city": "Damanhour"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 4
+        }
+      ],
+      "summary": {
+        "subtotal": 480,
+        "discount": 0,
+        "shipping": 35,
+        "total": 515
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 515,
+        "currency": "EGP",
+        "created_at": "2026-08-31T15:47:20.215Z"
+      }
+    },
+    {
+      "id": "XPAY-634195",
+      "date": "2026-08-31T15:47:20.210Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "01010645449",
+        "city": "Damanhour",
+        "address": "2444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 4
+        }
+      ],
+      "summary": {
+        "subtotal": 480,
+        "discount": 0,
+        "shipping": 35,
+        "total": 515
+      },
+      "paymentMethod": "xpay",
+      "status": "معلق (بانتظار الدفع عبر XPay)"
+    },
+    {
+      "id": "XPAY-859099",
+      "merchant_order_id": "XPAY-859099",
+      "date": "2026-08-31T16:13:07.744Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-رمادي فاتح-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "رمادي فاتح",
+          "size": "3XL",
+          "qty": 3
+        }
+      ],
+      "summary": {
+        "subtotal": 360,
+        "discount": 0,
+        "shipping": 35,
+        "total": 395
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 395,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:13:07.744Z"
+      }
+    },
+    {
+      "id": "XPAY-859099",
+      "date": "2026-08-31T16:13:07.613Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "city": "4234444",
+        "address": "2444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-رمادي فاتح-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "رمادي فاتح",
+          "size": "3XL",
+          "qty": 3
+        }
+      ],
+      "summary": {
+        "subtotal": 360,
+        "discount": 0,
+        "shipping": 35,
+        "total": 395
+      },
+      "paymentMethod": "xpay",
+      "status": "معلق (بانتظار الدفع عبر XPay)"
+    },
+    {
+      "id": "XPAY-109083",
+      "merchant_order_id": "XPAY-109083",
+      "date": "2026-08-31T16:24:09.813Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-رمادي فاتح-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "رمادي فاتح",
+          "size": "3XL",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:24:09.814Z"
+      }
+    },
+    {
+      "id": "XPAY-190963",
+      "merchant_order_id": "XPAY-190963",
+      "date": "2026-08-31T16:24:11.662Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-رمادي فاتح-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "رمادي فاتح",
+          "size": "3XL",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:24:11.662Z"
+      }
+    },
+    {
+      "id": "XPAY-514160",
+      "merchant_order_id": "XPAY-514160",
+      "date": "2026-08-31T16:24:12.727Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-رمادي فاتح-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "رمادي فاتح",
+          "size": "3XL",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:24:12.727Z"
+      }
+    },
+    {
+      "id": "XPAY-771094",
+      "merchant_order_id": "XPAY-771094",
+      "date": "2026-08-31T16:24:18.639Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-رمادي فاتح-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "رمادي فاتح",
+          "size": "3XL",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:24:18.639Z"
+      }
+    },
+    {
+      "id": "XPAY-342714",
+      "merchant_order_id": "XPAY-342714",
+      "date": "2026-08-31T16:26:27.902Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-رمادي فاتح-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "رمادي فاتح",
+          "size": "3XL",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:26:27.903Z"
+      }
+    },
+    {
+      "id": "XPAY-729375",
+      "merchant_order_id": "XPAY-729375",
+      "date": "2026-08-31T16:26:29.182Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-رمادي فاتح-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "رمادي فاتح",
+          "size": "3XL",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:26:29.182Z"
+      }
+    },
+    {
+      "id": "XPAY-243563",
+      "merchant_order_id": "XPAY-243563",
+      "date": "2026-08-31T16:26:44.280Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:26:44.280Z"
+      }
+    },
+    {
+      "id": "XPAY-964511",
+      "merchant_order_id": "XPAY-964511",
+      "date": "2026-08-31T16:26:45.470Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:26:45.470Z"
+      }
+    },
+    {
+      "id": "XPAY-367853",
+      "merchant_order_id": "XPAY-367853",
+      "date": "2026-08-31T16:26:46.086Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:26:46.086Z"
+      }
+    },
+    {
+      "id": "XPAY-449448",
+      "merchant_order_id": "XPAY-449448",
+      "date": "2026-08-31T16:26:46.598Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:26:46.598Z"
+      }
+    },
+    {
+      "id": "XPAY-690367",
+      "merchant_order_id": "XPAY-690367",
+      "date": "2026-08-31T16:26:59.687Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:26:59.687Z"
+      }
+    },
+    {
+      "id": "XPAY-825350",
+      "merchant_order_id": "XPAY-825350",
+      "date": "2026-08-31T16:28:35.762Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:28:35.762Z"
+      }
+    },
+    {
+      "id": "XPAY-562922",
+      "merchant_order_id": "XPAY-562922",
+      "date": "2026-08-31T16:28:37.447Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:28:37.447Z"
+      }
+    },
+    {
+      "id": "XPAY-987530",
+      "merchant_order_id": "XPAY-987530",
+      "date": "2026-08-31T16:28:38.928Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:28:38.928Z"
+      }
+    },
+    {
+      "id": "XPAY-800515",
+      "merchant_order_id": "XPAY-800515",
+      "date": "2026-08-31T16:32:29.927Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:32:29.927Z"
+      }
+    },
+    {
+      "id": "XPAY-288973",
+      "merchant_order_id": "XPAY-288973",
+      "date": "2026-08-31T16:34:26.954Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [],
+      "summary": {
+        "subtotal": 0,
+        "discount": 0,
+        "shipping": 35,
+        "total": 35
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 35,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:34:26.954Z"
+      }
+    },
+    {
+      "id": "XPAY-273027",
+      "merchant_order_id": "XPAY-273027",
+      "date": "2026-08-31T16:34:38.383Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:34:38.383Z"
+      }
+    },
+    {
+      "id": "XPAY-830386",
+      "merchant_order_id": "XPAY-830386",
+      "date": "2026-08-31T16:34:39.479Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:34:39.479Z"
+      }
+    },
+    {
+      "id": "XPAY-294724",
+      "merchant_order_id": "XPAY-294724",
+      "date": "2026-08-31T16:34:40.375Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:34:40.375Z"
+      }
+    },
+    {
+      "id": "XPAY-432768",
+      "merchant_order_id": "XPAY-432768",
+      "date": "2026-08-31T16:34:40.679Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:34:40.679Z"
+      }
+    },
+    {
+      "id": "XPAY-799158",
+      "merchant_order_id": "XPAY-799158",
+      "date": "2026-08-31T16:34:40.957Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:34:40.958Z"
+      }
+    },
+    {
+      "id": "XPAY-182164",
+      "merchant_order_id": "XPAY-182164",
+      "date": "2026-08-31T16:34:41.156Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:34:41.156Z"
+      }
+    },
+    {
+      "id": "XPAY-332807",
+      "merchant_order_id": "XPAY-332807",
+      "date": "2026-08-31T16:34:41.307Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:34:41.307Z"
+      }
+    },
+    {
+      "id": "XPAY-488176",
+      "merchant_order_id": "XPAY-488176",
+      "date": "2026-08-31T16:34:41.447Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:34:41.447Z"
+      }
+    },
+    {
+      "id": "XPAY-978411",
+      "merchant_order_id": "XPAY-978411",
+      "date": "2026-08-31T16:34:41.599Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:34:41.599Z"
+      }
+    },
+    {
+      "id": "XPAY-332369",
+      "merchant_order_id": "XPAY-332369",
+      "date": "2026-08-31T16:34:41.751Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:34:41.751Z"
+      }
+    },
+    {
+      "id": "XPAY-471709",
+      "merchant_order_id": "XPAY-471709",
+      "date": "2026-08-31T16:34:41.911Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:34:41.911Z"
+      }
+    },
+    {
+      "id": "XPAY-318440",
+      "merchant_order_id": "XPAY-318440",
+      "date": "2026-08-31T16:34:42.063Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:34:42.063Z"
+      }
+    },
+    {
+      "id": "XPAY-749666",
+      "merchant_order_id": "XPAY-749666",
+      "date": "2026-08-31T16:34:42.215Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:34:42.215Z"
+      }
+    },
+    {
+      "id": "XPAY-500082",
+      "merchant_order_id": "XPAY-500082",
+      "date": "2026-08-31T16:34:42.391Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:34:42.391Z"
+      }
+    },
+    {
+      "id": "XPAY-347613",
+      "merchant_order_id": "XPAY-347613",
+      "date": "2026-08-31T16:34:42.575Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "xpay",
+      "paymentGateway": "XPay Checkout Sessions",
+      "status": "معلق (بانتظار الدفع عبر XPay)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:34:42.575Z"
+      }
+    },
+    {
+      "id": "KSH-602440",
+      "merchant_order_id": "KSH-602440",
+      "date": "2026-08-31T16:53:03.042Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "kashier",
+      "paymentGateway": "Kashier Hosted Checkout",
+      "status": "معلق (بانتظار الدفع عبر Kashier)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:53:03.043Z"
+      }
+    },
+    {
+      "id": "KSH-602440",
+      "date": "2026-08-31T16:53:03.021Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "city": "4234444",
+        "address": "2444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "kashier",
+      "status": "معلق (بانتظار الدفع عبر Kashier)"
+    },
+    {
+      "id": "KSH-129706",
+      "merchant_order_id": "KSH-129706",
+      "date": "2026-08-31T16:59:18.181Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 2
+        }
+      ],
+      "summary": {
+        "subtotal": 240,
+        "discount": 0,
+        "shipping": 35,
+        "total": 275
+      },
+      "paymentMethod": "kashier",
+      "paymentGateway": "Kashier Hosted Checkout",
+      "status": "معلق (بانتظار الدفع عبر Kashier)",
+      "transaction": {
+        "amount": 275,
+        "currency": "EGP",
+        "created_at": "2026-08-31T16:59:18.181Z"
+      }
+    },
+    {
+      "id": "KSH-129706",
+      "date": "2026-08-31T16:59:18.176Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "city": "4234444",
+        "address": "2444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 2
+        }
+      ],
+      "summary": {
+        "subtotal": 240,
+        "discount": 0,
+        "shipping": 35,
+        "total": 275
+      },
+      "paymentMethod": "kashier",
+      "status": "معلق (بانتظار الدفع عبر Kashier)"
+    },
+    {
+      "id": "KSH-500873",
+      "merchant_order_id": "KSH-500873",
+      "date": "2026-09-02T09:39:02.085Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 2
+        }
+      ],
+      "summary": {
+        "subtotal": 240,
+        "discount": 0,
+        "shipping": 35,
+        "total": 275
+      },
+      "paymentMethod": "kashier",
+      "paymentGateway": "Kashier Hosted Checkout",
+      "status": "معلق (بانتظار الدفع عبر Kashier)",
+      "transaction": {
+        "amount": 275,
+        "currency": "EGP",
+        "created_at": "2026-09-02T09:39:02.085Z"
+      }
+    },
+    {
+      "id": "KSH-500873",
+      "date": "2026-09-02T09:39:02.076Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "city": "4234444",
+        "address": "2444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 2
+        }
+      ],
+      "summary": {
+        "subtotal": 240,
+        "discount": 0,
+        "shipping": 35,
+        "total": 275
+      },
+      "paymentMethod": "kashier",
+      "status": "معلق (بانتظار الدفع عبر Kashier)"
+    },
+    {
+      "id": "KSH-955255",
+      "merchant_order_id": "KSH-955255",
+      "date": "2026-09-02T09:39:49.985Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 2
+        }
+      ],
+      "summary": {
+        "subtotal": 240,
+        "discount": 0,
+        "shipping": 35,
+        "total": 275
+      },
+      "paymentMethod": "kashier",
+      "paymentGateway": "Kashier Hosted Checkout",
+      "status": "معلق (بانتظار الدفع عبر Kashier)",
+      "transaction": {
+        "amount": 275,
+        "currency": "EGP",
+        "created_at": "2026-09-02T09:39:49.985Z"
+      }
+    },
+    {
+      "id": "KSH-955255",
+      "date": "2026-09-02T09:39:49.980Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "city": "4234444",
+        "address": "2444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 2
+        }
+      ],
+      "summary": {
+        "subtotal": 240,
+        "discount": 0,
+        "shipping": 35,
+        "total": 275
+      },
+      "paymentMethod": "kashier",
+      "status": "معلق (بانتظار الدفع عبر Kashier)"
+    },
+    {
+      "id": "KSH-644432",
+      "merchant_order_id": "KSH-644432",
+      "date": "2026-09-02T09:44:20.199Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "address": "2444",
+        "city": "4234444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 2
+        }
+      ],
+      "summary": {
+        "subtotal": 240,
+        "discount": 0,
+        "shipping": 35,
+        "total": 275
+      },
+      "paymentMethod": "kashier",
+      "paymentGateway": "Kashier Hosted Checkout",
+      "status": "معلق (بانتظار الدفع عبر Kashier)",
+      "transaction": {
+        "amount": 275,
+        "currency": "EGP",
+        "created_at": "2026-09-02T09:44:20.199Z"
+      }
+    },
+    {
+      "id": "KSH-644432",
+      "date": "2026-09-02T09:44:20.196Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "+201000000000",
+        "city": "4234444",
+        "address": "2444"
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 2
+        }
+      ],
+      "summary": {
+        "subtotal": 240,
+        "discount": 0,
+        "shipping": 35,
+        "total": 275
+      },
+      "paymentMethod": "kashier",
+      "status": "معلق (بانتظار الدفع عبر Kashier)"
+    },
+    {
+      "id": "MES-145151",
+      "merchant_order_id": "MES-145151",
+      "date": "2026-09-02T09:59:49.564Z",
+      "customer": {
+        "name": "423424",
+        "email": "ossssas@gmail.com",
+        "phone": "01010645449",
+        "governorate": "البحيرة",
+        "city": "Damanhour",
+        "address": "2444",
+        "notes": ""
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 2
+        },
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 360,
+        "discount": 0,
+        "shipping": 35,
+        "total": 395
+      },
+      "paymentMethod": "kashier",
+      "paymentGateway": "Kashier Hosted Checkout",
+      "status": "مكتمل (تم الدفع عبر Kashier)",
+      "transaction": {
+        "amount": 395,
+        "currency": "EGP",
+        "created_at": "2026-09-02T09:59:49.564Z",
+        "transaction_id": "TXN-98760344",
+        "gateway": "Kashier",
+        "paid_at": "2026-09-02T10:01:50.708Z",
+        "status": "SUCCESS",
+        "maskedCard": "**** **** **** 4444"
+      },
+      "paymentStatus": "PAID"
+    },
+    {
+      "id": "MES-782121",
+      "merchant_order_id": "MES-782121",
+      "date": "2026-09-02T10:05:08.056Z",
+      "customer": {
+        "name": "sdadsad asdasds",
+        "email": "ossssas@gmail.com",
+        "phone": "01010645449",
+        "governorate": "البحيرة",
+        "city": "Damanhour",
+        "address": "2444",
+        "notes": ""
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "kashier",
+      "paymentGateway": "Kashier Hosted Checkout",
+      "status": "مكتمل (تم الدفع عبر Kashier)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-09-02T10:05:08.056Z",
+        "transaction_id": "TXN-49840374",
+        "gateway": "Kashier",
+        "paid_at": "2026-09-02T10:12:59.244Z",
+        "status": "SUCCESS",
+        "maskedCard": "**** **** **** 4444"
+      },
+      "paymentStatus": "PAID"
+    },
+    {
+      "id": "MES-518949",
+      "date": "2026-09-02T10:13:53.703Z",
+      "customer": {
+        "name": "sdadsad asdasds",
+        "phone": "01010645449",
+        "email": "ossssas@gmail.com",
+        "governorate": "البحيرة",
+        "city": "Damanhour",
+        "address": "2444",
+        "notes": ""
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "cod",
+      "status": "قيد التجهيز (دفع عند الاستلام)"
+    },
+    {
+      "id": "MES-349400",
+      "merchant_order_id": "MES-349400",
+      "date": "2026-09-02T10:34:13.317Z",
+      "customer": {
+        "name": "sdadsad asdasds",
+        "email": "ossssas@gmail.com",
+        "phone": "01010645449",
+        "governorate": "البحيرة",
+        "city": "Damanhour",
+        "address": "2444",
+        "notes": ""
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "kashier",
+      "paymentGateway": "Kashier Hosted Checkout",
+      "status": "مكتمل (تم الدفع عبر Kashier)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-09-02T10:34:13.317Z",
+        "transaction_id": "TXN-73028600",
+        "gateway": "Kashier",
+        "paid_at": "2026-09-02T10:34:19.284Z",
+        "status": "SUCCESS",
+        "maskedCard": "**** **** **** 4444"
+      },
+      "paymentStatus": "PAID"
+    },
+    {
+      "id": "MES-157653",
+      "merchant_order_id": "MES-157653",
+      "date": "2026-09-02T11:02:08.016Z",
+      "customer": {
+        "name": "sdadsad asdasds",
+        "email": "ossssas@gmail.com",
+        "phone": "01010645449",
+        "governorate": "البحيرة",
+        "city": "Damanhour",
+        "address": "2444",
+        "notes": ""
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "kashier",
+      "paymentGateway": "Kashier Hosted Checkout",
+      "status": "مكتمل (تم الدفع عبر Kashier)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-09-02T11:02:08.016Z",
+        "transaction_id": "TXN-32155680",
+        "gateway": "Kashier",
+        "paid_at": "2026-09-02T11:02:15.402Z",
+        "status": "SUCCESS",
+        "maskedCard": "**** **** **** 4444"
+      },
+      "paymentStatus": "PAID"
+    },
+    {
+      "id": "MES-421611",
+      "merchant_order_id": "MES-421611",
+      "date": "2026-09-02T11:25:12.737Z",
+      "customer": {
+        "name": "sdadsad asdasds",
+        "email": "ossssas@gmail.com",
+        "phone": "36366677888878",
+        "governorate": "البحيرة",
+        "city": "Damanhour",
+        "address": "2444",
+        "notes": ""
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-M",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "kashier",
+      "paymentGateway": "Kashier Hosted Checkout",
+      "status": "مكتمل (تم الدفع عبر Kashier)",
+      "transaction": {
+        "amount": 155,
+        "currency": "EGP",
+        "created_at": "2026-09-02T11:25:12.738Z",
+        "transaction_id": "TXN-86722273",
+        "gateway": "Kashier",
+        "paid_at": "2026-09-02T11:25:20.653Z",
+        "status": "SUCCESS",
+        "maskedCard": "**** **** **** 4444"
+      },
+      "paymentStatus": "PAID"
+    },
+    {
+      "id": "MES-763729",
+      "date": "2026-09-03T17:35:07.706Z",
+      "customer": {
+        "name": "sdadsad asdasds",
+        "phone": "01010645449",
+        "email": "ossssas@gmail.com",
+        "governorate": "القاهرة",
+        "city": "Damanhour",
+        "address": "2444",
+        "notes": ""
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-3XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "3XL",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "cod",
+      "status": "قيد التجهيز (دفع عند الاستلام)"
+    }
+  ],
+  "rfqs": [
+    {
+      "id": "RFQ-8324",
+      "date": "2026-08-31T13:18:07.815Z",
+      "company": "شركة النخبة للتوزيع",
+      "contactName": "أحمد فؤاد",
+      "phone": "01123456789",
+      "email": "ahmed@elnokhba.com",
+      "product": "بوكسر رجالي قطن مصري فاخر أسود",
+      "qty": "500",
+      "notes": "طلب توريد لفروع القاهرة",
+      "status": "جديد"
+    },
+    {
+      "id": "RFQ-5078",
+      "date": "2026-09-04T08:12:59.117Z",
+      "company": "احا",
+      "contactName": "احم اخم",
+      "phone": "124566666666",
+      "email": "sdaff@gmail.com",
+      "product": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+      "qty": "30000",
+      "notes": "",
+      "status": "جديد"
+    },
+    {
+      "id": "RFQ-9430",
+      "date": "2026-09-04T08:17:42.571Z",
+      "company": "احا",
+      "contactName": "احم اخم",
+      "phone": "124566666666",
+      "email": "sdaff@gmail.com",
+      "product": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+      "qty": "30000",
+      "notes": "",
+      "status": "جديد"
+    },
+    {
+      "id": "RFQ-5521",
+      "date": "2026-09-04T08:31:51.460Z",
+      "company": "احا",
+      "contactName": "احم اخم",
+      "phone": "124566666666",
+      "email": "sdaff@gmail.com",
+      "product": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+      "qty": "30000",
+      "notes": "",
+      "status": "جديد"
+    },
+    {
+      "id": "RFQ-7399",
+      "date": "2026-09-04T08:57:20.046Z",
+      "company": "احا",
+      "contactName": "احم اخم",
+      "phone": "124566666666",
+      "email": "sdaff@gmail.com",
+      "product": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+      "qty": "3000000000000000000000000000000000000000",
+      "notes": "",
+      "status": "جديد"
+    }
+  ]
+}
