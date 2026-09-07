@@ -1,6 +1,6 @@
 -- =========================================================================
--- AL-MESIRI FACTORY E-COMMERCE DATABASE (SQL)
--- Generated: 2026-09-03T16:14:01.458Z
+-- ZERO ONE (01) FACTORY E-COMMERCE DATABASE (SQL)
+-- Generated: 2026-09-07T19:34:47.830Z
 -- Compatible with: MySQL 5.7+, MySQL 8+, MariaDB, PostgreSQL, SQLite
 -- =========================================================================
 
@@ -280,9 +280,21 @@ INSERT INTO `orders` (`id`, `order_date`, `customer_name`, `customer_phone`, `cu
 INSERT INTO `order_items` (`order_id`, `product_name`, `size`, `color`, `quantity`, `unit_price`, `total_price`) VALUES ('MES-157653', 'سروال داخلي كلاسيك (Briefs) أبيض مريح', 'M', 'أبيض', 1, 120, 120);
 INSERT INTO `orders` (`id`, `order_date`, `customer_name`, `customer_phone`, `customer_email`, `governorate`, `city`, `address`, `payment_method`, `txn_id`, `payment_status`, `subtotal`, `shipping_cost`, `discount`, `total_amount`, `order_status`, `notes`) VALUES ('MES-421611', '2026-09-02 11:25:12', 'sdadsad asdasds', '36366677888878', 'ossssas@gmail.com', 'البحيرة', 'Damanhour', '2444', 'kashier', 'TXN-86722273', 'PAID', 120, 35, 0, 155, 'مكتمل (تم الدفع عبر Kashier)', '') ON DUPLICATE KEY UPDATE `order_status`='مكتمل (تم الدفع عبر Kashier)';
 INSERT INTO `order_items` (`order_id`, `product_name`, `size`, `color`, `quantity`, `unit_price`, `total_price`) VALUES ('MES-421611', 'سروال داخلي كلاسيك (Briefs) أبيض مريح', 'M', 'أبيض', 1, 120, 120);
+INSERT INTO `orders` (`id`, `order_date`, `customer_name`, `customer_phone`, `customer_email`, `governorate`, `city`, `address`, `payment_method`, `txn_id`, `payment_status`, `subtotal`, `shipping_cost`, `discount`, `total_amount`, `order_status`, `notes`) VALUES ('MES-763729', '2026-09-03 17:35:07', 'sdadsad asdasds', '01010645449', 'ossssas@gmail.com', 'القاهرة', 'Damanhour', '2444', 'cod', NULL, 'PAID', 120, 35, 0, 155, 'مكتمل (تم الدفع عبر Kashier)', '') ON DUPLICATE KEY UPDATE `order_status`='مكتمل (تم الدفع عبر Kashier)';
+INSERT INTO `order_items` (`order_id`, `product_name`, `size`, `color`, `quantity`, `unit_price`, `total_price`) VALUES ('MES-763729', 'سروال داخلي كلاسيك (Briefs) أبيض مريح', '3XL', 'أبيض', 1, 120, 120);
+INSERT INTO `orders` (`id`, `order_date`, `customer_name`, `customer_phone`, `customer_email`, `governorate`, `city`, `address`, `payment_method`, `txn_id`, `payment_status`, `subtotal`, `shipping_cost`, `discount`, `total_amount`, `order_status`, `notes`) VALUES ('MES-787073', '2026-09-07 14:34:25', 'sdadsad asdasds', '01010645449', 'ossssas@gmail.com', 'البحيرة', 'Damanhour', '2444', 'kashier', 'TXN-63473381', 'PAID', 180, 35, 0, 215, 'مكتمل (تم الدفع عبر Kashier)', 'afafaffaafff') ON DUPLICATE KEY UPDATE `order_status`='مكتمل (تم الدفع عبر Kashier)';
+INSERT INTO `order_items` (`order_id`, `product_name`, `size`, `color`, `quantity`, `unit_price`, `total_price`) VALUES ('MES-787073', 'فانلة داخلية نصف كم ياقة سبعة (V-Neck) بيضاء', 'XL', 'أبيض ناصع', 1, 180, 180);
+INSERT INTO `orders` (`id`, `order_date`, `customer_name`, `customer_phone`, `customer_email`, `governorate`, `city`, `address`, `payment_method`, `txn_id`, `payment_status`, `subtotal`, `shipping_cost`, `discount`, `total_amount`, `order_status`, `notes`) VALUES ('MES-771639', '2026-09-07 18:49:43', 'osama', '01010645449', 'loay576loay576@gmail.com', 'البحيرة', 'Damanhour', 'jffjnkfnknf', 'kashier', 'TXN-29520978', 'PAID', 750, 0, 0, 750, 'مكتمل (تم الدفع عبر Kashier)', '') ON DUPLICATE KEY UPDATE `order_status`='مكتمل (تم الدفع عبر Kashier)';
+INSERT INTO `order_items` (`order_id`, `product_name`, `size`, `color`, `quantity`, `unit_price`, `total_price`) VALUES ('MES-771639', 'بوكسر رجالي قطن مصري فاخر أسود', 'L', 'رمادي ميلانج', 3, 250, 750);
+INSERT INTO `orders` (`id`, `order_date`, `customer_name`, `customer_phone`, `customer_email`, `governorate`, `city`, `address`, `payment_method`, `txn_id`, `payment_status`, `subtotal`, `shipping_cost`, `discount`, `total_amount`, `order_status`, `notes`) VALUES ('MES-311429', '2026-09-07 19:17:35', 'osama', '01558062009', 'loay576loay576@gmail.com', 'القاهرة', 'Damanhour', 'jffjnkfnknf', 'kashier', 'TXN-62753848', 'PAID', 250, 35, 0, 285, 'مكتمل (تم الدفع عبر Kashier)', '') ON DUPLICATE KEY UPDATE `order_status`='مكتمل (تم الدفع عبر Kashier)';
+INSERT INTO `order_items` (`order_id`, `product_name`, `size`, `color`, `quantity`, `unit_price`, `total_price`) VALUES ('MES-311429', 'بوكسر رجالي قطن مصري فاخر أسود', '3XL', 'أسود كلاسيك', 1, 250, 250);
 
 -- Dumping data for table: b2b_rfqs
 INSERT INTO `b2b_rfqs` (`id`, `company_name`, `contact_name`, `phone`, `email`, `product_name`, `quantity`, `notes`, `status`) VALUES ('RFQ-8324', 'شركة النخبة للتوزيع', 'أحمد فؤاد', '01123456789', 'ahmed@elnokhba.com', 'بوكسر رجالي قطن مصري فاخر أسود', '500', 'طلب توريد لفروع القاهرة', 'جديد');
+INSERT INTO `b2b_rfqs` (`id`, `company_name`, `contact_name`, `phone`, `email`, `product_name`, `quantity`, `notes`, `status`) VALUES ('RFQ-5078', 'احا', 'احم اخم', '124566666666', 'sdaff@gmail.com', 'سروال داخلي كلاسيك (Briefs) أبيض مريح', '30000', '', 'جديد');
+INSERT INTO `b2b_rfqs` (`id`, `company_name`, `contact_name`, `phone`, `email`, `product_name`, `quantity`, `notes`, `status`) VALUES ('RFQ-9430', 'احا', 'احم اخم', '124566666666', 'sdaff@gmail.com', 'سروال داخلي كلاسيك (Briefs) أبيض مريح', '30000', '', 'جديد');
+INSERT INTO `b2b_rfqs` (`id`, `company_name`, `contact_name`, `phone`, `email`, `product_name`, `quantity`, `notes`, `status`) VALUES ('RFQ-5521', 'احا', 'احم اخم', '124566666666', 'sdaff@gmail.com', 'سروال داخلي كلاسيك (Briefs) أبيض مريح', '30000', '', 'جديد');
+INSERT INTO `b2b_rfqs` (`id`, `company_name`, `contact_name`, `phone`, `email`, `product_name`, `quantity`, `notes`, `status`) VALUES ('RFQ-7399', 'احا', 'احم اخم', '124566666666', 'sdaff@gmail.com', 'سروال داخلي كلاسيك (Briefs) أبيض مريح', '3000000000000000000000000000000000000000', '', 'جديد');
 
 SET FOREIGN_KEY_CHECKS = 1;
 -- ======================== END OF DATABASE DUMP =========================

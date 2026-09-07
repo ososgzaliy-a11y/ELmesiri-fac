@@ -5,7 +5,7 @@ const dbPath = path.join(__dirname, '..', 'data', 'database.json');
 const db = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
 
 let sql = `-- =========================================================================
--- AL-MESIRI FACTORY E-COMMERCE DATABASE (SQL)
+-- ZERO ONE (01) FACTORY E-COMMERCE DATABASE (SQL)
 -- Generated: ${new Date().toISOString()}
 -- Compatible with: MySQL 5.7+, MySQL 8+, MariaDB, PostgreSQL, SQLite
 -- =========================================================================

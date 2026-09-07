@@ -183,7 +183,7 @@ function dispatchWhatsAppRFQ() {
     const product = document.getElementById('rfq-product')?.value || 'ملابس داخلية رجالية';
     const qty = document.getElementById('rfq-qty')?.value || '100+ قطعة';
 
-    const message = `مرحباً مصنع المسيري للملابس الداخلية،\nأنا ${contactName} من شركة: ${company}.\nأرغب في الاستفسار وطلب عرض سعر لكمية: ${qty} من: ${product}.\nيرجى تزويدي بالكتالوج التجاري والأسعار.`;
+    const message = `مرحباً مصنع زيرو ون (ZERO ONE) للملابس الداخلية،\nأنا ${contactName} من شركة: ${company}.\nأرغب في الاستفسار وطلب عرض سعر لكمية: ${qty} من: ${product}.\nيرجى تزويدي بالكتالوج التجاري والأسعار.`;
 
     const factoryWhatsAppNumber = '201010645449'; // Target WhatsApp Factory Line
     const encodedUrl = `https://api.whatsapp.com/send?phone=${factoryWhatsAppNumber}&text=${encodeURIComponent(message)}`;
@@ -191,7 +191,7 @@ function dispatchWhatsAppRFQ() {
 }
 
 function openQuoteSuccessModal(data) {
-    const message = `مرحباً مصنع المسيري للملابس الداخلية،\nأنا ${data.contactName} من شركة: ${data.company}.\nأرغب في الاستفسار وطلب عرض سعر لكمية: ${data.qty} من: ${data.product}.\nيرجى تزويدي بالكتالوج التجاري والأسعار.`;
+    const message = `مرحباً مصنع زيرو ون (ZERO ONE) للملابس الداخلية،\nأنا ${data.contactName} من شركة: ${data.company}.\nأرغب في الاستفسار وطلب عرض سعر لكمية: ${data.qty} من: ${data.product}.\nيرجى تزويدي بالكتالوج التجاري والأسعار.`;
     const factoryWhatsAppNumber = '201010645449'; // Target WhatsApp Factory Line
     const encodedUrl = `https://api.whatsapp.com/send?phone=${factoryWhatsAppNumber}&text=${encodeURIComponent(message)}`;
 

@@ -22,19 +22,19 @@ function contactDepartment(deptType) {
     
     switch(deptType) {
         case 'wholesale':
-            message = `مرحباً إدارة مبيعات مصنع المسيري للملابس الداخلية،\nأود الاستفسار عن كشف أسعار الجملة، الخصومات التصاعدية، والحد الأدنى للطلبيات التجارية.`;
+            message = `مرحباً إدارة مبيعات مصنع زيرو ون (ZERO ONE) للملابس الداخلية،\nأود الاستفسار عن كشف أسعار الجملة، الخصومات التصاعدية، والحد الأدنى للطلبيات التجارية.`;
             break;
         case 'privatelabel':
-            message = `مرحباً قسم البراند الخاص بمصنع المسيري،\nأرغب في الاستفسار عن تصنيع تشكيلة ملابس داخلية بعلامتنا التجارية الخاصة (Private Label)، وطباعة وتطريز الشعار وخيارات التغليف الفاخر.`;
+            message = `مرحباً قسم البراند الخاص بمصنع زيرو ون (ZERO ONE)،\nأرغب في الاستفسار عن تصنيع تشكيلة ملابس داخلية بعلامتنا التجارية الخاصة (Private Label)، وطباعة وتطريز الشعار وخيارات التغليف الفاخر.`;
             break;
         case 'samples':
-            message = `مرحباً قسم الجودة والعينات بمصنع المسيري،\nأود طلب حقيبة عينات خامات وأقمشة قطنية للمعاينة قبل التعاقد على توريد كمية.`;
+            message = `مرحباً قسم الجودة والعينات بمصنع زيرو ون (ZERO ONE)،\nأود طلب حقيبة عينات خامات وأقمشة قطنية للمعاينة قبل التعاقد على توريد كمية.`;
             break;
         case 'export':
-            message = `مرحباً قسم التصدير واللوجستيات بمصنع المسيري،\nأرغب في الاستفسار عن إمكانيات الشحن والتصدير الخارجي وتفاصيل بوالص الشحن الجوي والبحري.`;
+            message = `مرحباً قسم التصدير واللوجستيات بمصنع زيرو ون (ZERO ONE)،\nأرغب في الاستفسار عن إمكانيات الشحن والتصدير الخارجي وتفاصيل بوالص الشحن الجوي والبحري.`;
             break;
         default:
-            message = `مرحباً مصنع المسيري، أود التواصل مع الإدارة بخصوص تعاقد تجاري.`;
+            message = `مرحباً مصنع زيرو ون (ZERO ONE)، أود التواصل مع الإدارة بخصوص تعاقد تجاري.`;
     }
 
     const encoded = encodeURIComponent(message);
@@ -148,7 +148,7 @@ function dispatchFormViaWhatsApp() {
     const requestType = document.getElementById('c-request-type')?.value || 'طلب تسعيرة';
     const notes = document.getElementById('c-notes')?.value.trim() || '';
 
-    let text = `*طلب تواصل تجاري وعقد توريد - مصنع المسيري للملابس الداخلية*\n`;
+    let text = `*طلب تواصل تجاري وعقد توريد - مصنع زيرو ون (ZERO ONE) للملابس الداخلية*\n`;
     text += `🏢 *المنشأة:* ${company}\n`;
     text += `👤 *المسؤول:* ${contactName}\n`;
     text += `📱 *رقم التواصل:* ${phone}\n`;
@@ -170,7 +170,7 @@ function openCorporateSuccessModal(data) {
     const existingModal = document.getElementById('b2b-success-modal');
     if (existingModal) existingModal.remove();
 
-    let waMessage = `مرحباً مصنع المسيري للملابس الداخلية،\nلقد قمت بإرسال طلب توريد تجاري جديد عبر الموقع برقم مرجعي: ${data.id}.\nالمنشأة: ${data.company}\nالمسؤول: ${data.contactName}\nالطلب: ${data.product} (${data.qty})`;
+    let waMessage = `مرحباً مصنع زيرو ون (ZERO ONE) للملابس الداخلية،\nلقد قمت بإرسال طلب توريد تجاري جديد عبر الموقع برقم مرجعي: ${data.id}.\nالمنشأة: ${data.company}\nالمسؤول: ${data.contactName}\nالطلب: ${data.product} (${data.qty})`;
     const encoded = encodeURIComponent(waMessage);
 
     const modalHTML = `

@@ -320,8 +320,8 @@ const server = http.createServer(async (req, res) => {
         const currency = (body.currency || 'EGP').toUpperCase();
 
         const customer = {
-            name: (body.customer?.name || 'عميل المسيري').trim(),
-            email: (body.customer?.email || 'customer@mesiri.com').trim(),
+            name: (body.customer?.name || 'عميل زيرو ون').trim(),
+            email: (body.customer?.email || 'customer@zeroonedigital.com').trim(),
             phone: (body.customer?.phone || '+201000000000').trim(),
             governorate: (body.customer?.governorate || body.customer?.gov || 'القاهرة').trim(),
             city: (body.customer?.city || 'القاهرة').trim(),
@@ -708,7 +708,7 @@ const server = http.createServer(async (req, res) => {
 
 server.listen(PORT, () => {
     console.log(`=================================================`);
-    console.log(`🚀 مصنع المسيري - السيرفر وقاعدة البيانات وبوابة XPay تعمل بنجاح!`);
+    console.log(`🚀 مصنع زيرو ون (ZERO ONE) - السيرفر وقاعدة البيانات تعمل بنجاح!`);
     console.log(`🌐 الموقع: http://localhost:${PORT}`);
     console.log(`💳 إنشاء طلب XPay: POST http://localhost:${PORT}/api/payment/xpay/checkout`);
     console.log(`🔔 Webhook XPay: POST http://localhost:${PORT}/api/webhooks/xpay`);

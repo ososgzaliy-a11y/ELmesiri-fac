@@ -90,6 +90,8 @@ html {
     scroll-behavior: smooth;
     font-size: 16px;
     direction: rtl;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -259,6 +261,22 @@ img {
     display: flex;
     align-items: center;
     gap: 12px;
+}
+.brand-logo-img {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    object-fit: cover;
+    border: 1px solid rgba(201, 169, 102, 0.4);
+    background-color: #000;
+    box-shadow: var(--shadow-gold);
+    flex-shrink: 0;
+    display: inline-block;
+}
+.site-footer .brand-logo-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
 }
 .logo-icon {
     width: 44px;

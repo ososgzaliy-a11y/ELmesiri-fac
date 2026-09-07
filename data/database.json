@@ -3615,6 +3615,144 @@
         "maskedCard": "**** **** **** 4444"
       },
       "paymentStatus": "PAID"
+    },
+    {
+      "id": "MES-771639",
+      "merchant_order_id": "MES-771639",
+      "date": "2026-09-07T18:49:43.345Z",
+      "customer": {
+        "name": "osama",
+        "email": "loay576loay576@gmail.com",
+        "phone": "01010645449",
+        "governorate": "البحيرة",
+        "city": "Damanhour",
+        "address": "jffjnkfnknf",
+        "notes": ""
+      },
+      "items": [
+        {
+          "cartItemId": "boxer-premium-black-رمادي ميلانج-L",
+          "id": "boxer-premium-black",
+          "name": "بوكسر رجالي قطن مصري فاخر أسود",
+          "price": 250,
+          "image": "assets/images/product_boxer.jpg",
+          "color": "رمادي ميلانج",
+          "size": "L",
+          "qty": 3
+        }
+      ],
+      "summary": {
+        "subtotal": 750,
+        "discount": 0,
+        "shipping": 0,
+        "total": 750
+      },
+      "paymentMethod": "kashier",
+      "paymentGateway": "Kashier Hosted Checkout",
+      "status": "مكتمل (تم الدفع عبر Kashier)",
+      "transaction": {
+        "amount": 750,
+        "currency": "EGP",
+        "created_at": "2026-09-07T18:49:43.345Z",
+        "transaction_id": "TXN-29520978",
+        "gateway": "Kashier",
+        "paid_at": "2026-09-07T18:50:24.481Z",
+        "status": "SUCCESS",
+        "maskedCard": "**** **** **** 4444"
+      },
+      "paymentStatus": "PAID"
+    },
+    {
+      "id": "MES-311429",
+      "merchant_order_id": "MES-311429",
+      "date": "2026-09-07T19:17:35.106Z",
+      "customer": {
+        "name": "osama",
+        "email": "loay576loay576@gmail.com",
+        "phone": "01558062009",
+        "governorate": "القاهرة",
+        "city": "Damanhour",
+        "address": "jffjnkfnknf",
+        "notes": ""
+      },
+      "items": [
+        {
+          "cartItemId": "boxer-premium-black-أسود كلاسيك-3XL",
+          "id": "boxer-premium-black",
+          "name": "بوكسر رجالي قطن مصري فاخر أسود",
+          "price": 250,
+          "image": "assets/images/product_boxer.jpg",
+          "color": "أسود كلاسيك",
+          "size": "3XL",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 250,
+        "discount": 0,
+        "shipping": 35,
+        "total": 285
+      },
+      "paymentMethod": "kashier",
+      "paymentGateway": "Kashier Hosted Checkout",
+      "status": "مكتمل (تم الدفع عبر Kashier)",
+      "transaction": {
+        "amount": 285,
+        "currency": "EGP",
+        "created_at": "2026-09-07T19:17:35.106Z",
+        "transaction_id": "TXN-62753848",
+        "gateway": "Kashier",
+        "paid_at": "2026-09-07T19:17:44.710Z",
+        "status": "SUCCESS",
+        "maskedCard": "**** **** **** 4444"
+      },
+      "paymentStatus": "PAID"
+    },
+    {
+      "id": "MES-317035",
+      "merchant_order_id": "MES-317035",
+      "date": "2026-09-07T19:34:56.725Z",
+      "customer": {
+        "name": "osama",
+        "email": "loay576loay576@gmail.com",
+        "phone": "01558062009",
+        "governorate": "القاهرة",
+        "city": "Damanhour",
+        "address": "fdffd",
+        "notes": ""
+      },
+      "items": [
+        {
+          "cartItemId": "undershirt-vneck-white-أبيض ناصع-M",
+          "id": "undershirt-vneck-white",
+          "name": "فانلة داخلية نصف كم ياقة سبعة (V-Neck) بيضاء",
+          "price": 180,
+          "image": "assets/images/product_undershirt.jpg",
+          "color": "أبيض ناصع",
+          "size": "M",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 180,
+        "discount": 0,
+        "shipping": 35,
+        "total": 215
+      },
+      "paymentMethod": "kashier",
+      "paymentGateway": "Kashier Hosted Checkout",
+      "status": "مكتمل (تم الدفع عبر Kashier)",
+      "transaction": {
+        "amount": 215,
+        "currency": "EGP",
+        "created_at": "2026-09-07T19:34:56.725Z",
+        "transaction_id": "TXN-62570946",
+        "gateway": "Kashier",
+        "paid_at": "2026-09-07T19:35:21.009Z",
+        "status": "SUCCESS",
+        "maskedCard": "**** **** **** 4444"
+      },
+      "paymentStatus": "PAID"
     }
   ],
   "rfqs": [

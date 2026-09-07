@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة الإدارة - مصنع المسيري</title>
+    <title>لوحة الإدارة - زيرو ون (ZERO ONE)</title>
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -20,11 +20,16 @@
     <!-- Sidebar -->
     <aside class="admin-sidebar" id="admin-sidebar">
         <div class="sidebar-header">
-            <div class="logo-icon"><i class="fa-solid fa-vest-patches"></i></div>
-            <div class="brand-text">
-                <h2>المسيري</h2>
-                <span>لوحة التحكم والقاعدة</span>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <img src="assets/images/logo.jpg" alt="Zero One (01)" class="brand-logo-img">
+                <div class="brand-text">
+                    <h2>زيرو ون (01)</h2>
+                    <span>لوحة التحكم والقاعدة</span>
+                </div>
             </div>
+            <button type="button" class="sidebar-close-btn" id="sidebar-close-btn" onclick="closeSidebar()" aria-label="إغلاق القائمة" title="إغلاق القائمة">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
         </div>
         
         <nav class="sidebar-nav">
@@ -57,6 +62,9 @@
             </a>
         </div>
     </aside>
+
+    <!-- Mobile Sidebar Backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop" onclick="closeSidebar()"></div>
 
     <!-- Main Content -->
     <main class="admin-main">
@@ -141,7 +149,7 @@
                         <label>اسم المنتج *</label>
                         <input type="text" id="add-product-name" placeholder="مثال: بوكسر قطن مصري ملكي" required>
                     </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                    <div class="admin-modal-grid-2">
                         <div class="rfq-input-group">
                             <label>القسم التصنيفي *</label>
                             <select id="add-product-category" required>
@@ -155,7 +163,7 @@
                             <input type="number" id="add-product-price" placeholder="250" required>
                         </div>
                     </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                    <div class="admin-modal-grid-2">
                         <div class="rfq-input-group">
                             <label>السعر قبل الخصم (ج.م)</label>
                             <input type="number" id="add-product-orig-price" placeholder="320">
@@ -165,7 +173,7 @@
                             <input type="number" id="add-product-stock" placeholder="200" value="100" required>
                         </div>
                     </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                    <div class="admin-modal-grid-2">
                         <div class="rfq-input-group">
                             <label>شارة المنتج (Badge)</label>
                             <select id="add-product-badge">
@@ -205,17 +213,17 @@
     <!-- Modal for Editing Product -->
     <div class="modal-overlay" id="edit-product-modal" style="display: none;">
         <div class="modal-content-box admin-modal-box edit-product-modal-box">
-            <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 14px; margin-bottom: 18px;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(201, 169, 102, 0.15); color: var(--accent-gold); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; border: 1px solid var(--border-gold);">
+            <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 14px; margin-bottom: 18px; gap: 10px;">
+                <div style="display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1;">
+                    <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(201, 169, 102, 0.15); color: var(--accent-gold); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; border: 1px solid var(--border-gold); flex-shrink: 0;">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </div>
-                    <div>
-                        <h3 style="margin: 0; font-size: 1.25rem; font-weight: 800; color: var(--text-primary);">تعديل بيانات المنتج</h3>
-                        <span id="edit-modal-subtitle" style="font-size: 0.8rem; color: var(--text-secondary);">تحديث الصور، الأسعار، الشارات المتعددة والمخزون</span>
+                    <div style="min-width: 0;">
+                        <h3 style="margin: 0; font-size: 1.25rem; font-weight: 800; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">تعديل بيانات المنتج</h3>
+                        <span id="edit-modal-subtitle" style="font-size: 0.8rem; color: var(--text-secondary); display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">تحديث الصور، الأسعار، الشارات المتعددة والمخزون</span>
                     </div>
                 </div>
-                <button type="button" class="close-modal-btn" onclick="closeEditModal()" style="background:none; border:none; color:var(--text-secondary); font-size:1.3rem; cursor:pointer;" title="إغلاق">
+                <button type="button" class="close-modal-btn" onclick="closeEditModal()" style="background:none; border:none; color:var(--text-secondary); font-size:1.3rem; cursor:pointer; padding: 4px 8px; flex-shrink: 0;" title="إغلاق">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -259,8 +267,8 @@
                         </div>
 
                         <!-- Optional Direct URL / Path -->
-                        <div style="margin-top: 12px; display: flex; gap: 8px; align-items: center;">
-                            <input type="text" id="edit-direct-img-url" placeholder="أو اكتب مسار/رابط صورة مباشرة (مثال: assets/images/product_boxer.jpg)..." style="flex: 1; font-size: 0.84rem; padding: 8px 12px; border-radius: 8px; background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); color: var(--text-primary);" dir="ltr">
+                        <div class="input-with-action-row" style="margin-top: 12px;">
+                            <input type="text" id="edit-direct-img-url" placeholder="أو اكتب مسار/رابط صورة مباشرة (مثال: assets/images/product_boxer.jpg)..." style="flex: 1; min-width: 0; font-size: 0.84rem; padding: 8px 12px; border-radius: 8px; background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); color: var(--text-primary); box-sizing: border-box;" dir="ltr">
                             <button type="button" class="btn-small btn-edit" onclick="addDirectImageUrl()" style="padding: 8px 14px; font-weight: 700; white-space: nowrap;">
                                 <i class="fa-solid fa-plus"></i> إضافة رابط
                             </button>
@@ -270,23 +278,23 @@
                     <!-- 2. SECTION: PRODUCT NAME -->
                     <div class="rfq-input-group full-width" style="margin-bottom: 14px;">
                         <label style="display: block; font-weight: 700; margin-bottom: 6px; font-size: 0.9rem;">اسم المنتج *</label>
-                        <input type="text" id="edit-product-name" required placeholder="مثال: بوكسر قطن مصري ملكي" style="width: 100%;">
+                        <input type="text" id="edit-product-name" required placeholder="مثال: بوكسر قطن مصري ملكي" style="width: 100%; box-sizing: border-box;">
                     </div>
 
                     <!-- 3. SECTION: PRICING (CURRENT & COMPARE-AT ORIGINAL PRICE) -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 12px;">
+                    <div class="admin-modal-grid-2">
                         <div class="rfq-input-group">
                             <label style="display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 6px; font-size: 0.9rem;">
                                 <span>السعر الحالي (ج.م) *</span>
                             </label>
-                            <input type="number" id="edit-product-price" required min="1" step="any" placeholder="مثال: 120" oninput="calculateEditDiscount()">
+                            <input type="number" id="edit-product-price" required min="1" step="any" placeholder="مثال: 120" oninput="calculateEditDiscount()" style="width: 100%; box-sizing: border-box;">
                         </div>
                         <div class="rfq-input-group">
-                            <label style="display: flex; justify-content: space-between; align-items: center; font-weight: 700; margin-bottom: 6px; font-size: 0.9rem;">
+                            <label style="display: flex; justify-content: space-between; align-items: center; font-weight: 700; margin-bottom: 6px; font-size: 0.85rem; flex-wrap: wrap; gap: 4px;">
                                 <span>السعر قبل الخصم (بدلاً من)</span>
                                 <span style="font-size: 0.72rem; color: var(--accent-gold); font-weight: normal; background: rgba(201, 169, 102, 0.12); padding: 2px 6px; border-radius: 4px;">اختياري</span>
                             </label>
-                            <input type="number" id="edit-product-orig-price" min="1" step="any" placeholder="مثال: 150" oninput="calculateEditDiscount()">
+                            <input type="number" id="edit-product-orig-price" min="1" step="any" placeholder="مثال: 150" oninput="calculateEditDiscount()" style="width: 100%; box-sizing: border-box;">
                         </div>
                     </div>
 
@@ -297,10 +305,10 @@
                     </div>
 
                     <!-- 4. SECTION: CATEGORY & STOCK -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+                    <div class="admin-modal-grid-2">
                         <div class="rfq-input-group">
                             <label style="display: block; font-weight: 700; margin-bottom: 6px; font-size: 0.9rem;">القسم التصنيفي *</label>
-                            <select id="edit-product-category" required>
+                            <select id="edit-product-category" required style="width: 100%; box-sizing: border-box;">
                                 <option value="boxers">بوكسرات قطنية</option>
                                 <option value="undershirts">فانلات داخلية</option>
                                 <option value="briefs">سراويل كلاسيك</option>
@@ -308,7 +316,7 @@
                         </div>
                         <div class="rfq-input-group">
                             <label style="display: block; font-weight: 700; margin-bottom: 6px; font-size: 0.9rem;">الكمية في المخزون *</label>
-                            <input type="number" id="edit-product-stock" required min="0" placeholder="100">
+                            <input type="number" id="edit-product-stock" required min="0" placeholder="100" style="width: 100%; box-sizing: border-box;">
                         </div>
                     </div>
 
@@ -330,8 +338,8 @@
                         </div>
 
                         <!-- Custom Badge Adder -->
-                        <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 12px;">
-                            <input type="text" id="edit-custom-badge-input" placeholder="اكتب شارة مخصصة جديدة (مثال: خصم 25%، إصدار خاص، خامة ملكية)..." style="flex: 1; font-size: 0.85rem; padding: 7px 12px; border-radius: 8px; background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); color: var(--text-primary);" onkeydown="if(event.key === 'Enter'){event.preventDefault(); addCustomBadge();}">
+                        <div class="input-with-action-row" style="margin-bottom: 12px;">
+                            <input type="text" id="edit-custom-badge-input" placeholder="اكتب شارة مخصصة جديدة (مثال: خصم 25%، إصدار خاص، خامة ملكية)..." style="flex: 1; min-width: 0; font-size: 0.85rem; padding: 7px 12px; border-radius: 8px; background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); color: var(--text-primary); box-sizing: border-box;" onkeydown="if(event.key === 'Enter'){event.preventDefault(); addCustomBadge();}">
                             <button type="button" class="btn-small btn-edit" onclick="addCustomBadge()" style="padding: 7px 14px; font-weight: 700; white-space: nowrap;">
                                 <i class="fa-solid fa-plus"></i> إضافة شارة
                             </button>
@@ -347,23 +355,23 @@
                     </div>
 
                     <!-- 6. SECTION: SIZES & FABRIC -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px;">
+                    <div class="admin-modal-grid-2">
                         <div class="rfq-input-group">
                             <label style="display: block; font-weight: 700; margin-bottom: 6px; font-size: 0.9rem;">المقاسات (مفصولة بفاصلة)</label>
-                            <input type="text" id="edit-product-sizes" placeholder="M, L, XL, 2XL, 3XL">
+                            <input type="text" id="edit-product-sizes" placeholder="M, L, XL, 2XL, 3XL" style="width: 100%; box-sizing: border-box;">
                         </div>
                         <div class="rfq-input-group">
                             <label style="display: block; font-weight: 700; margin-bottom: 6px; font-size: 0.9rem;">الخامة والمواصفات</label>
-                            <input type="text" id="edit-product-fabric" placeholder="100% قطن مصري فاخر">
+                            <input type="text" id="edit-product-fabric" placeholder="100% قطن مصري فاخر" style="width: 100%; box-sizing: border-box;">
                         </div>
                     </div>
 
                     <!-- 7. SUBMIT & ACTIONS -->
-                    <div style="display: flex; gap: 12px; justify-content: flex-end; padding-top: 14px; border-top: 1px solid var(--border-subtle);">
-                        <button type="button" class="btn-luxury-outline" onclick="closeEditModal()" style="padding: 10px 20px; font-weight: 700; cursor: pointer;">
+                    <div class="modal-footer-btns">
+                        <button type="button" class="btn-luxury-outline modal-action-btn" onclick="closeEditModal()" style="padding: 10px 20px; font-weight: 700; cursor: pointer;">
                             إلغاء
                         </button>
-                        <button type="submit" class="btn-luxury-gold" style="padding: 10px 28px; font-weight: 800; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <button type="submit" class="btn-luxury-gold modal-action-btn" style="padding: 10px 24px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer;">
                             <i class="fa-solid fa-floppy-disk"></i> حفظ التعديلات
                         </button>
                     </div>

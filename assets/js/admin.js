@@ -1,6 +1,6 @@
 /**
  * =========================================================================
- * Al-Mesiri E-Commerce - Luxury Admin Dashboard & Cloud Database System
+ * Zero One (01) E-Commerce - Luxury Admin Dashboard & Cloud Database System
  * Fully Integrated with Live Server, JSON Database, and Google Firebase Cloud
  * =========================================================================
  */
@@ -31,14 +31,71 @@ async function initAdminPanel() {
         });
     }
 
-    // Setup Sidebar Toggle for mobile
+    // Setup Sidebar Toggle & Backdrop for mobile
     const toggleBtn = document.getElementById('menu-toggle-btn');
     const sidebar = document.getElementById('admin-sidebar');
-    if (toggleBtn && sidebar) {
-        toggleBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('open');
+    const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+    const closeBtn = document.getElementById('sidebar-close-btn');
+    
+    window.toggleSidebar = function(e) {
+        if (e) e.stopPropagation();
+        if (!sidebar) return;
+        const isOpen = sidebar.classList.toggle('open');
+        if (sidebarBackdrop) sidebarBackdrop.classList.toggle('active', isOpen);
+    };
+
+    window.closeSidebar = function(e) {
+        if (e) e.stopPropagation();
+        if (sidebar) sidebar.classList.remove('open');
+        if (sidebarBackdrop) sidebarBackdrop.classList.remove('active');
+    };
+
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', toggleSidebar);
+    }
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeSidebar);
+    }
+    if (sidebarBackdrop) {
+        sidebarBackdrop.addEventListener('click', closeSidebar);
+        sidebarBackdrop.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            closeSidebar(e);
         });
     }
+
+    // Close when tapping anywhere outside the sidebar on mobile
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768 && sidebar && sidebar.classList.contains('open')) {
+            if (!sidebar.contains(e.target) && (!toggleBtn || !toggleBtn.contains(e.target))) {
+                closeSidebar(e);
+            }
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeSidebar(e);
+        }
+    });
+
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) closeSidebar();
+        });
+    });
+
+    // Close modals on overlay backdrop click
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+                this.style.display = 'none';
+                unlockAdminScroll();
+            }
+        });
+    });
 
     // Auto-poll for new orders every 3 seconds
     setInterval(async () => {
@@ -46,6 +103,17 @@ async function initAdminPanel() {
         renderTab(currentTab, false);
     }, 3000);
 }
+
+window.lockAdminScroll = function() {
+    document.body.classList.add('scroll-locked');
+};
+
+window.unlockAdminScroll = function() {
+    const anyActive = document.querySelectorAll('.modal-overlay.active');
+    if (anyActive.length === 0) {
+        document.body.classList.remove('scroll-locked');
+    }
+};
 
 async function loadData(showToastNotice = false) {
     try {
@@ -402,6 +470,7 @@ window.openOrderDetailsModal = function(orderId) {
     if (modal) {
         modal.classList.add('active');
         modal.style.display = 'flex';
+        lockAdminScroll();
     }
 };
 
@@ -410,6 +479,7 @@ window.closeOrderDetailsModal = function() {
     if (modal) {
         modal.classList.remove('active');
         modal.style.display = 'none';
+        unlockAdminScroll();
     }
 };
 
@@ -478,12 +548,12 @@ function renderProducts() {
             </button>
         </div>
         
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px;">
+        <div class="admin-products-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 18px; max-width: 100%; box-sizing: border-box;">
             ${adminData.products.map(p => {
                 const badges = (Array.isArray(p.badges) && p.badges.length > 0) ? p.badges : (p.badge ? [p.badge] : []);
                 const galleryCount = (Array.isArray(p.gallery) && p.gallery.length) || (p.image ? 1 : 0);
                 return `
-                <div style="background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 16px; display: flex; gap: 14px; position: relative;">
+                <div style="background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 14px; display: flex; gap: 12px; position: relative; max-width: 100%; box-sizing: border-box; overflow: hidden;">
                     <div style="position: relative; width: 85px; height: 85px; flex-shrink: 0;">
                         <img src="${p.image || 'assets/images/product_boxer.jpg'}" alt="${p.name}" style="width: 100%; height: 100%; border-radius: 10px; object-fit: cover; border: 1px solid var(--border-subtle);">
                         <span style="position: absolute; bottom: 3px; right: 3px; background: rgba(0,0,0,0.75); color: #fff; font-size: 0.65rem; padding: 1px 5px; border-radius: 4px; font-weight: 700;">
@@ -526,6 +596,7 @@ window.openAddModal = function() {
     if (modal) {
         modal.classList.add('active');
         modal.style.display = 'flex';
+        lockAdminScroll();
     }
 };
 
@@ -534,6 +605,7 @@ window.closeAddModal = function() {
     if (modal) {
         modal.classList.remove('active');
         modal.style.display = 'none';
+        unlockAdminScroll();
     }
 };
 
@@ -942,6 +1014,7 @@ window.openEditModal = function(productId) {
     if (modal) {
         modal.classList.add('active');
         modal.style.display = 'flex';
+        lockAdminScroll();
     }
 };
 
@@ -950,6 +1023,7 @@ window.closeEditModal = function() {
     if (modal) {
         modal.classList.remove('active');
         modal.style.display = 'none';
+        unlockAdminScroll();
     }
 };
 
@@ -1326,7 +1400,7 @@ window.exportOrdersToExcel = function() {
             <x:ExcelWorkbook>
                 <x:ExcelWorksheets>
                     <x:ExcelWorksheet>
-                        <x:Name>طلبات مصنع المسيري</x:Name>
+                        <x:Name>طلبات مصنع زيرو ون (01)</x:Name>
                         <x:WorksheetOptions>
                             <x:DisplayRightToLeft/>
                         </x:WorksheetOptions>
@@ -1417,7 +1491,7 @@ window.exportOrdersToExcel = function() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `طلبات_مصنع_المسيري_${new Date().toISOString().split('T')[0]}.xls`;
+    link.download = `طلبات_مصنع_زيرو_ون_${new Date().toISOString().split('T')[0]}.xls`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -1488,7 +1562,7 @@ window.exportOrdersToGoogleSheetsCSV = function() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `Google_Sheets_طلبات_المسيري_${new Date().toISOString().split('T')[0]}.csv`;
+    link.download = `Google_Sheets_طلبات_زيرو_ون_${new Date().toISOString().split('T')[0]}.csv`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -1701,6 +1775,7 @@ window.openFirebaseModal = function() {
         document.getElementById('fb-api-key').value = localStorage.getItem('mesiri_fb_apikey') || '';
         modal.classList.add('active');
         modal.style.display = 'flex';
+        lockAdminScroll();
     }
 };
 
@@ -1709,6 +1784,7 @@ window.closeFirebaseModal = function() {
     if (modal) {
         modal.classList.remove('active');
         modal.style.display = 'none';
+        unlockAdminScroll();
     }
 };
 
