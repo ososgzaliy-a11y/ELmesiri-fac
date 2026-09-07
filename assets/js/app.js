@@ -38,6 +38,26 @@ function initApp() {
 }
 
 // ----------------------------------------------------
+// SCROLL LOCK
+// Prevents background page scrolling when modal or drawer is open
+// ----------------------------------------------------
+function lockScroll() {
+    document.body.classList.add('scroll-locked');
+}
+
+function unlockScroll() {
+    const activeModals = document.querySelectorAll('.modal-overlay.active, .cart-drawer-overlay.active');
+    if (!activeModals || activeModals.length === 0) {
+        document.body.classList.remove('scroll-locked');
+    }
+}
+
+window.lockScroll = lockScroll;
+window.unlockScroll = unlockScroll;
+
+
+
+// ----------------------------------------------------
 // PRODUCT RENDERING & FILTERING
 // ----------------------------------------------------
 function renderProducts(category = 'all', searchQuery = '', sortBy = 'default') {
@@ -71,12 +91,22 @@ function renderProducts(category = 'all', searchQuery = '', sortBy = 'default') 
 
     grid.innerHTML = filtered.map(product => {
         const isWishlisted = wishlist.includes(product.id);
-        const badgeClass = product.badgeType === 'sale' ? 'badge-sale' : (product.badgeType === 'new' ? 'badge-new' : 'badge-gold');
+        const badgesList = (Array.isArray(product.badges) && product.badges.length > 0)
+            ? product.badges
+            : (product.badge ? [product.badge] : []);
+
+        const getBadgeStyleClass = (b) => {
+            if (/خصم|sale|تخفيض/i.test(b)) return 'badge-sale';
+            if (/جديد|new|حديث/i.test(b)) return 'badge-new';
+            return 'badge-gold';
+        };
 
         return `
             <div class="product-card" data-id="${product.id}">
                 <div class="product-media">
-                    <span class="badge ${badgeClass} product-badge-corner">${product.badge}</span>
+                    <div class="product-badges-corner-container" style="position: absolute; top: 12px; right: 12px; z-index: 4; display: flex; flex-direction: column; gap: 4px; align-items: flex-start; pointer-events: none;">
+                        ${badgesList.map(b => `<span class="badge ${getBadgeStyleClass(b)}">${b}</span>`).join('')}
+                    </div>
                     <button class="product-wishlist-btn ${isWishlisted ? 'active' : ''}" onclick="toggleWishlist('${product.id}')" title="إضافة للمفضلة">
                         <i class="${isWishlisted ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
                     </button>
@@ -183,7 +213,12 @@ function openQuickView(productId) {
                 </div>
             </div>
             <div class="qv-details">
-                <span class="badge badge-gold" style="align-self: flex-start;">${product.badge}</span>
+                <div style="display: flex; flex-wrap: wrap; gap: 6px; align-self: flex-start; margin-bottom: 6px;">
+                    ${((Array.isArray(product.badges) && product.badges.length > 0) ? product.badges : (product.badge ? [product.badge] : [])).map(b => {
+                        const cls = (/خصم|sale|تخفيض/i.test(b)) ? 'badge-sale' : ((/جديد|new|حديث/i.test(b)) ? 'badge-new' : 'badge-gold');
+                        return `<span class="badge ${cls}">${b}</span>`;
+                    }).join('')}
+                </div>
                 <h2 class="qv-title">${product.name}</h2>
                 <div class="qv-price-row">
                     <span class="cur-price">${product.price} ${CURRENCY.symbol}</span>
@@ -242,11 +277,13 @@ function openQuickView(productId) {
     `;
 
     modal.classList.add('active');
+    lockScroll();
 }
 
 function closeQuickView() {
     const modal = document.getElementById('quick-view-modal');
     if (modal) modal.classList.remove('active');
+    unlockScroll();
 }
 
 function switchQvImage(imgSrc, thumbEl) {
@@ -410,11 +447,13 @@ function updateCartUI() {
 function openCartDrawer() {
     const drawerOverlay = document.getElementById('cart-drawer-overlay');
     if (drawerOverlay) drawerOverlay.classList.add('active');
+    lockScroll();
 }
 
 function closeCartDrawer() {
     const drawerOverlay = document.getElementById('cart-drawer-overlay');
     if (drawerOverlay) drawerOverlay.classList.remove('active');
+    unlockScroll();
 }
 
 function applyCouponCode() {
@@ -461,10 +500,13 @@ function updateWishlistBadge() {
 // SIZE GUIDE MODAL
 // ----------------------------------------------------
 function openSizeGuideModal() {
+    const existing = document.getElementById('size-guide-modal');
+    if (existing) existing.remove();
+
     const modalHTML = `
-        <div class="modal-overlay active" id="size-guide-modal">
+        <div class="modal-overlay active" id="size-guide-modal" onclick="if(event.target===this){document.getElementById('size-guide-modal').remove(); unlockScroll();}">
             <div class="modal-content-box" style="max-width: 650px; padding: 24px;">
-                <button class="modal-close-btn" onclick="document.getElementById('size-guide-modal').remove()">
+                <button class="modal-close-btn" onclick="document.getElementById('size-guide-modal').remove(); unlockScroll();">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
                 <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; color: var(--text-primary);">دليل المقاسات المعياري الإيطالي</h3>
@@ -494,6 +536,7 @@ function openSizeGuideModal() {
         </div>
     `;
     document.body.insertAdjacentHTML('beforeend', modalHTML);
+    lockScroll();
 }
 
 // ----------------------------------------------------

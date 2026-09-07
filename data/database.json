@@ -225,7 +225,11 @@
           "تغليف علب كرتونية متعددة (3 قطع / 6 قطع)",
           "طباعة الباركود"
         ]
-      }
+      },
+      "badges": [
+        "خصم خاص",
+        "قطن 100%"
+      ]
     }
   ],
   "orders": [
@@ -3564,7 +3568,53 @@
         "total": 155
       },
       "paymentMethod": "cod",
-      "status": "قيد التجهيز (دفع عند الاستلام)"
+      "status": "مكتمل (تم الدفع عبر Kashier)"
+    },
+    {
+      "id": "MES-787073",
+      "merchant_order_id": "MES-787073",
+      "date": "2026-09-07T14:34:25.629Z",
+      "customer": {
+        "name": "sdadsad asdasds",
+        "email": "ossssas@gmail.com",
+        "phone": "01010645449",
+        "governorate": "البحيرة",
+        "city": "Damanhour",
+        "address": "2444",
+        "notes": "afafaffaafff"
+      },
+      "items": [
+        {
+          "cartItemId": "undershirt-vneck-white-أبيض ناصع-XL",
+          "id": "undershirt-vneck-white",
+          "name": "فانلة داخلية نصف كم ياقة سبعة (V-Neck) بيضاء",
+          "price": 180,
+          "image": "assets/images/product_undershirt.jpg",
+          "color": "أبيض ناصع",
+          "size": "XL",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 180,
+        "discount": 0,
+        "shipping": 35,
+        "total": 215
+      },
+      "paymentMethod": "kashier",
+      "paymentGateway": "Kashier Hosted Checkout",
+      "status": "مكتمل (تم الدفع عبر Kashier)",
+      "transaction": {
+        "amount": 215,
+        "currency": "EGP",
+        "created_at": "2026-09-07T14:34:25.629Z",
+        "transaction_id": "TXN-63473381",
+        "gateway": "Kashier",
+        "paid_at": "2026-09-07T14:34:39.260Z",
+        "status": "SUCCESS",
+        "maskedCard": "**** **** **** 4444"
+      },
+      "paymentStatus": "PAID"
     }
   ],
   "rfqs": [

@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initCheckout() {
+    initCustomGovSelect();
+
     // Listen for payment method card clicks
     const methodCards = document.querySelectorAll('.payment-option-card');
     methodCards.forEach(card => {
@@ -109,6 +111,8 @@ function openCheckoutModal() {
         updateCheckoutSummary();
         updatePaymentButtonUI();
         checkoutModal.classList.add('active');
+        if (typeof lockScroll === 'function') lockScroll();
+        else document.body.classList.add('scroll-locked');
     }
 }
 
@@ -116,6 +120,8 @@ function closeCheckoutModal() {
     const checkoutModal = document.getElementById('checkout-modal');
     if (checkoutModal) {
         checkoutModal.classList.remove('active');
+        if (typeof unlockScroll === 'function') unlockScroll();
+        else document.body.classList.remove('scroll-locked');
     }
 }
 
@@ -317,3 +323,130 @@ async function processPaymentAndCompleteOrder() {
 function printOrderInvoice() {
     window.print();
 }
+
+// ----------------------------------------------------
+// CUSTOM LUXURY GOVERNORATE SELECTOR (Fixes screen overflow & enables search)
+// ----------------------------------------------------
+const EGYPT_GOVERNORATES = [
+    'القاهرة', 'الجيزة', 'الإسكندرية', 'القليوبية', 'الشرقية', 'الدقهلية',
+    'الغربية', 'المنوفية', 'البحيرة', 'كفر الشيخ', 'دمياط', 'بورسعيد',
+    'الإسماعيلية', 'السويس', 'الفيوم', 'بني سويف', 'المنيا', 'أسيوط',
+    'سوهاج', 'قنا', 'الأقصر', 'أسوان', 'البحر الأحمر', 'مطروح',
+    'الوادي الجديد', 'شمال سيناء', 'جنوب سيناء'
+];
+
+function initCustomGovSelect() {
+    const nativeSelect = document.getElementById('chk-gov');
+    if (!nativeSelect) return;
+
+    let wrapper = document.getElementById('custom-gov-wrapper');
+
+    // If wrapper doesn't exist in HTML yet, construct it dynamically
+    if (!wrapper) {
+        wrapper = document.createElement('div');
+        wrapper.className = 'custom-gov-wrapper';
+        wrapper.id = 'custom-gov-wrapper';
+        nativeSelect.parentNode.insertBefore(wrapper, nativeSelect);
+        wrapper.appendChild(nativeSelect);
+        nativeSelect.style.display = 'none';
+
+        wrapper.insertAdjacentHTML('afterbegin', `
+            <div class="custom-gov-trigger" id="custom-gov-trigger" tabindex="0">
+                <span id="custom-gov-label">${nativeSelect.value || 'القاهرة'}</span>
+                <i class="fa-solid fa-chevron-down custom-gov-arrow"></i>
+            </div>
+            <div class="custom-gov-menu" id="custom-gov-menu">
+                <div class="custom-gov-search-wrap">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" class="custom-gov-search-input" id="custom-gov-search" placeholder="ابحث عن المحافظة..." autocomplete="off">
+                </div>
+                <div class="custom-gov-options-list" id="custom-gov-options-list"></div>
+            </div>
+        `);
+    }
+
+    const trigger = wrapper.querySelector('#custom-gov-trigger');
+    const label = wrapper.querySelector('#custom-gov-label');
+    const searchInput = wrapper.querySelector('#custom-gov-search');
+    const optionsList = wrapper.querySelector('#custom-gov-options-list');
+
+    let currentVal = nativeSelect.value || 'القاهرة';
+
+    function renderOptions(searchQuery = '') {
+        const query = searchQuery.trim().toLowerCase();
+        const filtered = EGYPT_GOVERNORATES.filter(g => g.toLowerCase().includes(query));
+
+        if (filtered.length === 0) {
+            optionsList.innerHTML = '<div style="padding: 12px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">لا توجد نتائج مطابقة</div>';
+            return;
+        }
+
+        optionsList.innerHTML = filtered.map(g => `
+            <div class="gov-option-item ${g === currentVal ? 'selected' : ''}" data-gov="${g}">
+                <span>${g}</span>
+            </div>
+        `).join('');
+
+        optionsList.querySelectorAll('.gov-option-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const chosen = item.getAttribute('data-gov');
+                selectGovernorate(chosen);
+            });
+        });
+    }
+
+    function selectGovernorate(gov) {
+        currentVal = gov;
+        if (label) label.innerText = gov;
+        if (nativeSelect) {
+            nativeSelect.value = gov;
+            nativeSelect.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+        wrapper.classList.remove('active');
+        if (searchInput) searchInput.value = '';
+        renderOptions();
+    }
+
+    // Trigger toggle
+    trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isActive = wrapper.classList.contains('active');
+        if (isActive) {
+            wrapper.classList.remove('active');
+        } else {
+            wrapper.classList.add('active');
+            renderOptions();
+            if (searchInput) {
+                setTimeout(() => searchInput.focus(), 60);
+            }
+        }
+    });
+
+    // Search filter
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            renderOptions(e.target.value);
+        });
+        searchInput.addEventListener('click', (e) => e.stopPropagation());
+    }
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+        if (!wrapper.contains(e.target)) {
+            wrapper.classList.remove('active');
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && wrapper.classList.contains('active')) {
+            wrapper.classList.remove('active');
+        }
+    });
+
+    // Initial render
+    renderOptions();
+    if (label) label.innerText = currentVal;
+}
+

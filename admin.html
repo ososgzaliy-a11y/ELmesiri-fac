@@ -204,38 +204,169 @@
 
     <!-- Modal for Editing Product -->
     <div class="modal-overlay" id="edit-product-modal" style="display: none;">
-        <div class="modal-content-box admin-modal-box">
-            <div class="modal-header">
-                <h3>تعديل المنتج</h3>
-                <button class="close-modal-btn" onclick="closeEditModal()"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-content-box admin-modal-box edit-product-modal-box">
+            <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 14px; margin-bottom: 18px;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(201, 169, 102, 0.15); color: var(--accent-gold); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; border: 1px solid var(--border-gold);">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </div>
+                    <div>
+                        <h3 style="margin: 0; font-size: 1.25rem; font-weight: 800; color: var(--text-primary);">تعديل بيانات المنتج</h3>
+                        <span id="edit-modal-subtitle" style="font-size: 0.8rem; color: var(--text-secondary);">تحديث الصور، الأسعار، الشارات المتعددة والمخزون</span>
+                    </div>
+                </div>
+                <button type="button" class="close-modal-btn" onclick="closeEditModal()" style="background:none; border:none; color:var(--text-secondary); font-size:1.3rem; cursor:pointer;" title="إغلاق">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
             </div>
-            <div class="modal-body">
-                <form id="edit-product-form">
+            <div class="modal-body" style="padding: 0;">
+                <form id="edit-product-form" onsubmit="handleEditProductSubmit(event)">
                     <input type="hidden" id="edit-product-id">
-                    <div class="rfq-input-group">
-                        <label>اسم المنتج</label>
-                        <input type="text" id="edit-product-name" required>
+
+                    <!-- 1. SECTION AT VERY TOP: IMAGES & GALLERY (UP TO 5 IMAGES) -->
+                    <div class="edit-section-card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+                            <label style="font-weight: 700; font-size: 0.95rem; color: var(--text-primary); display: flex; align-items: center; gap: 8px; margin: 0;">
+                                <i class="fa-solid fa-images" style="color: var(--accent-gold);"></i>
+                                معرض صور المنتج (بحد أقصى 5 صور)
+                            </label>
+                            <span id="edit-gallery-count-badge" style="background: rgba(201, 169, 102, 0.15); color: var(--accent-gold); padding: 3px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 800; border: 1px solid rgba(201, 169, 102, 0.3);">
+                                0 / 5 صور
+                            </span>
+                        </div>
+
+                        <!-- Gallery Thumbnails Strip (Up to 5 images with primary star and delete) -->
+                        <div id="edit-gallery-preview-container" class="gallery-preview-container" style="margin-bottom: 14px; min-height: 40px;">
+                            <!-- Injected dynamically by JS -->
+                        </div>
+
+                        <!-- Drag & Drop Upload Zone -->
+                        <div id="edit-dropzone" class="edit-dropzone-box" onclick="triggerEditFileInput()">
+                            <input type="file" id="edit-product-file-input" accept="image/*" multiple style="display: none;" onchange="handleFileInputChange(event)">
+                            <div class="dropzone-inner-content">
+                                <div class="dropzone-icon-circle">
+                                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                                </div>
+                                <div class="dropzone-text">
+                                    <strong style="color: var(--text-primary); display: block; margin-bottom: 3px; font-size: 0.95rem;">
+                                        اسحب وأفلت الصور هنا، أو <span style="color: var(--accent-gold); text-decoration: underline;">اضغط لاختيار صور</span> من الجهاز أو الموبايل
+                                    </strong>
+                                    <span style="color: var(--text-muted); font-size: 0.8rem;">
+                                        يدعم حتى 5 صور (JPG, PNG, WEBP) • حدد الصورة الأساسية بالضغط على زر "رئيسية"
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Optional Direct URL / Path -->
+                        <div style="margin-top: 12px; display: flex; gap: 8px; align-items: center;">
+                            <input type="text" id="edit-direct-img-url" placeholder="أو اكتب مسار/رابط صورة مباشرة (مثال: assets/images/product_boxer.jpg)..." style="flex: 1; font-size: 0.84rem; padding: 8px 12px; border-radius: 8px; background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); color: var(--text-primary);" dir="ltr">
+                            <button type="button" class="btn-small btn-edit" onclick="addDirectImageUrl()" style="padding: 8px 14px; font-weight: 700; white-space: nowrap;">
+                                <i class="fa-solid fa-plus"></i> إضافة رابط
+                            </button>
+                        </div>
                     </div>
-                    <div class="rfq-input-group">
-                        <label>السعر (ج.م)</label>
-                        <input type="number" id="edit-product-price" required>
+
+                    <!-- 2. SECTION: PRODUCT NAME -->
+                    <div class="rfq-input-group full-width" style="margin-bottom: 14px;">
+                        <label style="display: block; font-weight: 700; margin-bottom: 6px; font-size: 0.9rem;">اسم المنتج *</label>
+                        <input type="text" id="edit-product-name" required placeholder="مثال: بوكسر قطن مصري ملكي" style="width: 100%;">
                     </div>
-                    <div class="rfq-input-group">
-                        <label>الحالة والشارة</label>
-                        <select id="edit-product-badge">
-                            <option value="">متوفر (بدون شارة)</option>
-                            <option value="الأكثر مبيعاً">الأكثر مبيعاً</option>
-                            <option value="وصل حديثاً">وصل حديثاً</option>
-                            <option value="قطن 100%">قطن 100%</option>
-                            <option value="خصم خاص">خصم خاص</option>
-                            <option value="نفذت الكمية">نفذت الكمية</option>
-                        </select>
+
+                    <!-- 3. SECTION: PRICING (CURRENT & COMPARE-AT ORIGINAL PRICE) -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 12px;">
+                        <div class="rfq-input-group">
+                            <label style="display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 6px; font-size: 0.9rem;">
+                                <span>السعر الحالي (ج.م) *</span>
+                            </label>
+                            <input type="number" id="edit-product-price" required min="1" step="any" placeholder="مثال: 120" oninput="calculateEditDiscount()">
+                        </div>
+                        <div class="rfq-input-group">
+                            <label style="display: flex; justify-content: space-between; align-items: center; font-weight: 700; margin-bottom: 6px; font-size: 0.9rem;">
+                                <span>السعر قبل الخصم (بدلاً من)</span>
+                                <span style="font-size: 0.72rem; color: var(--accent-gold); font-weight: normal; background: rgba(201, 169, 102, 0.12); padding: 2px 6px; border-radius: 4px;">اختياري</span>
+                            </label>
+                            <input type="number" id="edit-product-orig-price" min="1" step="any" placeholder="مثال: 150" oninput="calculateEditDiscount()">
+                        </div>
                     </div>
-                    <div class="rfq-input-group full-width">
-                        <label>رابط الصورة الرئيسية</label>
-                        <input type="text" id="edit-product-image" required>
+
+                    <!-- Real-Time Discount Calculator Notice -->
+                    <div id="edit-discount-indicator" style="display: none; margin-bottom: 14px; padding: 8px 14px; border-radius: 8px; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.3); color: #10b981; font-size: 0.85rem; font-weight: 700; align-items: center; justify-content: space-between;">
+                        <span id="edit-discount-text"></span>
+                        <span id="edit-discount-badge-pct" style="font-size: 0.75rem; background: #10b981; color: #fff; padding: 2px 8px; border-radius: 12px;"></span>
                     </div>
-                    <button type="submit" class="btn-luxury-gold" style="width: 100%; justify-content: center; margin-top: 15px;">حفظ التعديلات</button>
+
+                    <!-- 4. SECTION: CATEGORY & STOCK -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+                        <div class="rfq-input-group">
+                            <label style="display: block; font-weight: 700; margin-bottom: 6px; font-size: 0.9rem;">القسم التصنيفي *</label>
+                            <select id="edit-product-category" required>
+                                <option value="boxers">بوكسرات قطنية</option>
+                                <option value="undershirts">فانلات داخلية</option>
+                                <option value="briefs">سراويل كلاسيك</option>
+                            </select>
+                        </div>
+                        <div class="rfq-input-group">
+                            <label style="display: block; font-weight: 700; margin-bottom: 6px; font-size: 0.9rem;">الكمية في المخزون *</label>
+                            <input type="number" id="edit-product-stock" required min="0" placeholder="100">
+                        </div>
+                    </div>
+
+                    <!-- 5. SECTION: MULTIPLE BADGES & STATUS TAGS -->
+                    <div class="edit-section-card">
+                        <div style="margin-bottom: 10px;">
+                            <label style="font-weight: 700; font-size: 0.92rem; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                                <i class="fa-solid fa-tags" style="color: var(--accent-gold);"></i>
+                                الحالة والشارات (يمكن تحديد أكثر من شارة للمنتج)
+                            </label>
+                            <p style="font-size: 0.78rem; color: var(--text-secondary); margin-top: 3px; margin-bottom: 10px;">
+                                اضغط على الشارة لتفعيلها أو إلغائها، أو أضف شارة مخصصة:
+                            </p>
+                        </div>
+
+                        <!-- Preset Quick Badges Chips -->
+                        <div id="edit-preset-badges-container" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+                            <!-- Injected by JS -->
+                        </div>
+
+                        <!-- Custom Badge Adder -->
+                        <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 12px;">
+                            <input type="text" id="edit-custom-badge-input" placeholder="اكتب شارة مخصصة جديدة (مثال: خصم 25%، إصدار خاص، خامة ملكية)..." style="flex: 1; font-size: 0.85rem; padding: 7px 12px; border-radius: 8px; background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); color: var(--text-primary);" onkeydown="if(event.key === 'Enter'){event.preventDefault(); addCustomBadge();}">
+                            <button type="button" class="btn-small btn-edit" onclick="addCustomBadge()" style="padding: 7px 14px; font-weight: 700; white-space: nowrap;">
+                                <i class="fa-solid fa-plus"></i> إضافة شارة
+                            </button>
+                        </div>
+
+                        <!-- Active Selected Badges Strip -->
+                        <div>
+                            <span style="font-size: 0.78rem; color: var(--text-secondary); display: block; margin-bottom: 6px;">الشارات النشطة حالياً على المنتج:</span>
+                            <div id="edit-active-badges-strip" style="display: flex; flex-wrap: wrap; gap: 6px; min-height: 28px;">
+                                <!-- Injected by JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. SECTION: SIZES & FABRIC -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px;">
+                        <div class="rfq-input-group">
+                            <label style="display: block; font-weight: 700; margin-bottom: 6px; font-size: 0.9rem;">المقاسات (مفصولة بفاصلة)</label>
+                            <input type="text" id="edit-product-sizes" placeholder="M, L, XL, 2XL, 3XL">
+                        </div>
+                        <div class="rfq-input-group">
+                            <label style="display: block; font-weight: 700; margin-bottom: 6px; font-size: 0.9rem;">الخامة والمواصفات</label>
+                            <input type="text" id="edit-product-fabric" placeholder="100% قطن مصري فاخر">
+                        </div>
+                    </div>
+
+                    <!-- 7. SUBMIT & ACTIONS -->
+                    <div style="display: flex; gap: 12px; justify-content: flex-end; padding-top: 14px; border-top: 1px solid var(--border-subtle);">
+                        <button type="button" class="btn-luxury-outline" onclick="closeEditModal()" style="padding: 10px 20px; font-weight: 700; cursor: pointer;">
+                            إلغاء
+                        </button>
+                        <button type="submit" class="btn-luxury-gold" style="padding: 10px 28px; font-weight: 800; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                            <i class="fa-solid fa-floppy-disk"></i> حفظ التعديلات
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

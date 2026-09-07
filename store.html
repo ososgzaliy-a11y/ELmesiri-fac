@@ -38,7 +38,7 @@
                     <a href="b2b.html" class="nav-link b2b-highlight">
                         <i class="fa-solid fa-handshake"></i> طلبات الجملة والتوريد
                     </a>
-                    <a href="#contact" class="nav-link">تواصل معنا</a>
+                    <a href="contact.html" class="nav-link">تواصل معنا</a>
                 </nav>
 
                 <!-- Nav Actions -->
@@ -204,35 +204,48 @@
                     </div>
                     <div class="rfq-input-group">
                         <label for="chk-gov">المحافظة *</label>
-                        <select id="chk-gov" style="width: 100%; padding: 12px 14px; background: var(--bg-surface-elevated); border: 1.5px solid var(--border-subtle); border-radius: var(--radius-md); color: var(--text-primary); outline: none;">
-                            <option value="القاهرة">القاهرة</option>
-                            <option value="الجيزة">الجيزة</option>
-                            <option value="الإسكندرية">الإسكندرية</option>
-                            <option value="القليوبية">القليوبية</option>
-                            <option value="الشرقية">الشرقية</option>
-                            <option value="الدقهلية">الدقهلية</option>
-                            <option value="الغربية">الغربية</option>
-                            <option value="المنوفية">المنوفية</option>
-                            <option value="البحيرة">البحيرة</option>
-                            <option value="كفر الشيخ">كفر الشيخ</option>
-                            <option value="دمياط">دمياط</option>
-                            <option value="بورسعيد">بورسعيد</option>
-                            <option value="الإسماعيلية">الإسماعيلية</option>
-                            <option value="السويس">السويس</option>
-                            <option value="الفيوم">الفيوم</option>
-                            <option value="بني سويف">بني سويف</option>
-                            <option value="المنيا">المنيا</option>
-                            <option value="أسيوط">أسيوط</option>
-                            <option value="سوهاج">سوهاج</option>
-                            <option value="قنا">قنا</option>
-                            <option value="الأقصر">الأقصر</option>
-                            <option value="أسوان">أسوان</option>
-                            <option value="البحر الأحمر">البحر الأحمر</option>
-                            <option value="مطروح">مطروح</option>
-                            <option value="الوادي الجديد">الوادي الجديد</option>
-                            <option value="شمال سيناء">شمال سيناء</option>
-                            <option value="جنوب سيناء">جنوب سيناء</option>
-                        </select>
+                        <div class="custom-gov-wrapper" id="custom-gov-wrapper">
+                            <div class="custom-gov-trigger" id="custom-gov-trigger" tabindex="0">
+                                <span id="custom-gov-label">القاهرة</span>
+                                <i class="fa-solid fa-chevron-down custom-gov-arrow"></i>
+                            </div>
+                            <div class="custom-gov-menu" id="custom-gov-menu">
+                                <div class="custom-gov-search-wrap">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input type="text" class="custom-gov-search-input" id="custom-gov-search" placeholder="ابحث عن المحافظة..." autocomplete="off">
+                                </div>
+                                <div class="custom-gov-options-list" id="custom-gov-options-list"></div>
+                            </div>
+                            <select id="chk-gov" style="display: none;" tabindex="-1">
+                                <option value="القاهرة" selected>القاهرة</option>
+                                <option value="الجيزة">الجيزة</option>
+                                <option value="الإسكندرية">الإسكندرية</option>
+                                <option value="القليوبية">القليوبية</option>
+                                <option value="الشرقية">الشرقية</option>
+                                <option value="الدقهلية">الدقهلية</option>
+                                <option value="الغربية">الغربية</option>
+                                <option value="المنوفية">المنوفية</option>
+                                <option value="البحيرة">البحيرة</option>
+                                <option value="كفر الشيخ">كفر الشيخ</option>
+                                <option value="دمياط">دمياط</option>
+                                <option value="بورسعيد">بورسعيد</option>
+                                <option value="الإسماعيلية">الإسماعيلية</option>
+                                <option value="السويس">السويس</option>
+                                <option value="الفيوم">الفيوم</option>
+                                <option value="بني سويف">بني سويف</option>
+                                <option value="المنيا">المنيا</option>
+                                <option value="أسيوط">أسيوط</option>
+                                <option value="سوهاج">سوهاج</option>
+                                <option value="قنا">قنا</option>
+                                <option value="الأقصر">الأقصر</option>
+                                <option value="أسوان">أسوان</option>
+                                <option value="البحر الأحمر">البحر الأحمر</option>
+                                <option value="مطروح">مطروح</option>
+                                <option value="الوادي الجديد">الوادي الجديد</option>
+                                <option value="شمال سيناء">شمال سيناء</option>
+                                <option value="جنوب سيناء">جنوب سيناء</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="rfq-input-group full-width">
                         <label for="chk-city">المدينة / المركز / الحي *</label>
@@ -362,6 +375,10 @@
             <a href="b2b.html" class="mob-nav-item">
                 <i class="fa-solid fa-handshake"></i>
                 <span>الجملة</span>
+            </a>
+            <a href="contact.html" class="mob-nav-item">
+                <i class="fa-solid fa-headset"></i>
+                <span>تواصل</span>
             </a>
             <a href="javascript:void(0)" onclick="openCartDrawer()" class="mob-nav-item">
                 <i class="fa-solid fa-cart-shopping"></i>

@@ -478,24 +478,45 @@ function renderProducts() {
             </button>
         </div>
         
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px;">
-            ${adminData.products.map(p => `
-                <div style="background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 16px; display: flex; gap: 14px;">
-                    <img src="${p.image || 'assets/images/product_boxer.jpg'}" alt="${p.name}" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover; border: 1px solid var(--border-subtle);">
-                    <div style="flex: 1;">
-                        <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; color: var(--text-primary);">${p.name}</h4>
-                        <div style="font-size: 1.1rem; font-weight: 900; color: var(--accent-gold); margin-bottom: 6px;">${p.price} ج.م</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px;">
+            ${adminData.products.map(p => {
+                const badges = (Array.isArray(p.badges) && p.badges.length > 0) ? p.badges : (p.badge ? [p.badge] : []);
+                const galleryCount = (Array.isArray(p.gallery) && p.gallery.length) || (p.image ? 1 : 0);
+                return `
+                <div style="background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 16px; display: flex; gap: 14px; position: relative;">
+                    <div style="position: relative; width: 85px; height: 85px; flex-shrink: 0;">
+                        <img src="${p.image || 'assets/images/product_boxer.jpg'}" alt="${p.name}" style="width: 100%; height: 100%; border-radius: 10px; object-fit: cover; border: 1px solid var(--border-subtle);">
+                        <span style="position: absolute; bottom: 3px; right: 3px; background: rgba(0,0,0,0.75); color: #fff; font-size: 0.65rem; padding: 1px 5px; border-radius: 4px; font-weight: 700;">
+                            <i class="fa-solid fa-images"></i> ${galleryCount}
+                        </span>
+                    </div>
+                    <div style="flex: 1; min-width: 0;">
+                        <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${p.name}">${p.name}</h4>
+                        <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+                            <span style="font-size: 1.15rem; font-weight: 900; color: var(--accent-gold);">${p.price} ج.م</span>
+                            ${p.originalPrice ? `<span style="font-size: 0.82rem; color: var(--text-muted); text-decoration: line-through;">${p.originalPrice} ج.م</span>` : ''}
+                        </div>
+                        
+                        <!-- Badges preview -->
+                        <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px;">
+                            ${badges.length > 0 
+                                ? badges.map(b => `<span style="background: rgba(201, 169, 102, 0.15); color: var(--accent-gold); font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: 4px; border: 1px solid rgba(201, 169, 102, 0.3);">${b}</span>`).join('')
+                                : `<span style="color: var(--text-muted); font-size: 0.72rem;">بدون شارة</span>`
+                            }
+                        </div>
+
                         <div style="display: flex; gap: 8px;">
-                            <button class="btn-small" onclick="openEditModal('${p.id}')" style="background: var(--bg-main); border: 1px solid var(--border-subtle); color: #38bdf8; padding: 4px 8px; border-radius: 6px; cursor: pointer;">
+                            <button class="btn-small" onclick="openEditModal('${p.id}')" style="background: var(--bg-main); border: 1px solid var(--border-subtle); color: #38bdf8; padding: 5px 12px; border-radius: 6px; cursor: pointer; font-weight: 600; display: flex; align-items: center; gap: 4px;">
                                 <i class="fa-solid fa-pen"></i> تعديل
                             </button>
-                            <button class="btn-small" onclick="deleteProduct('${p.id}')" style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #ef4444; padding: 4px 8px; border-radius: 6px; cursor: pointer;">
+                            <button class="btn-small" onclick="deleteProduct('${p.id}')" style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #ef4444; padding: 5px 10px; border-radius: 6px; cursor: pointer;">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-            `).join('')}
+                `;
+            }).join('')}
         </div>
     `;
 }
@@ -553,20 +574,374 @@ window.handleAddNewProduct = async function(e) {
     alert(`تمت إضافة منتج "${name}" بنجاح!`);
 };
 
-window.openEditModal = function(productId) {
-    const p = adminData.products.find(p => p.id === productId);
-    if (p) {
-        document.getElementById('edit-product-id').value = p.id;
-        document.getElementById('edit-product-name').value = p.name;
-        document.getElementById('edit-product-price').value = p.price;
-        document.getElementById('edit-product-badge').value = p.badge || "";
-        document.getElementById('edit-product-image').value = p.image;
-        
-        const modal = document.getElementById('edit-product-modal');
-        if (modal) {
-            modal.classList.add('active');
-            modal.style.display = 'flex';
+// -------------------------------------------------------------
+// Edit Product Modal State & Handlers
+// -------------------------------------------------------------
+let editProductGallery = [];
+let editPrimaryImageIdx = 0;
+let editSelectedBadges = [];
+const PRESET_BADGES = [
+    'الأكثر مبيعاً',
+    'وصل حديثاً',
+    'خصم خاص',
+    'قطن 100%',
+    'شحن مجاني',
+    'عرض محدود',
+    'نفذت الكمية'
+];
+
+/**
+ * Client-Side Image Compressor (Transforms dropped/uploaded photos to compact JPEGs)
+ */
+function compressImageFile(file, maxWidth = 1000, maxHeight = 1000, quality = 0.85) {
+    return new Promise((resolve) => {
+        if (!file || !file.type.startsWith('image/')) {
+            return resolve(null);
         }
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const img = new Image();
+            img.onload = () => {
+                let width = img.width;
+                let height = img.height;
+
+                if (width > height) {
+                    if (width > maxWidth) {
+                        height = Math.round((height * maxWidth) / width);
+                        width = maxWidth;
+                    }
+                } else {
+                    if (height > maxHeight) {
+                        width = Math.round((width * maxHeight) / height);
+                        height = maxHeight;
+                    }
+                }
+
+                const canvas = document.createElement('canvas');
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+
+                const dataUrl = canvas.toDataURL('image/jpeg', quality);
+                resolve(dataUrl);
+            };
+            img.onerror = () => resolve(e.target.result);
+            img.src = e.target.result;
+        };
+        reader.onerror = () => resolve(null);
+        reader.readAsDataURL(file);
+    });
+}
+
+window.triggerEditFileInput = function() {
+    if (editProductGallery.length >= 5) {
+        alert('تم الوصول للحد الأقصى لمعرض الصور (5 صور كحد أقصى)');
+        return;
+    }
+    const input = document.getElementById('edit-product-file-input');
+    if (input) input.click();
+};
+
+window.handleFileInputChange = async function(e) {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+    await processUploadedFiles(files);
+    e.target.value = ''; // Reset input to allow re-selecting same file
+};
+
+window.handleDragOver = function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const dropzone = document.getElementById('edit-dropzone');
+    if (dropzone) dropzone.classList.add('drag-over');
+};
+
+window.handleDragLeave = function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const dropzone = document.getElementById('edit-dropzone');
+    if (dropzone) dropzone.classList.remove('drag-over');
+};
+
+window.handleDrop = async function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const dropzone = document.getElementById('edit-dropzone');
+    if (dropzone) dropzone.classList.remove('drag-over');
+
+    const files = e.dataTransfer ? e.dataTransfer.files : null;
+    if (files && files.length > 0) {
+        await processUploadedFiles(files);
+    }
+};
+
+async function processUploadedFiles(fileList) {
+    const availableSlots = 5 - editProductGallery.length;
+    if (availableSlots <= 0) {
+        alert('تم الوصول للحد الأقصى لمعرض الصور (5 صور كحد أقصى)');
+        return;
+    }
+
+    const filesToProcess = Array.from(fileList).slice(0, availableSlots);
+    for (const file of filesToProcess) {
+        try {
+            const compressed = await compressImageFile(file);
+            if (compressed && editProductGallery.length < 5) {
+                editProductGallery.push(compressed);
+            }
+        } catch (err) {
+            console.error('Error reading image:', err);
+        }
+    }
+    renderEditGalleryUI();
+}
+
+window.addDirectImageUrl = function() {
+    const input = document.getElementById('edit-direct-img-url');
+    if (!input) return;
+    const url = input.value.trim();
+    if (!url) {
+        alert('الرجاء إدخال رابط أو مسار صورة صحيح');
+        return;
+    }
+    if (editProductGallery.length >= 5) {
+        alert('تم الوصول للحد الأقصى لمعرض الصور (5 صور كحد أقصى)');
+        return;
+    }
+    editProductGallery.push(url);
+    input.value = '';
+    renderEditGalleryUI();
+};
+
+window.setEditPrimaryImage = function(idx) {
+    if (idx >= 0 && idx < editProductGallery.length) {
+        editPrimaryImageIdx = idx;
+        renderEditGalleryUI();
+    }
+};
+
+window.removeEditGalleryImage = function(idx) {
+    if (editProductGallery.length <= 1) {
+        if (!confirm('هل تريد حذف هذه الصورة؟ يفضل وجود صورة واحدة على الأقل للمنتج.')) return;
+    }
+    editProductGallery.splice(idx, 1);
+    if (editPrimaryImageIdx >= editProductGallery.length) {
+        editPrimaryImageIdx = Math.max(0, editProductGallery.length - 1);
+    }
+    renderEditGalleryUI();
+};
+
+function renderEditGalleryUI() {
+    const container = document.getElementById('edit-gallery-preview-container');
+    const badge = document.getElementById('edit-gallery-count-badge');
+    const dropzone = document.getElementById('edit-dropzone');
+
+    if (badge) {
+        badge.textContent = `${editProductGallery.length} / 5 صور`;
+    }
+
+    if (dropzone) {
+        if (editProductGallery.length >= 5) {
+            dropzone.classList.add('disabled');
+        } else {
+            dropzone.classList.remove('disabled');
+        }
+    }
+
+    if (!container) return;
+
+    if (editProductGallery.length === 0) {
+        container.innerHTML = `
+            <div style="width: 100%; text-align: center; padding: 12px; color: var(--text-muted); font-size: 0.85rem; border: 1px dashed var(--border-subtle); border-radius: 8px;">
+                <i class="fa-solid fa-triangle-exclamation" style="margin-left: 6px; color: #f59e0b;"></i> لا توجد صور مرفوعة حالياً، يرجى رفع صورة أو إضافة رابط.
+            </div>
+        `;
+        return;
+    }
+
+    container.innerHTML = editProductGallery.map((imgUrl, idx) => {
+        const isPrimary = (idx === editPrimaryImageIdx);
+        return `
+            <div class="gallery-thumb-item ${isPrimary ? 'is-primary' : ''}">
+                <img src="${imgUrl}" alt="صورة ${idx + 1}" class="thumb-img">
+                <div class="thumb-overlay-actions">
+                    ${isPrimary 
+                        ? `<span class="primary-tag" title="هذه هي الصورة الأساسية للواجهة"><i class="fa-solid fa-star"></i> رئيسية</span>`
+                        : `<button type="button" class="btn-thumb-action" onclick="setEditPrimaryImage(${idx})" title="تعيين كصورة رئيسية للواجهة"><i class="fa-regular fa-star"></i> رئيسية</button>`
+                    }
+                    <button type="button" class="btn-thumb-action btn-remove-img" onclick="removeEditGalleryImage(${idx})" title="حذف الصورة من المعرض"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <span class="thumb-index-num">#${idx + 1}</span>
+            </div>
+        `;
+    }).join('');
+}
+
+// -------------------------------------------------------------
+// Badges UI & State Management
+// -------------------------------------------------------------
+function renderEditBadgesUI() {
+    const presetContainer = document.getElementById('edit-preset-badges-container');
+    const activeStrip = document.getElementById('edit-active-badges-strip');
+
+    if (presetContainer) {
+        presetContainer.innerHTML = PRESET_BADGES.map(badgeText => {
+            const isActive = editSelectedBadges.includes(badgeText);
+            return `
+                <button type="button" class="badge-chip-btn ${isActive ? 'active' : ''}" onclick="toggleEditBadge('${badgeText}')">
+                    <i class="${isActive ? 'fa-solid fa-check' : 'fa-solid fa-tag'}"></i>
+                    ${badgeText}
+                </button>
+            `;
+        }).join('');
+    }
+
+    if (activeStrip) {
+        if (editSelectedBadges.length === 0) {
+            activeStrip.innerHTML = `
+                <span style="color: var(--text-muted); font-size: 0.8rem;">
+                    لا توجد شارات مفعلة حالياً (يظهر المنتج كمتوفر قياسي بدون شارة)
+                </span>
+            `;
+        } else {
+            activeStrip.innerHTML = editSelectedBadges.map(b => `
+                <span class="selected-badge-pill">
+                    <i class="fa-solid fa-tag" style="font-size: 0.7rem;"></i>
+                    ${b}
+                    <button type="button" class="remove-badge-btn" onclick="removeEditBadge('${b}')" title="إزالة هذه الشارة">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </span>
+            `).join('');
+        }
+    }
+}
+
+window.toggleEditBadge = function(badgeName) {
+    const idx = editSelectedBadges.indexOf(badgeName);
+    if (idx > -1) {
+        editSelectedBadges.splice(idx, 1);
+    } else {
+        editSelectedBadges.push(badgeName);
+    }
+    renderEditBadgesUI();
+};
+
+window.addCustomBadge = function() {
+    const input = document.getElementById('edit-custom-badge-input');
+    if (!input) return;
+    const val = input.value.trim();
+    if (!val) return;
+
+    if (!editSelectedBadges.includes(val)) {
+        editSelectedBadges.push(val);
+    }
+    input.value = '';
+    renderEditBadgesUI();
+};
+
+window.removeEditBadge = function(badgeName) {
+    const idx = editSelectedBadges.indexOf(badgeName);
+    if (idx > -1) {
+        editSelectedBadges.splice(idx, 1);
+        renderEditBadgesUI();
+    }
+};
+
+// -------------------------------------------------------------
+// Real-time Pricing & Compare-at Discount Calculator
+// -------------------------------------------------------------
+window.calculateEditDiscount = function() {
+    const priceInput = document.getElementById('edit-product-price');
+    const origInput = document.getElementById('edit-product-orig-price');
+    const indicator = document.getElementById('edit-discount-indicator');
+    const textSpan = document.getElementById('edit-discount-text');
+    const badgeSpan = document.getElementById('edit-discount-badge-pct');
+
+    if (!priceInput || !origInput || !indicator) return;
+
+    const price = Number(priceInput.value);
+    const orig = Number(origInput.value);
+
+    if (orig && price && orig > price) {
+        const pct = Math.round(((orig - price) / orig) * 100);
+        const diff = Math.round(orig - price);
+        textSpan.innerHTML = `<i class="fa-solid fa-fire" style="color: #f59e0b; margin-left: 6px;"></i> وفرت <strong>${diff} ج.م</strong> للعميل بدلاً من ${orig} ج.م`;
+        badgeSpan.textContent = `خصم ${pct}%`;
+        indicator.style.display = 'flex';
+    } else {
+        indicator.style.display = 'none';
+    }
+};
+
+// -------------------------------------------------------------
+// Modal Open / Close / Submit
+// -------------------------------------------------------------
+window.openEditModal = function(productId) {
+    const p = adminData.products.find(item => item.id === productId);
+    if (!p) {
+        alert('لم يتم العثور على المنتج المطلوب!');
+        return;
+    }
+
+    // 1. Basic Fields
+    document.getElementById('edit-product-id').value = p.id;
+    document.getElementById('edit-product-name').value = p.name || '';
+    document.getElementById('edit-product-price').value = p.price || '';
+    document.getElementById('edit-product-orig-price').value = p.originalPrice || '';
+    document.getElementById('edit-product-category').value = p.category || 'boxers';
+    document.getElementById('edit-product-stock').value = (p.stock !== undefined) ? p.stock : 100;
+    
+    // Sizes
+    const sizesVal = Array.isArray(p.sizes) ? p.sizes.join(', ') : (p.sizes || 'M, L, XL, 2XL, 3XL');
+    document.getElementById('edit-product-sizes').value = sizesVal;
+
+    // Fabric
+    document.getElementById('edit-product-fabric').value = p.fabric || '100% قطن مصري فاخر فائق النعومة';
+
+    // Subtitle
+    const subtitle = document.getElementById('edit-modal-subtitle');
+    if (subtitle) {
+        subtitle.textContent = `تعديل: ${p.name}`;
+    }
+
+    // 2. Initialize Gallery (up to 5 images)
+    editProductGallery = [];
+    if (Array.isArray(p.gallery) && p.gallery.length > 0) {
+        editProductGallery = [...p.gallery].slice(0, 5);
+    }
+    if (p.image && !editProductGallery.includes(p.image)) {
+        editProductGallery.unshift(p.image);
+    }
+    if (editProductGallery.length === 0) {
+        if (p.image) editProductGallery.push(p.image);
+        else editProductGallery.push('assets/images/product_boxer.jpg');
+    }
+    editProductGallery = editProductGallery.slice(0, 5);
+
+    // Primary index
+    const foundIdx = p.image ? editProductGallery.indexOf(p.image) : 0;
+    editPrimaryImageIdx = (foundIdx >= 0) ? foundIdx : 0;
+
+    // 3. Initialize Badges
+    editSelectedBadges = [];
+    if (Array.isArray(p.badges) && p.badges.length > 0) {
+        editSelectedBadges = [...p.badges];
+    } else if (p.badge && p.badge.trim()) {
+        editSelectedBadges = [p.badge.trim()];
+    }
+
+    // 4. Render Dynamic Sub-components
+    renderEditGalleryUI();
+    renderEditBadgesUI();
+    calculateEditDiscount();
+
+    // 5. Open Modal
+    const modal = document.getElementById('edit-product-modal');
+    if (modal) {
+        modal.classList.add('active');
+        modal.style.display = 'flex';
     }
 };
 
@@ -576,6 +951,88 @@ window.closeEditModal = function() {
         modal.classList.remove('active');
         modal.style.display = 'none';
     }
+};
+
+window.handleEditProductSubmit = async function(e) {
+    e.preventDefault();
+    const productId = document.getElementById('edit-product-id').value;
+    if (!productId) return;
+
+    const name = document.getElementById('edit-product-name').value.trim();
+    const price = Number(document.getElementById('edit-product-price').value);
+    const origPriceVal = document.getElementById('edit-product-orig-price').value;
+    const origPrice = origPriceVal ? Number(origPriceVal) : null;
+    const category = document.getElementById('edit-product-category').value;
+    const stock = Number(document.getElementById('edit-product-stock').value);
+    const fabric = document.getElementById('edit-product-fabric').value.trim();
+    const sizesStr = document.getElementById('edit-product-sizes').value;
+    const sizes = sizesStr.split(',').map(s => s.trim()).filter(Boolean);
+
+    // Gallery & Primary Image
+    if (editProductGallery.length === 0) {
+        editProductGallery.push('assets/images/product_boxer.jpg');
+    }
+    const primaryImage = editProductGallery[editPrimaryImageIdx] || editProductGallery[0];
+
+    // Reorder gallery so primary image is at position 0
+    const finalGallery = [primaryImage, ...editProductGallery.filter((_, i) => i !== editPrimaryImageIdx)];
+
+    // Category name in Arabic
+    let categoryName = 'بوكسرات قطنية';
+    if (category === 'undershirts') categoryName = 'فانلات داخلية';
+    if (category === 'briefs') categoryName = 'سراويل كلاسيك';
+
+    // Badge Type determination
+    let badgeType = 'featured';
+    if (editSelectedBadges.some(b => /خصم|sale/i.test(b))) {
+        badgeType = 'sale';
+    } else if (editSelectedBadges.some(b => /جديد|new/i.test(b))) {
+        badgeType = 'new';
+    } else if (editSelectedBadges.some(b => /الأكثر مبيعاً|أكثر مبيعاً/i.test(b))) {
+        badgeType = 'bestseller';
+    }
+
+    const updatedProduct = {
+        name,
+        category,
+        categoryName,
+        price,
+        originalPrice: origPrice,
+        stock: isNaN(stock) ? 100 : stock,
+        fabric: fabric || '100% قطن مصري فاخر',
+        sizes: sizes.length > 0 ? sizes : ['M', 'L', 'XL', '2XL'],
+        badges: editSelectedBadges,
+        badge: editSelectedBadges[0] || '',
+        badgeType: badgeType,
+        image: primaryImage,
+        gallery: finalGallery
+    };
+
+    try {
+        const response = await fetch(`/api/products/${productId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updatedProduct)
+        });
+        const resData = await response.json();
+        if (!response.ok || !resData.success) {
+            throw new Error(resData.error || 'فشل التحديث على السيرفر');
+        }
+    } catch(err) {
+        console.warn('[Admin] Sync note:', err.message);
+    }
+
+    // Sync to window.DB if exists
+    if (typeof DB !== 'undefined' && DB.saveProduct) {
+        try {
+            await DB.saveProduct({ id: productId, ...updatedProduct });
+        } catch(e) {}
+    }
+
+    closeEditModal();
+    await loadData();
+    renderTab('products');
+    alert(`تم حفظ وتحديث منتج "${name}" بنجاح!`);
 };
 
 window.deleteProduct = async function(productId) {

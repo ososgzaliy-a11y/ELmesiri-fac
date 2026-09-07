@@ -214,7 +214,7 @@ function openQuoteSuccessModal(data) {
                     <button class="btn-whatsapp-direct" onclick="window.open('${encodedUrl}', '_blank')">
                         <i class="fa-brands fa-whatsapp"></i> تأكيد الطلب فوراً عبر محادثة واتساب
                     </button>
-                    <button class="btn-luxury-outline" onclick="document.getElementById('rfq-success-modal').remove()">
+                    <button class="btn-luxury-outline" onclick="document.getElementById('rfq-success-modal').remove(); if(typeof unlockScroll==='function') unlockScroll();">
                         إغلاق النافذة
                     </button>
                 </div>
@@ -222,4 +222,5 @@ function openQuoteSuccessModal(data) {
         </div>
     `;
     document.body.insertAdjacentHTML('beforeend', modalHTML);
+    if (typeof lockScroll === 'function') lockScroll();
 }
