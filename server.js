@@ -321,7 +321,7 @@ const server = http.createServer(async (req, res) => {
 
         const customer = {
             name: (body.customer?.name || 'عميل زيرو ون').trim(),
-            email: (body.customer?.email || 'customer@zeroonedigital.com').trim(),
+            email: (body.customer?.email || 'zeronegroup0@gmail.com').trim(),
             phone: (body.customer?.phone || '+201000000000').trim(),
             governorate: (body.customer?.governorate || body.customer?.gov || 'القاهرة').trim(),
             city: (body.customer?.city || 'القاهرة').trim(),

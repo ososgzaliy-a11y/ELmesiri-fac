@@ -12,8 +12,8 @@ const FACTORY_CONTACT = {
     whatsapp: '201010645449', // Target WhatsApp Factory Line
     phone: '+201010645449',
     salesPhone: '+201000000000',
-    email: 'b2b@almesiri-factory.com',
-    locationName: 'المدينة الصناعية الثانية، العاشر من رمضان / القاهرة، مصر'
+    email: 'zeronegroup0@gmail.com',
+    locationName: 'مصر، القاهرة، المدينة الصناعية'
 };
 
 // Department WhatsApp Dispatcher

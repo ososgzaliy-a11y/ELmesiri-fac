@@ -178,7 +178,7 @@ const FACTORY_STATS = [
     { value: '1.2M+', label: 'قطعة ملابس داخلية سنوياً', icon: 'fa-industry' },
     { value: '100%', label: 'قطن مصري ممتاز', icon: 'fa-leaf' },
     { value: '30+', label: 'عاماً من التميز والصناعة', icon: 'fa-award' },
-    { value: 'ISO', label: 'معايير الجودة العالمية', icon: 'fa-shield-check' }
+    { value: 'ISO', label: 'معايير الجودة العالمية', icon: 'fa-shield-halved' }
 ];
 
 // Factory Capabilities Showcase
