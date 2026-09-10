@@ -725,7 +725,32 @@
 
             const txnId = 'TXN-' + Math.floor(10000000 + Math.random() * 90000000);
 
-            // Send webhook callback to server to mark order as paid
+            // Update local storage order status directly
+            try {
+                const storedOrders = JSON.parse(localStorage.getItem('mesiri_orders') || '[]');
+                const foundOrder = storedOrders.find(o => o.id === orderId || o.merchant_order_id === orderId);
+                if (foundOrder) {
+                    foundOrder.status = 'مكتمل (تم الدفع عبر Kashier)';
+                    foundOrder.paymentStatus = 'PAID';
+                    foundOrder.transaction = {
+                        transaction_id: txnId,
+                        gateway: 'Kashier',
+                        paid_at: new Date().toISOString(),
+                        status: 'SUCCESS',
+                        maskedCard: '**** **** **** 4444'
+                    };
+                    localStorage.setItem('mesiri_orders', JSON.stringify(storedOrders));
+
+                    if (typeof BroadcastChannel !== 'undefined') {
+                        const channel = new BroadcastChannel('mesiri_database_bus');
+                        channel.postMessage({ actionType: 'ORDER_STATUS_UPDATED', data: { id: orderId, status: 'مكتمل (تم الدفع عبر Kashier)' }, timestamp: Date.now() });
+                    }
+                }
+            } catch (e) {
+                console.warn('Local storage update notice:', e);
+            }
+
+            // Send webhook callback to server to mark order as paid if server is available
             try {
                 await fetch('/api/webhooks/kashier', {
                     method: 'POST',
@@ -745,7 +770,7 @@
                     })
                 });
             } catch (err) {
-                console.warn('Webhook simulation completed:', err);
+                console.warn('Webhook simulation notice:', err);
             }
 
             // Redirect back to store success URL

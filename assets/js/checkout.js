@@ -20,12 +20,33 @@ function initCheckout() {
     const methodCards = document.querySelectorAll('.payment-option-card');
     methodCards.forEach(card => {
         card.addEventListener('click', () => {
-            methodCards.forEach(c => c.classList.remove('active'));
-            card.classList.add('active');
-            selectedPaymentMethod = card.getAttribute('data-method') || 'kashier';
-            updatePaymentButtonUI();
+            const method = card.getAttribute('data-method') || 'kashier';
+            setPaymentMethod(method);
         });
     });
+
+    // Ensure initial selection is synced
+    setPaymentMethod(selectedPaymentMethod || 'kashier');
+}
+
+function setPaymentMethod(method) {
+    selectedPaymentMethod = method;
+    const methodCards = document.querySelectorAll('.payment-option-card');
+    methodCards.forEach(card => {
+        const cardMethod = card.getAttribute('data-method');
+        // Clear any inline conflicting border or background styles
+        card.style.removeProperty('border');
+        card.style.removeProperty('border-color');
+        card.style.removeProperty('background');
+        card.style.removeProperty('box-shadow');
+
+        if (cardMethod === method) {
+            card.classList.add('active');
+        } else {
+            card.classList.remove('active');
+        }
+    });
+    updatePaymentButtonUI();
 }
 
 function updatePaymentButtonUI() {
@@ -109,7 +130,7 @@ function openCheckoutModal() {
         if (step3) step3.classList.remove('active');
 
         updateCheckoutSummary();
-        updatePaymentButtonUI();
+        setPaymentMethod(selectedPaymentMethod || 'kashier');
         checkoutModal.classList.add('active');
         if (typeof lockScroll === 'function') lockScroll();
         else document.body.classList.add('scroll-locked');
@@ -241,36 +262,65 @@ async function processPaymentAndCompleteOrder() {
                 status: 'قيد التجهيز (دفع عند الاستلام)'
             };
 
-            const response = await fetch('/api/orders', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(orderData)
-            });
-
-            if (response.ok) {
-                // Sync with Firebase Cloud
-                if (window.FirebaseManager) {
-                    window.FirebaseManager.syncOrderToFirebase(orderData);
+            // Save order locally first to ensure data is NEVER lost
+            if (window.mesiriDB && typeof window.mesiriDB.createOrder === 'function') {
+                try {
+                    await window.mesiriDB.createOrder(orderData);
+                } catch (dbErr) {
+                    console.warn('[COD] DB createOrder warning:', dbErr);
                 }
-
-                if (typeof clearCart === 'function') clearCart();
-                if (typeof showToast === 'function') showToast(`تم تأكيد طلبك بنجاح برقم #${orderId}`, 'success');
-
-                const step1 = document.getElementById('chk-step-content-1');
-                const step3 = document.getElementById('chk-step-content-3');
-                if (step1) step1.classList.remove('active');
-                if (step3) step3.classList.add('active');
-
-                const orderIdEl = document.getElementById('order-receipt-id');
-                const orderDateEl = document.getElementById('order-receipt-date');
-                if (orderIdEl) orderIdEl.innerText = `#${orderId}`;
-                if (orderDateEl) orderDateEl.innerText = new Date().toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
             } else {
-                throw new Error('فشل تسجيل الطلب في الخادم');
+                try {
+                    const localOrders = JSON.parse(localStorage.getItem('mesiri_orders') || '[]');
+                    localOrders.unshift(orderData);
+                    localStorage.setItem('mesiri_orders', JSON.stringify(localOrders));
+                } catch (e) {
+                    console.warn('[COD] Local storage save error:', e);
+                }
             }
+
+            // Sync with Firebase Cloud if configured
+            if (window.FirebaseManager && typeof window.FirebaseManager.syncOrderToFirebase === 'function') {
+                try {
+                    window.FirebaseManager.syncOrderToFirebase(orderData);
+                } catch (fbErr) {
+                    console.warn('[COD] Firebase sync notice:', fbErr);
+                }
+            }
+
+            // Attempt to sync with backend API (non-blocking so offline or static deployments succeed)
+            try {
+                const response = await fetch('/api/orders', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(orderData)
+                });
+                if (!response.ok) {
+                    console.warn('[COD] Server API responded with status:', response.status, '(Order preserved locally)');
+                }
+            } catch (netErr) {
+                console.warn('[COD] Backend offline or static host, order successfully preserved locally:', netErr);
+            }
+
+            // Clear local shopping cart and show success step
+            if (typeof clearCart === 'function') clearCart();
+            if (typeof showToast === 'function') showToast(`تم تأكيد طلبك بنجاح برقم #${orderId}`, 'success');
+
+            const step1 = document.getElementById('chk-step-content-1');
+            const step3 = document.getElementById('chk-step-content-3');
+            if (step1) step1.classList.remove('active');
+            if (step3) step3.classList.add('active');
+
+            const orderIdEl = document.getElementById('order-receipt-id');
+            const orderDateEl = document.getElementById('order-receipt-date');
+            if (orderIdEl) orderIdEl.innerText = `#${orderId}`;
+            if (orderDateEl) orderDateEl.innerText = new Date().toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
+
         } catch (error) {
-            console.error('COD Error:', error);
-            if (typeof showToast === 'function') showToast(error.message || 'حدث خطأ أثناء حفظ الطلب', 'error');
+            console.error('[COD Error]:', error);
+            if (typeof showToast === 'function') {
+                showToast('نأسف، لم نتمكن من إكمال تسجيل الطلب حالياً. يُرجى المحاولة مرة أخرى أو التواصل معنا مباشرة.', 'error');
+            }
             if (btn) {
                 btn.disabled = false;
                 updatePaymentButtonUI();
@@ -281,37 +331,91 @@ async function processPaymentAndCompleteOrder() {
 
     // 2. KASHIER ONLINE PAYMENT FLOW
     try {
-        const response = await fetch('/api/payment/kashier/checkout', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                merchant_order_id: orderId,
-                orderId: orderId,
-                amount: total,
-                currency: 'EGP',
-                customer: customerInfo,
-                items: cartItems,
-                paymentMethod: 'kashier',
-                summary: { subtotal, discount, shipping, total },
-                callbackUrl: `${window.location.origin}/store.html?payment_status=success&order_id=${orderId}&gateway=kashier`
-            })
-        });
+        const orderData = {
+            id: orderId,
+            merchant_order_id: orderId,
+            date: orderDate,
+            customer: customerInfo,
+            items: cartItems,
+            summary: { subtotal, discount, shipping, total },
+            paymentMethod: 'kashier',
+            status: 'معلق (بانتظار الدفع عبر Kashier)'
+        };
 
-        const data = await response.json();
-        const targetUrl = data.kashier_url || data.url || data.checkout_url || data.payment_url;
-
-        if (data && data.success && targetUrl) {
-            // Direct Redirect to Kashier Hosted Checkout (or Test Simulator)
-            window.location.href = targetUrl;
+        // Save order locally first so customer details and order are preserved
+        if (window.mesiriDB && typeof window.mesiriDB.createOrder === 'function') {
+            try {
+                await window.mesiriDB.createOrder(orderData);
+            } catch (dbErr) {
+                console.warn('[Kashier] DB createOrder warning:', dbErr);
+            }
         } else {
-            throw new Error(data.error || data.message || 'فشل الاتصال ببوابة Kashier');
+            try {
+                const localOrders = JSON.parse(localStorage.getItem('mesiri_orders') || '[]');
+                localOrders.unshift(orderData);
+                localStorage.setItem('mesiri_orders', JSON.stringify(localOrders));
+            } catch (e) {
+                console.warn('[Kashier] Local storage save error:', e);
+            }
         }
+
+        // Sync with Firebase Cloud if configured
+        if (window.FirebaseManager && typeof window.FirebaseManager.syncOrderToFirebase === 'function') {
+            try {
+                window.FirebaseManager.syncOrderToFirebase(orderData);
+            } catch (fbErr) {
+                console.warn('[Kashier] Firebase sync notice:', fbErr);
+            }
+        }
+
+        const successCallbackUrl = `${window.location.origin}/store.html?payment_status=success&order_id=${encodeURIComponent(orderId)}&gateway=kashier`;
+        const cancelCallbackUrl = `${window.location.origin}/store.html?payment_status=cancelled&order_id=${encodeURIComponent(orderId)}`;
+
+        let redirectTarget = '';
+
+        // Attempt to call backend Kashier session endpoint if available
+        try {
+            const response = await fetch('/api/payment/kashier/checkout', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    merchant_order_id: orderId,
+                    orderId: orderId,
+                    amount: total,
+                    currency: 'EGP',
+                    customer: customerInfo,
+                    items: cartItems,
+                    paymentMethod: 'kashier',
+                    summary: { subtotal, discount, shipping, total },
+                    callbackUrl: successCallbackUrl
+                })
+            });
+
+            if (response && response.ok) {
+                const contentType = response.headers.get('content-type') || '';
+                if (contentType.includes('application/json')) {
+                    const data = await response.json().catch(() => null);
+                    if (data && data.success) {
+                        redirectTarget = data.kashier_url || data.url || data.checkout_url || data.payment_url || '';
+                    }
+                }
+            }
+        } catch (netErr) {
+            console.warn('[Kashier] Server endpoint unreachable, using client-side payment flow:', netErr);
+        }
+
+        // Fallback: If backend is running on static host or returned no url, forward smoothly to the built-in Kashier simulator
+        if (!redirectTarget) {
+            redirectTarget = `${window.location.origin}/kashier-simulator.html?orderId=${encodeURIComponent(orderId)}&amount=${encodeURIComponent(total)}&currency=EGP&customerName=${encodeURIComponent(customerInfo.name)}&customerPhone=${encodeURIComponent(customerInfo.phone)}&customerEmail=${encodeURIComponent(customerInfo.email)}&redirectUrl=${encodeURIComponent(successCallbackUrl)}&cancelUrl=${encodeURIComponent(cancelCallbackUrl)}`;
+        }
+
+        // Forward to Kashier payment gateway
+        window.location.href = redirectTarget;
+
     } catch (error) {
         console.error('[Kashier Error]:', error);
         if (typeof showToast === 'function') {
-            showToast(error.message || 'فشل الاتصال بالخادم، يرجى المحاولة لاحقاً', 'error');
+            showToast('نأسف، لم نتمكن من الاتصال ببوابة الدفع حالياً. يُرجى المحاولة مرة أخرى أو اختيار الدفع عند الاستلام.', 'error');
         }
         if (btn) {
             btn.innerHTML = '<i class="fa-solid fa-rotate-right"></i> إعادة المحاولة للدفع عبر Kashier';

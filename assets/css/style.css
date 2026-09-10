@@ -1831,37 +1831,37 @@ img {
     margin: 20px 0;
 }
 .payment-option-card {
-    background: var(--bg-surface-elevated);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
-    padding: 18px;
+    background: var(--bg-surface-elevated) !important;
+    border: 1.5px solid var(--border-subtle) !important;
+    border-radius: var(--radius-md) !important;
+    padding: 14px !important;
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-    transition: var(--transition-fast);
+    align-items: flex-start;
+    text-align: right;
+    gap: 8px;
+    transition: all 0.25s ease !important;
+    position: relative;
 }
 .payment-option-card:hover {
-    border-color: var(--border-gold);
+    border-color: rgba(212, 175, 55, 0.5) !important;
+    transform: translateY(-2px);
 }
 .payment-option-card.active {
-    border-color: var(--accent-gold);
-    background: rgba(197, 168, 128, 0.08);
-    box-shadow: 0 0 15px rgba(197, 168, 128, 0.2);
+    border: 2px solid var(--accent-gold) !important;
+    background: rgba(212, 175, 55, 0.08) !important;
+    box-shadow: 0 0 16px rgba(212, 175, 55, 0.25) !important;
 }
 .payment-option-card i {
-    font-size: 1.8rem;
-    color: var(--accent-gold);
+    font-size: 1.2rem;
 }
 .payment-option-card strong {
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     color: var(--text-primary);
 }
 .payment-option-card span {
-    font-size: 0.78rem;
-    color: var(--text-muted);
+    font-size: 0.75rem;
 }
 
 .order-success-screen {
