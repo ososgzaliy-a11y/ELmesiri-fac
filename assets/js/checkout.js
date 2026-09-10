@@ -173,7 +173,8 @@ function getCartItemsSafe() {
         return cart;
     }
     try {
-        return JSON.parse(localStorage.getItem('mesiri_cart')) || [];
+        const raw = sessionStorage.getItem('zerone_cart_session');
+        return raw ? JSON.parse(raw) : [];
     } catch(e) {
         return [];
     }

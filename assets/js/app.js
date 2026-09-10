@@ -3,7 +3,24 @@
  * Manages B2C Store, Quick View, Cart, Wishlist, Currency, & UI Interactions
  */
 
-let cart = JSON.parse(localStorage.getItem('safwa_cart')) || [];
+// Clean up any legacy persistent localStorage carts so old stuck items are wiped
+try {
+    localStorage.removeItem('safwa_cart');
+    localStorage.removeItem('mesiri_cart');
+    localStorage.removeItem('zerone_cart');
+} catch (e) {}
+
+// Use sessionStorage for cart so it persists during page refresh (F5),
+// but gets completely cleared whenever the user leaves or closes the site session
+const CART_STORAGE_KEY = 'zerone_cart_session';
+let cart = [];
+try {
+    const rawCart = sessionStorage.getItem(CART_STORAGE_KEY);
+    cart = rawCart ? JSON.parse(rawCart) : [];
+    if (!Array.isArray(cart)) cart = [];
+} catch (e) {
+    cart = [];
+}
 let wishlist = JSON.parse(localStorage.getItem('safwa_wishlist')) || [];
 let activeCoupon = null;
 let selectedModalProduct = null;
@@ -599,12 +616,17 @@ function removeCartItem(cartItemId) {
 function clearCart() {
     cart = [];
     activeCoupon = null;
+    try {
+        sessionStorage.removeItem(CART_STORAGE_KEY);
+    } catch (e) {}
     saveCart();
     updateCartUI();
 }
 
 function saveCart() {
-    localStorage.setItem('safwa_cart', JSON.stringify(cart));
+    try {
+        sessionStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+    } catch (e) {}
 }
 
 function getCartSubtotal() {
