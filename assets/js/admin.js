@@ -104,14 +104,27 @@ async function initAdminPanel() {
     }, 3000);
 }
 
+let adminScrollPos = 0;
 window.lockAdminScroll = function() {
-    document.body.classList.add('scroll-locked');
+    if (!document.body.classList.contains('scroll-locked')) {
+        adminScrollPos = window.pageYOffset || document.documentElement.scrollTop || 0;
+        document.documentElement.classList.add('scroll-locked');
+        document.body.classList.add('scroll-locked');
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${adminScrollPos}px`;
+        document.body.style.width = '100%';
+    }
 };
 
 window.unlockAdminScroll = function() {
     const anyActive = document.querySelectorAll('.modal-overlay.active');
     if (anyActive.length === 0) {
+        document.documentElement.classList.remove('scroll-locked');
         document.body.classList.remove('scroll-locked');
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        window.scrollTo(0, adminScrollPos);
     }
 };
 

@@ -176,22 +176,116 @@ function initApp() {
 }
 
 // ----------------------------------------------------
-// SCROLL LOCK
-// Prevents background page scrolling when modal or drawer is open
+// BULLETPROOF SCROLL LOCK (Web, iOS, Android & Desktop)
+// Freezes background page completely, permits scrolling inside open windows
 // ----------------------------------------------------
+let scrollLockPosition = 0;
+let isScrollLocked = false;
+
 function lockScroll() {
+    if (isScrollLocked) return;
+
+    // 1. Record current scroll position
+    scrollLockPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+    // 2. Prevent layout jitter from scrollbar disappearing on desktop
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    if (scrollbarWidth > 0) {
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
+
+    // 3. Pin body with fixed position at exact scroll offset
+    document.documentElement.classList.add('scroll-locked');
     document.body.classList.add('scroll-locked');
+    document.body.style.top = `-${scrollLockPosition}px`;
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+
+    isScrollLocked = true;
 }
 
 function unlockScroll() {
-    const activeModals = document.querySelectorAll('.modal-overlay.active, .cart-drawer-overlay.active');
-    if (!activeModals || activeModals.length === 0) {
-        document.body.classList.remove('scroll-locked');
+    // Check if any modal or drawer is still active
+    const activeModals = document.querySelectorAll(
+        '.modal-overlay.active, .cart-drawer-overlay.active, #quick-view-modal.active, #checkout-modal.active, #size-guide-modal.active'
+    );
+    if (activeModals && activeModals.length > 0) {
+        return; // Keep locked if another dialog is still open
     }
+
+    if (!isScrollLocked) return;
+
+    // 1. Restore styles
+    document.documentElement.classList.remove('scroll-locked');
+    document.body.classList.remove('scroll-locked');
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    document.body.style.paddingRight = '';
+
+    // 2. Restore exact scroll position
+    window.scrollTo(0, scrollLockPosition);
+    isScrollLocked = false;
 }
 
 window.lockScroll = lockScroll;
 window.unlockScroll = unlockScroll;
+
+// Intercept touch/wheel events on backdrops when locked to prevent background bleed
+window.addEventListener('touchmove', function(e) {
+    if (isScrollLocked) {
+        const insideScrollable = e.target.closest('.modal-content-box, .cart-drawer, .cart-items-list, .modal-body, .custom-gov-options-list, .checkout-step-content');
+        if (!insideScrollable) {
+            e.preventDefault();
+        }
+    }
+}, { passive: false });
+
+window.addEventListener('wheel', function(e) {
+    if (isScrollLocked) {
+        const insideScrollable = e.target.closest('.modal-content-box, .cart-drawer, .cart-items-list, .modal-body, .custom-gov-options-list, .checkout-step-content');
+        if (!insideScrollable) {
+            e.preventDefault();
+        }
+    }
+}, { passive: false });
+
+// Escape key to close active modals & restore scroll
+window.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const sizeGuide = document.getElementById('size-guide-modal');
+        if (sizeGuide) {
+            sizeGuide.remove();
+            unlockScroll();
+            return;
+        }
+        if (typeof closeCheckoutModal === 'function') {
+            const chkModal = document.getElementById('checkout-modal');
+            if (chkModal && chkModal.classList.contains('active')) {
+                closeCheckoutModal();
+                return;
+            }
+        }
+        if (typeof closeCartDrawer === 'function') {
+            const drawer = document.getElementById('cart-drawer-overlay');
+            if (drawer && drawer.classList.contains('active')) {
+                closeCartDrawer();
+                return;
+            }
+        }
+        if (typeof closeQuickView === 'function') {
+            const qv = document.getElementById('quick-view-modal');
+            if (qv && qv.classList.contains('active')) {
+                closeQuickView();
+                return;
+            }
+        }
+    }
+});
 
 // ----------------------------------------------------
 // PRODUCT RENDERING, FILTERING & SORTING

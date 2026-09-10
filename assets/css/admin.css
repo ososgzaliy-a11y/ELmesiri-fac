@@ -20,9 +20,12 @@ html, body.admin-body {
     width: 100%;
 }
 
+html.scroll-locked,
 body.scroll-locked {
     overflow: hidden !important;
+    height: 100% !important;
     touch-action: none !important;
+    overscroll-behavior: none !important;
 }
 
 /* Sidebar */

@@ -2925,22 +2925,35 @@ img {
 }
 
 /* ==========================================================================
-   GLOBAL SCROLL LOCK (PREVENTS BACKGROUND SCROLLING ON MODALS & DRAWERS)
+   GLOBAL BULLETPROOF SCROLL LOCK (PREVENTS BACKGROUND SCROLLING ON MODALS & DRAWERS)
    ========================================================================== */
-body.scroll-locked {
+html.scroll-locked {
     overflow: hidden !important;
+    height: 100% !important;
+    touch-action: none !important;
+    overscroll-behavior: none !important;
 }
 
-/* Modal and Drawer overscroll containment */
+body.scroll-locked {
+    overflow: hidden !important;
+    height: 100% !important;
+    touch-action: none !important;
+    overscroll-behavior: none !important;
+}
+
+/* Modal and Drawer: isolated scrolling INSIDE the opened dialog */
 .modal-overlay,
 .cart-drawer-overlay {
-    overscroll-behavior: contain;
+    overscroll-behavior: contain !important;
 }
 
 .modal-content-box,
 .cart-drawer,
-.cart-items-list {
-    overscroll-behavior: contain;
+.cart-items-list,
+.checkout-modal-box {
+    overscroll-behavior: contain !important;
+    touch-action: pan-y !important;
+    -webkit-overflow-scrolling: touch !important;
 }
 
 /* ==========================================================================

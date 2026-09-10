@@ -132,7 +132,8 @@ function openCheckoutModal() {
         updateCheckoutSummary();
         setPaymentMethod(selectedPaymentMethod || 'kashier');
         checkoutModal.classList.add('active');
-        if (typeof lockScroll === 'function') lockScroll();
+        if (typeof window.lockScroll === 'function') window.lockScroll();
+        else if (typeof lockScroll === 'function') lockScroll();
         else document.body.classList.add('scroll-locked');
     }
 }
@@ -141,7 +142,8 @@ function closeCheckoutModal() {
     const checkoutModal = document.getElementById('checkout-modal');
     if (checkoutModal) {
         checkoutModal.classList.remove('active');
-        if (typeof unlockScroll === 'function') unlockScroll();
+        if (typeof window.unlockScroll === 'function') window.unlockScroll();
+        else if (typeof unlockScroll === 'function') unlockScroll();
         else document.body.classList.remove('scroll-locked');
     }
 }
