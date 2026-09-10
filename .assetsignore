@@ -1,0 +1,6 @@
+.env
+.env.*
+.git*
+scripts/
+data/*.sql
+data/*.sqlite
