@@ -776,6 +776,28 @@ img {
     box-shadow: 0 4px 12px rgba(197, 168, 128, 0.3);
 }
 
+.cat-count-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-muted);
+    margin-right: 6px;
+    transition: var(--transition-fast);
+}
+
+.cat-tab-btn.active .cat-count-badge {
+    background: rgba(0, 0, 0, 0.18);
+    color: #0b0f19;
+}
+
+
 .store-search-sort {
     display: flex;
     align-items: center;

@@ -32,6 +32,7 @@ let PRODUCTS_DATA = [
         sizes: ['S', 'M', 'L', 'XL', '2XL', '3XL'],
         stock: 350,
         fabric: '100% قطن بيكيه مصري ممتاز مسامي وعالي الجودة مريح للبشرة',
+        searchKeywords: ['تيشرت', 'تيشيرت', 'تشرت', 'بولو', 'نص كم', 'نصف كم', 'صيفي', 'اسود', 'بلاك', 'black', 'polo', 'tshirt', 'قطن', 'بيكيه', 'سليم', 'كاجوال', 'خروج'],
         details: [
             'ياقة بولو كلاسيكية مضلعة متماسكة تحافظ على شكلها الأنيق',
             'قصة Slim-Fit مريحة ملائمة للإطلالات اليومية وأوقات العمل الكاجوال',
@@ -75,6 +76,7 @@ let PRODUCTS_DATA = [
         sizes: ['M', 'L', 'XL', '2XL', '3XL'],
         stock: 280,
         fabric: 'مزيج الكتان الطبيعي الفاخر مع القطن المصري للتهوية القصوى والانسيابية',
+        searchKeywords: ['قميص', 'قمصان', 'كتان', 'بكم', 'كم', 'كمام', 'اكمام', 'باكمام', 'طويل', 'كم طويل', 'ابيض', 'عاجي', 'وايت', 'white', 'shirt', 'linen', 'كاجوال', 'صيفي', 'خروج'],
         details: [
             'أكمام طويلة أنيقة مع إمكانية طيها بسهولة بستايل كاجوال عصري',
             'ياقة فرنسية كاجوال مريحة تناسب الإطلالات المفتوحة والمغلقة',
@@ -118,6 +120,7 @@ let PRODUCTS_DATA = [
         sizes: ['30', '32', '34', '36', '38', '40'],
         stock: 310,
         fabric: '98% قطن تويل جبردين مصري عالي المتانة + 2% إيلاستين لمرونة الحركة',
+        searchKeywords: ['بنطلون', 'بناطيل', 'تشينو', 'جينز', 'شينو', 'قماش', 'جبردين', 'بيج', 'رملي', 'سليم', 'pants', 'trousers', 'chino', 'jeans', 'كاجوال'],
         details: [
             'قصة مريحة تمنحك حرية الحركة مع مظهر انسيابي متناسق ومتقن',
             'جيوب أمامية وخلفية عملية ومبطنة بأقمشة قطنية قوية',
@@ -160,6 +163,7 @@ let PRODUCTS_DATA = [
         sizes: ['48', '50', '52', '54', '56'],
         stock: 110,
         fabric: 'مزيج صوف ناعم وقطن عالي الجودة مع بطانة مسامية خفيفة ومريحة',
+        searchKeywords: ['بليزر', 'جاكيت', 'جاكت', 'بكم', 'كمام', 'اكمام', 'بدله', 'بدلة', 'سمارت', 'رمادي', 'رصاصي', 'ميلانج', 'صوف', 'blazer', 'jacket', 'suit', 'ايطالي', 'كاجوال'],
         details: [
             'قصة كاجوال نصف مبطنة تمنحك إطلالة سمارت كاجوال عصرية وأنيقة',
             'يمكن ارتداؤه فوق التيشيرت أو القميص لإطلالة شبابية راقية',
@@ -216,25 +220,29 @@ const FACTORY_CAPABILITIES = [
     }
 ];
 
-// --- Database Simulation for Admin Panel ---
-// Initialize or load products from localStorage with automatic migration for casual wear
-const CASUAL_DB_VERSION = 'v2_casual_wear';
+// --- Database Simulation & Cache Management ---
+const CASUAL_DB_VERSION = 'v3_egypt_casual_search';
 const currentVersion = localStorage.getItem('mesiri_db_version');
 
-if (!localStorage.getItem('mesiri_products') || currentVersion !== CASUAL_DB_VERSION) {
-    localStorage.setItem('mesiri_products', JSON.stringify(PRODUCTS_DATA));
-    localStorage.setItem('mesiri_db_version', CASUAL_DB_VERSION);
-} else {
+let shouldResetStorage = !localStorage.getItem('mesiri_products') || currentVersion !== CASUAL_DB_VERSION;
+if (!shouldResetStorage) {
     try {
         const stored = JSON.parse(localStorage.getItem('mesiri_products'));
-        if (Array.isArray(stored) && stored.some(p => p.category === 'boxers' || p.category === 'briefs' || (p.id && p.id.includes('boxer')))) {
-            localStorage.setItem('mesiri_products', JSON.stringify(PRODUCTS_DATA));
-        } else if (Array.isArray(stored) && stored.length > 0) {
+        if (!Array.isArray(stored) || stored.length < 4 || stored.some(p => p.category === 'boxers' || p.category === 'briefs' || (p.id && p.id.includes('boxer')))) {
+            shouldResetStorage = true;
+        } else {
             PRODUCTS_DATA = stored;
         }
     } catch (e) {
-        console.error("Failed to parse products from local storage", e);
+        shouldResetStorage = true;
     }
+}
+
+if (shouldResetStorage) {
+    try {
+        localStorage.setItem('mesiri_products', JSON.stringify(PRODUCTS_DATA));
+        localStorage.setItem('mesiri_db_version', CASUAL_DB_VERSION);
+    } catch(e) {}
 }
 
 // Initialize empty orders/RFQs if not exist
@@ -244,4 +252,8 @@ if (!localStorage.getItem('mesiri_orders')) {
 if (!localStorage.getItem('mesiri_rfqs')) {
     localStorage.setItem('mesiri_rfqs', JSON.stringify([]));
 }
+
+// Global reference
+window.PRODUCTS_DATA = PRODUCTS_DATA;
+
 

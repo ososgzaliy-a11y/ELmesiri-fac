@@ -66,27 +66,53 @@
 
             <!-- Store Toolbar / Filters -->
             <div class="store-toolbar">
-                <div class="category-filter-tabs">
-                    <button class="cat-tab-btn active" data-cat="all">الكل</button>
-                    <button class="cat-tab-btn" data-cat="tshirts">تيشرتات وبولو</button>
-                    <button class="cat-tab-btn" data-cat="shirts">قمصان وتيشرتات بكم</button>
-                    <button class="cat-tab-btn" data-cat="pants">بناطيل وجينز</button>
+                <div class="category-filter-tabs" id="category-tabs-container">
+                    <button type="button" class="cat-tab-btn active" data-cat="all" onclick="setStoreCategory('all', this)">
+                        <span>الكل</span>
+                        <span class="cat-count-badge" id="count-cat-all">4</span>
+                    </button>
+                    <button type="button" class="cat-tab-btn" data-cat="tshirts" onclick="setStoreCategory('tshirts', this)">
+                        <span>تيشرتات وبولو</span>
+                        <span class="cat-count-badge" id="count-cat-tshirts">1</span>
+                    </button>
+                    <button type="button" class="cat-tab-btn" data-cat="shirts" onclick="setStoreCategory('shirts', this)">
+                        <span>قمصان وتيشرتات بكم</span>
+                        <span class="cat-count-badge" id="count-cat-shirts">2</span>
+                    </button>
+                    <button type="button" class="cat-tab-btn" data-cat="pants" onclick="setStoreCategory('pants', this)">
+                        <span>بناطيل وجينز</span>
+                        <span class="cat-count-badge" id="count-cat-pants">1</span>
+                    </button>
                 </div>
 
                 <div class="store-search-sort">
-                    <div class="search-input-box">
-                        <input type="text" id="search-products-input" placeholder="ابحث باسم المنتج أو الخامة...">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                    <div class="search-input-box" style="position: relative; display: flex; align-items: center;">
+                        <input type="text" id="search-products-input" placeholder="ابحث باسم الموديل، قميص بكم، بولو، جينز، كتان..." oninput="handleStoreSearch(this.value)" style="padding-left: 32px;">
+                        <button type="button" id="clear-search-btn" onclick="clearStoreSearch()" style="display: none; position: absolute; left: 10px; background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 4px;" title="مسح البحث">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                        <i class="fa-solid fa-magnifying-glass" style="margin-right: 12px;"></i>
                     </div>
                     <div class="sort-select-box">
-                        <select id="sort-products-select" aria-label="ترتيب المنتجات">
-                            <option value="default">الترتيب: الافتراضي</option>
-                            <option value="price-low">السعر: من الأقل للأعلى</option>
-                            <option value="price-high">السعر: من الأعلى للأقل</option>
-                            <option value="rating">الأعلى تقييماً</option>
+                        <select id="sort-products-select" aria-label="ترتيب المنتجات" onchange="handleSortChange(this.value)">
+                            <option value="default">الترتيب: الافتراضي (المقترح)</option>
+                            <option value="price-low">السعر: من الأقل للأعلى (الأرخص أولاً)</option>
+                            <option value="price-high">السعر: من الأعلى للأقل (الأعلى سعراً)</option>
+                            <option value="rating">الأعلى تقييماً والأكثر طلباً</option>
                         </select>
                     </div>
                 </div>
+            </div>
+
+            <!-- Active filter status indicator bar -->
+            <div id="store-filter-status" style="display: flex; justify-content: space-between; align-items: center; margin: 16px 0 24px; padding: 10px 16px; background: var(--bg-surface-elevated); border-radius: var(--radius-md); border: 1px solid var(--border-subtle); font-size: 0.88rem; color: var(--text-secondary);">
+                <div id="store-filter-status-text">
+                    <i class="fa-solid fa-layer-group" style="color: var(--accent-gold); margin-left: 6px;"></i>
+                    <span>عرض <strong>كل المنتجات</strong> (4 قطع كاجوال)</span>
+                </div>
+                <button type="button" id="reset-all-filters-btn" onclick="resetAllStoreFilters()" style="display: none; background: rgba(197, 168, 128, 0.1); border: 1px solid var(--accent-gold); color: var(--accent-gold); padding: 4px 14px; border-radius: 6px; cursor: pointer; font-size: 0.82rem; font-weight: 600;">
+                    <i class="fa-solid fa-rotate-left"></i> إظهار الكل
+                </button>
             </div>
 
             <!-- Dynamic Products Grid -->

@@ -39,6 +39,7 @@
             sizes: ['S', 'M', 'L', 'XL', '2XL', '3XL'],
             stock: 350,
             fabric: '100% قطن بيكيه مصري ممتاز مسامي وعالي الجودة مريح للبشرة',
+            searchKeywords: ['تيشرت', 'تيشيرت', 'تشرت', 'بولو', 'نص كم', 'نصف كم', 'صيفي', 'اسود', 'بلاك', 'black', 'polo', 'tshirt', 'قطن', 'بيكيه', 'سليم', 'كاجوال', 'خروج'],
             details: [
                 'ياقة بولو كلاسيكية مضلعة متماسكة تحافظ على شكلها الأنيق',
                 'قصة Slim-Fit مريحة ملائمة للإطلالات اليومية وأوقات العمل الكاجوال',
@@ -82,6 +83,7 @@
             sizes: ['M', 'L', 'XL', '2XL', '3XL'],
             stock: 280,
             fabric: 'مزيج الكتان الطبيعي الفاخر مع القطن المصري للتهوية والانسيابية',
+            searchKeywords: ['قميص', 'قمصان', 'كتان', 'بكم', 'كم', 'كمام', 'اكمام', 'باكمام', 'طويل', 'كم طويل', 'ابيض', 'عاجي', 'وايت', 'white', 'shirt', 'linen', 'كاجوال', 'صيفي', 'خروج'],
             details: [
                 'أكمام طويلة أنيقة مع إمكانية طيها بسهولة بستايل كاجوال عصري',
                 'ياقة فرنسية كاجوال مريحة تناسب الإطلالات المفتوحة والمغلقة',
@@ -123,6 +125,7 @@
             sizes: ['30', '32', '34', '36', '38', '40'],
             stock: 310,
             fabric: '98% قطن تويل جبردين مصري عالي المتانة + 2% إيلاستين لمرونة الحركة',
+            searchKeywords: ['بنطلون', 'بناطيل', 'تشينو', 'جينز', 'شينو', 'قماش', 'جبردين', 'بيج', 'رملي', 'سليم', 'pants', 'trousers', 'chino', 'jeans', 'كاجوال'],
             details: [
                 'قصة مريحة تمنحك حرية الحركة مع مظهر انسيابي متناسق ومتقن',
                 'جيوب أمامية وخلفية عملية ومبطنة بأقمشة قطنية قوية',
@@ -163,6 +166,7 @@
             sizes: ['48', '50', '52', '54', '56'],
             stock: 110,
             fabric: 'مزيج صوف ناعم وقطن عالي الجودة مع بطانة مسامية خفيفة ومريحة',
+            searchKeywords: ['بليزر', 'جاكيت', 'جاكت', 'بكم', 'كمام', 'اكمام', 'بدله', 'بدلة', 'سمارت', 'رمادي', 'رصاصي', 'ميلانج', 'صوف', 'blazer', 'jacket', 'suit', 'ايطالي', 'كاجوال'],
             details: [
                 'قصة كاجوال نصف مبطنة تمنحك إطلالة سمارت كاجوال عصرية وأنيقة',
                 'يمكن ارتداؤه فوق التيشيرت أو القميص لإطلالة شبابية راقية',
@@ -187,11 +191,12 @@
         // Initialize Local Storage & Server DB
         init() {
             const stored = localStorage.getItem('mesiri_products');
-            let needReset = !stored;
+            const version = localStorage.getItem('mesiri_db_version');
+            let needReset = !stored || version !== 'v3_egypt_casual_search';
             if (stored) {
                 try {
                     const parsed = JSON.parse(stored);
-                    if (Array.isArray(parsed) && parsed.some(p => p.category === 'boxers' || p.category === 'briefs' || (p.id && p.id.includes('boxer')))) {
+                    if (!Array.isArray(parsed) || parsed.length < 4 || parsed.some(p => p.category === 'boxers' || p.category === 'briefs' || (p.id && p.id.includes('boxer')))) {
                         needReset = true;
                     }
                 } catch(e) {
@@ -201,7 +206,7 @@
 
             if (needReset) {
                 localStorage.setItem('mesiri_products', JSON.stringify(DEFAULT_PRODUCTS));
-                localStorage.setItem('mesiri_db_version', 'v2_casual_wear');
+                localStorage.setItem('mesiri_db_version', 'v3_egypt_casual_search');
             }
             if (!localStorage.getItem('mesiri_orders')) {
                 localStorage.setItem('mesiri_orders', JSON.stringify([]));

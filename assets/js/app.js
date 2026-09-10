@@ -15,17 +15,138 @@ function getCartItems() {
     return cart;
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
+// Store Filter State
+let currentCategory = 'all';
+let currentSearchQuery = '';
+let currentSortBy = 'default';
+
+// ----------------------------------------------------
+// SMART ARABIC SEARCH ENGINE & NORMALIZATION
+// ----------------------------------------------------
+function normalizeArabicText(str) {
+    if (!str) return '';
+    return str
+        .toLowerCase()
+        // Strip harakat / diacritics
+        .replace(/[\u064B-\u065F\u0670]/g, '')
+        // Normalize Alef variants (أ, إ, آ, ٱ) -> ا
+        .replace(/[أإآٱ]/g, 'ا')
+        // Normalize Taa Marbuta & Haa -> ه
+        .replace(/ة/g, 'ه')
+        // Normalize Yaa variants (ى, ئ) -> ي
+        .replace(/[ىئ]/g, 'ي')
+        // Normalize Waw variants -> و
+        .replace(/ؤ/g, 'و')
+        // Remove Tatweel (Kashida)
+        .replace(/ـ/g, '')
+        // Clean special chars
+        .replace(/[^\w\s\u0600-\u06FF]/g, ' ')
+        .trim()
+        .replace(/\s+/g, ' ');
+}
+
+// Egyptian & Arabic colloquial clothing synonyms dictionary
+const SEARCH_SYNONYMS = {
+    'بكم': ['قميص', 'اكمام', 'باكمام', 'طويل', 'بليزر'],
+    'كم': ['قميص', 'اكمام', 'باكمام'],
+    'اكمام': ['قميص', 'بكم', 'باكمام', 'بليزر'],
+    'باكمام': ['قميص', 'بكم', 'اكمام', 'بليزر'],
+    'طويل': ['اكمام', 'بكم', 'قميص', 'بليزر'],
+    'نص': ['بولو', 'تيشيرت', 'تيشرت', 'صيفي'],
+    'نصف': ['بولو', 'تيشيرت', 'تيشرت', 'صيفي'],
+    'نص كم': ['بولو', 'تيشيرت', 'تيشرت'],
+    'نصف كم': ['بولو', 'تيشيرت', 'تيشرت'],
+    'تيشرت': ['بولو', 'تيشيرت', 'تشرت'],
+    'تيشيرت': ['بولو', 'تيشرت', 'تشرت'],
+    'تشرت': ['بولو', 'تيشرت', 'تيشيرت'],
+    'بولو': ['تيشرت', 'تيشيرت', 'polo'],
+    'قميص': ['كتان', 'بكم'],
+    'قمصان': ['قميص', 'كتان', 'بكم'],
+    'بنطلون': ['تشينو', 'جينز', 'شينو'],
+    'بناطيل': ['بنطلون', 'تشينو', 'جينز'],
+    'جينز': ['بنطلون', 'تشينو'],
+    'جينس': ['بنطلون', 'تشينو'],
+    'تشينو': ['بنطلون'],
+    'شينو': ['بنطلون', 'تشينو'],
+    'بليزر': ['جاكيت', 'بدله', 'بدلة'],
+    'جاكيت': ['بليزر', 'بدله'],
+    'جاكت': ['بليزر', 'بدله'],
+    'بدله': ['بليزر'],
+    'بدلة': ['بليزر'],
+    'كاجوال': ['تيشرت', 'قميص', 'بنطلون', 'بليزر'],
+    'شيك': ['فاخر', 'كاجوال'],
+    'اسود': ['سودا', 'بلاك', 'black'],
+    'سودا': ['اسود', 'black'],
+    'ابيض': ['بيضا', 'عاجي', 'white'],
+    'بيضا': ['ابيض', 'white'],
+    'بيج': ['رملي', 'كافيه', 'beige'],
+    'رمادي': ['رصاصي', 'ميلانج', 'grey', 'gray'],
+    'كحلي': ['ازرق', 'نافي', 'navy', 'blue'],
+    'صيفي': ['تيشرت', 'بولو', 'كتان'],
+    'شتوي': ['بليزر', 'جاكيت', 'صوف', 'بكم']
+};
+
+function matchesSmartSearch(product, rawQuery) {
+    if (!rawQuery || !rawQuery.trim()) return true;
+    
+    const corpusWords = [
+        product.name,
+        product.categoryName,
+        product.fabric,
+        ...(product.searchKeywords || []),
+        ...(product.colors ? product.colors.map(c => c.name) : [])
+    ].map(normalizeArabicText);
+
+    const normCorpus = ' ' + corpusWords.join(' ') + ' ';
+    const normQuery = normalizeArabicText(rawQuery);
+
+    if (normCorpus.includes(' ' + normQuery + ' ')) return true;
+    if (normQuery.length >= 4 && normCorpus.includes(normQuery)) return true;
+
+    const queryTokens = normQuery.split(' ').filter(Boolean);
+    return queryTokens.every(tok => {
+        if (normCorpus.includes(' ' + tok + ' ')) return true;
+        if (tok.length >= 4 && normCorpus.includes(tok)) return true;
+
+        const syns = SEARCH_SYNONYMS[tok] || [];
+        return syns.some(s => {
+            const normS = normalizeArabicText(s);
+            return normCorpus.includes(' ' + normS + ' ') || (normS.length >= 4 && normCorpus.includes(normS));
+        });
+    });
+}
+
+// ----------------------------------------------------
+// APPLICATION BOOTSTRAP
+// ----------------------------------------------------
+async function startApp() {
+    // Verify & update products from API if valid casual catalog
     if (typeof API !== 'undefined' && API.getProducts) {
         try {
             const dbProducts = await API.getProducts();
-            if (dbProducts && dbProducts.length > 0) {
-                PRODUCTS_DATA = dbProducts;
+            if (dbProducts && Array.isArray(dbProducts) && dbProducts.length > 0) {
+                if (!dbProducts.some(p => p.category === 'boxers' || p.category === 'briefs' || (p.id && p.id.includes('boxer')))) {
+                    PRODUCTS_DATA = dbProducts;
+                }
             }
         } catch(e) {}
     }
+
+    // Fallback safety to window.PRODUCTS_DATA
+    if (!PRODUCTS_DATA || !Array.isArray(PRODUCTS_DATA) || PRODUCTS_DATA.length < 4 || PRODUCTS_DATA.some(p => p.category === 'boxers')) {
+        if (window.PRODUCTS_DATA && window.PRODUCTS_DATA.length >= 4) {
+            PRODUCTS_DATA = window.PRODUCTS_DATA;
+        }
+    }
+
     initApp();
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startApp);
+} else {
+    startApp();
+}
 
 function initApp() {
     renderProducts();
@@ -55,35 +176,82 @@ function unlockScroll() {
 window.lockScroll = lockScroll;
 window.unlockScroll = unlockScroll;
 
-
-
 // ----------------------------------------------------
-// PRODUCT RENDERING & FILTERING
+// PRODUCT RENDERING, FILTERING & SORTING
 // ----------------------------------------------------
-function renderProducts(category = 'all', searchQuery = '', sortBy = 'default') {
+function updateStoreBadges() {
+    const catalog = (Array.isArray(PRODUCTS_DATA) && PRODUCTS_DATA.length >= 4) ? PRODUCTS_DATA : (window.PRODUCTS_DATA || []);
+    const counts = {
+        all: catalog.length,
+        tshirts: catalog.filter(p => p.category === 'tshirts').length,
+        shirts: catalog.filter(p => p.category === 'shirts').length,
+        pants: catalog.filter(p => p.category === 'pants').length
+    };
+
+    Object.keys(counts).forEach(cat => {
+        const badge = document.getElementById(`count-cat-${cat}`);
+        if (badge) badge.textContent = counts[cat];
+    });
+}
+
+function renderProducts(category, searchQuery, sortBy) {
+    if (category !== undefined) currentCategory = category;
+    if (searchQuery !== undefined) currentSearchQuery = searchQuery;
+    if (sortBy !== undefined) currentSortBy = sortBy;
+
     const grid = document.getElementById('products-grid-container');
     if (!grid) return;
 
-    let filtered = PRODUCTS_DATA.filter(p => {
-        const matchesCategory = category === 'all' || p.category === category;
-        const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                              p.fabric.toLowerCase().includes(searchQuery.toLowerCase());
+    updateStoreBadges();
+
+    const catalog = (Array.isArray(PRODUCTS_DATA) && PRODUCTS_DATA.length >= 4) ? PRODUCTS_DATA : (window.PRODUCTS_DATA || []);
+
+    let filtered = catalog.filter(p => {
+        const matchesCategory = currentCategory === 'all' || p.category === currentCategory;
+        const matchesSearch = matchesSmartSearch(p, currentSearchQuery);
         return matchesCategory && matchesSearch;
     });
 
-    if (sortBy === 'price-low') {
+    // Sorting
+    if (currentSortBy === 'price-low') {
         filtered.sort((a, b) => a.price - b.price);
-    } else if (sortBy === 'price-high') {
+    } else if (currentSortBy === 'price-high') {
         filtered.sort((a, b) => b.price - a.price);
-    } else if (sortBy === 'rating') {
-        filtered.sort((a, b) => b.rating - a.rating);
+    } else if (currentSortBy === 'rating') {
+        filtered.sort((a, b) => b.rating - a.rating || (b.reviewsCount || 0) - (a.reviewsCount || 0));
+    }
+
+    // Status Indicator & Reset Button
+    const statusTextEl = document.getElementById('store-filter-status-text');
+    const resetBtn = document.getElementById('reset-all-filters-btn');
+    const hasActiveFilter = currentCategory !== 'all' || currentSearchQuery.trim().length > 0 || currentSortBy !== 'default';
+
+    if (statusTextEl) {
+        let catLabel = 'كل المنتجات';
+        if (currentCategory === 'tshirts') catLabel = 'تيشرتات وبولو صيفي';
+        if (currentCategory === 'shirts') catLabel = 'قمصان وتيشرتات بكم';
+        if (currentCategory === 'pants') catLabel = 'بناطيل وجينز كاجوال';
+
+        let desc = `عرض <strong>${catLabel}</strong> (${filtered.length} قطع كاجوال)`;
+        if (currentSearchQuery.trim()) {
+            desc += ` | البحث عن: "${currentSearchQuery.trim()}"`;
+        }
+        statusTextEl.innerHTML = `<i class="fa-solid fa-layer-group" style="color: var(--accent-gold); margin-left: 6px;"></i><span>${desc}</span>`;
+    }
+
+    if (resetBtn) {
+        resetBtn.style.display = hasActiveFilter ? 'inline-flex' : 'none';
     }
 
     if (filtered.length === 0) {
         grid.innerHTML = `
             <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--text-muted);">
-                <i class="fa-solid fa-box-open" style="font-size: 3rem; margin-bottom: 16px; display: block;"></i>
-                <p style="font-size: 1.1rem; font-weight: 600;">لا توجد منتجات مطابقة لخيارات البحث الحالية</p>
+                <i class="fa-solid fa-shirt" style="font-size: 3rem; margin-bottom: 16px; display: block; color: var(--accent-gold);"></i>
+                <p style="font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">مفيش منتجات مطابقة لبحثك في هذا القسم</p>
+                <p style="font-size: 0.92rem; margin-bottom: 20px; line-height: 1.6;">جرب تبحث بكلمات تانية زي (بولو، قميص بكم، بنطلون، بليزر، كتان) أو اعرض كل المنتجات.</p>
+                <button type="button" onclick="resetAllStoreFilters()" class="btn-luxury-primary" style="padding: 10px 24px; font-size: 0.9rem; margin: 0 auto; display: inline-flex; align-items: center; gap: 8px; border-radius: 8px; cursor: pointer;">
+                    <i class="fa-solid fa-rotate-left"></i> إظهار كل تشكيلة الكاجوال (4 منتجات)
+                </button>
             </div>
         `;
         return;
@@ -147,25 +315,87 @@ function renderProducts(category = 'all', searchQuery = '', sortBy = 'default') 
     }).join('');
 }
 
+// ----------------------------------------------------
+// STORE INTERACTIVE CONTROLLER HANDLERS
+// ----------------------------------------------------
+window.setStoreCategory = function(category, element) {
+    currentCategory = category || 'all';
+
+    const tabs = document.querySelectorAll('.cat-tab-btn');
+    tabs.forEach(t => {
+        if (t.getAttribute('data-cat') === currentCategory || (element && t === element)) {
+            t.classList.add('active');
+        } else {
+            t.classList.remove('active');
+        }
+    });
+
+    renderProducts();
+};
+window.filterCategory = window.setStoreCategory;
+
+window.handleStoreSearch = function(query) {
+    currentSearchQuery = query || '';
+    const clearBtn = document.getElementById('clear-search-btn');
+    if (clearBtn) {
+        clearBtn.style.display = currentSearchQuery.trim().length > 0 ? 'inline-block' : 'none';
+    }
+    renderProducts();
+};
+
+window.clearStoreSearch = function() {
+    const input = document.getElementById('search-products-input');
+    if (input) {
+        input.value = '';
+        input.focus();
+    }
+    handleStoreSearch('');
+};
+
+window.handleSortChange = function(sortBy) {
+    currentSortBy = sortBy || 'default';
+    const select = document.getElementById('sort-products-select');
+    if (select && select.value !== currentSortBy) {
+        select.value = currentSortBy;
+    }
+    renderProducts();
+};
+
+window.resetAllStoreFilters = function() {
+    currentCategory = 'all';
+    currentSearchQuery = '';
+    currentSortBy = 'default';
+
+    const input = document.getElementById('search-products-input');
+    if (input) input.value = '';
+    const clearBtn = document.getElementById('clear-search-btn');
+    if (clearBtn) clearBtn.style.display = 'none';
+
+    const select = document.getElementById('sort-products-select');
+    if (select) select.value = 'default';
+
+    const tabs = document.querySelectorAll('.cat-tab-btn');
+    tabs.forEach(t => {
+        if (t.getAttribute('data-cat') === 'all') t.classList.add('active');
+        else t.classList.remove('active');
+    });
+
+    renderProducts();
+};
+
 function initFilterTabs() {
     const tabs = document.querySelectorAll('.cat-tab-btn');
-    const sortSelect = document.getElementById('sort-products-select');
-    const searchInput = document.getElementById('search-products-input');
-
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
-            tabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
             const category = tab.getAttribute('data-cat');
-            renderProducts(category, searchInput?.value || '', sortSelect?.value || 'default');
+            setStoreCategory(category, tab);
         });
     });
 
+    const sortSelect = document.getElementById('sort-products-select');
     if (sortSelect) {
-        sortSelect.addEventListener('change', () => {
-            const activeTab = document.querySelector('.cat-tab-btn.active');
-            const category = activeTab ? activeTab.getAttribute('data-cat') : 'all';
-            renderProducts(category, searchInput?.value || '', sortSelect.value);
+        sortSelect.addEventListener('change', (e) => {
+            handleSortChange(e.target.value);
         });
     }
 }
@@ -175,10 +405,7 @@ function initLiveSearch() {
     if (!searchInput) return;
 
     searchInput.addEventListener('input', (e) => {
-        const activeTab = document.querySelector('.cat-tab-btn.active');
-        const category = activeTab ? activeTab.getAttribute('data-cat') : 'all';
-        const sortSelect = document.getElementById('sort-products-select');
-        renderProducts(category, e.target.value, sortSelect?.value || 'default');
+        handleStoreSearch(e.target.value);
     });
 }
 
