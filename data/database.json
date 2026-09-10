@@ -3753,6 +3753,39 @@
         "maskedCard": "**** **** **** 4444"
       },
       "paymentStatus": "PAID"
+    },
+    {
+      "id": "MES-698633",
+      "date": "2026-09-10T12:37:53.916Z",
+      "customer": {
+        "name": "sdadsad asdasds",
+        "phone": "01010645449",
+        "email": "ossssas@gmail.com",
+        "governorate": "الجيزة",
+        "city": "Damanhour",
+        "address": "2444",
+        "notes": ""
+      },
+      "items": [
+        {
+          "cartItemId": "briefs-classic-white-أبيض-2XL",
+          "id": "briefs-classic-white",
+          "name": "سروال داخلي كلاسيك (Briefs) أبيض مريح",
+          "price": 120,
+          "image": "assets/images/product_briefs.jpg",
+          "color": "أبيض",
+          "size": "2XL",
+          "qty": 1
+        }
+      ],
+      "summary": {
+        "subtotal": 120,
+        "discount": 0,
+        "shipping": 35,
+        "total": 155
+      },
+      "paymentMethod": "cod",
+      "status": "قيد التجهيز (دفع عند الاستلام)"
     }
   ],
   "rfqs": [

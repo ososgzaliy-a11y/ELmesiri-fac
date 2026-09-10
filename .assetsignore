@@ -1,8 +1,9 @@
 _worker.js
+_worker.js*
 .assetsignore
-wrangler.toml
-wrangler.json
 wrangler.jsonc
+wrangler.json
+wrangler.toml
 .env
 .env.*
 .git*
