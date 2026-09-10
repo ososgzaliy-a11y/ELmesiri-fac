@@ -1,5 +1,0 @@
-name = "zerone-e-commerce"
-compatibility_date = "2026-09-08"
-
-[assets]
-directory = "."

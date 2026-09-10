@@ -1,0 +1,9 @@
+{
+  "name": "zerone-e-commerce",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Zero One E-Commerce Platform",
+  "scripts": {
+    "build": "echo 'Build completed'"
+  }
+}

@@ -1,0 +1,8 @@
+_worker.js
+.assetsignore
+wrangler.jsonc
+.env
+.env.*
+scripts/
+data/*.sql
+data/*.sqlite
