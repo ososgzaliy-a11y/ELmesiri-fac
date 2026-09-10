@@ -623,7 +623,7 @@ window.handleAddNewProduct = async function(e) {
         id: 'prod-' + Date.now(),
         name,
         category,
-        categoryName: category === 'boxers' ? 'بوكسرات قطنية' : 'فانلات داخلية',
+        categoryName: category === 'tshirts' ? 'تيشرتات وبولو' : (category === 'shirts' ? 'قمصان وتيشرتات بكم' : 'بناطيل وجينز'),
         price,
         originalPrice: origPrice,
         stock,
@@ -962,7 +962,7 @@ window.openEditModal = function(productId) {
     document.getElementById('edit-product-name').value = p.name || '';
     document.getElementById('edit-product-price').value = p.price || '';
     document.getElementById('edit-product-orig-price').value = p.originalPrice || '';
-    document.getElementById('edit-product-category').value = p.category || 'boxers';
+    document.getElementById('edit-product-category').value = p.category || 'tshirts';
     document.getElementById('edit-product-stock').value = (p.stock !== undefined) ? p.stock : 100;
     
     // Sizes
@@ -1605,7 +1605,7 @@ window.exportDatabaseToSQL = function() {
         adminData.products.forEach(p => {
             const id = (p.id || '').replace(/'/g, "''");
             const name = (p.name || '').replace(/'/g, "''");
-            const category = (p.category || 'boxers').replace(/'/g, "''");
+            const category = (p.category || 'tshirts').replace(/'/g, "''");
             const categoryName = (p.categoryName || 'بوكسرات قطنية').replace(/'/g, "''");
             const price = Number(p.price) || 0;
             const origPrice = p.originalPrice ? Number(p.originalPrice) : 'NULL';

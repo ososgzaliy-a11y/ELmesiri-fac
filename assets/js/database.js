@@ -12,123 +12,171 @@
     // Broadcast channel for instantaneous cross-tab synchronization
     const DB_CHANNEL = typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel('mesiri_database_bus') : null;
 
-    // Default Seed Products
+    // Default Seed Products (Men's Casual Wear)
     const DEFAULT_PRODUCTS = [
         {
-            id: 'boxer-premium-black',
-            name: 'بوكسر رجالي قطن مصري فاخر أسود',
-            category: 'boxers',
-            categoryName: 'بوكسرات قطنية',
-            price: 250,
-            originalPrice: 320,
+            id: 'polo-classic-black',
+            name: 'تيشيرت بولو كاجوال أسود فاخر (Polo Shirt)',
+            category: 'tshirts',
+            categoryName: 'تيشرتات وبولو',
+            price: 390,
+            originalPrice: 490,
             rating: 4.9,
-            reviewsCount: 345,
+            reviewsCount: 320,
             badge: 'الأكثر مبيعاً',
             badgeType: 'bestseller',
-            image: 'assets/images/product_boxer.jpg',
+            badges: ['الأكثر مبيعاً', 'قطن 100%'],
+            image: 'assets/images/product_polo_black.jpg',
             gallery: [
-                'assets/images/product_boxer.jpg',
+                'assets/images/product_polo_black.jpg',
                 'assets/images/fabrics_rolls.jpg'
             ],
             colors: [
                 { name: 'أسود كلاسيك', hex: '#111113', inStock: true },
-                { name: 'كحلي داكن', hex: '#1c2841', inStock: true },
-                { name: 'رمادي ميلانج', hex: '#8c92ac', inStock: true }
+                { name: 'أبيض ناصع', hex: '#ffffff', inStock: true },
+                { name: 'كحلي داكن', hex: '#1c2841', inStock: true }
             ],
-            sizes: ['M', 'L', 'XL', '2XL', '3XL', '4XL'],
-            stock: 450,
-            fabric: '95% قطن مصري ممشط + 5% إيلاستين لمرونة استثنائية',
+            sizes: ['S', 'M', 'L', 'XL', '2XL', '3XL'],
+            stock: 350,
+            fabric: '100% قطن بيكيه مصري ممتاز مسامي وعالي الجودة مريح للبشرة',
             details: [
-                'حزام خصر مرن ومريح لا يترك علامات على الجلد',
-                'تصميم داعم ومانع للاحتكاك للاستخدام اليومي',
-                'معالج ضد الانكماش والبهتان'
+                'ياقة بولو كلاسيكية مضلعة متماسكة تحافظ على شكلها الأنيق',
+                'قصة Slim-Fit مريحة ملائمة للإطلالات اليومية وأوقات العمل الكاجوال',
+                'أزرار صدفية متينة وخياطة مزدوجة ناعمة عند الأكتاف',
+                'معالج ضد الانكماش والبهتان بعد تكرار الغسيل'
             ],
-            careInstructions: 'غسيل آلي بدرجة حرارة 40° مئوية كحد أقصى',
+            careInstructions: 'غسيل آلي بماء بارد، الكي بحرارة معتدلة',
             b2b: {
                 moq: 100,
                 tiers: [
-                    { min: 100, max: 499, price: 145, discount: '42%' },
-                    { min: 500, max: 999, price: 125, discount: '50%' },
-                    { min: 1000, max: 5000, price: 110, discount: '56%' }
+                    { min: 100, max: 499, price: 210, discount: '46%' },
+                    { min: 500, max: 999, price: 180, discount: '53%' },
+                    { min: 1000, max: 5000, price: 155, discount: '60%' }
                 ],
-                productionTime: '7 - 14 يوم عمل',
-                customizationOptions: ['تطريز شعار الماركة على الكمر', 'ألوان مخصصة']
+                productionTime: '7 - 12 يوم عمل',
+                customizationOptions: ['تطريز شعار البراند', 'ألوان مخصصة']
             }
         },
         {
-            id: 'undershirt-vneck-white',
-            name: 'فانلة داخلية نصف كم ياقة سبعة (V-Neck) بيضاء',
-            category: 'undershirts',
-            categoryName: 'فانلات داخلية',
-            price: 180,
-            originalPrice: 220,
+            id: 'shirt-linen-white',
+            name: 'قميص كاجوال كتان أبيض بأكمام طويلة (Linen Shirt)',
+            category: 'shirts',
+            categoryName: 'قمصان وتيشرتات بكم',
+            price: 540,
+            originalPrice: 680,
             rating: 4.8,
-            reviewsCount: 215,
-            badge: 'قطن 100%',
+            reviewsCount: 245,
+            badge: 'تصميم مميز',
             badgeType: 'featured',
-            image: 'assets/images/product_undershirt.jpg',
+            badges: ['تصميم مميز', 'كتان طبيعي'],
+            image: 'assets/images/product_shirt_white.jpg',
             gallery: [
-                'assets/images/product_undershirt.jpg',
-                'assets/images/hero_mesiri.jpg'
+                'assets/images/product_shirt_white.jpg',
+                'assets/images/fabrics_rolls.jpg'
             ],
             colors: [
-                { name: 'أبيض ناصع', hex: '#ffffff', inStock: true },
-                { name: 'أسود', hex: '#111113', inStock: true }
-            ],
-            sizes: ['M', 'L', 'XL', '2XL', '3XL'],
-            stock: 320,
-            fabric: '100% قطن مصري جيزة فائق النعومة واللمعان',
-            details: [
-                'ياقة V-Neck مثالية للارتداء أسفل القمصان المفتوحة',
-                'قصة (Slim Fit) مريحة تأخذ شكل الجسم'
-            ],
-            careInstructions: 'غسيل بالماء الدافئ، يمكن كيّه بدرجة حرارة متوسطة',
-            b2b: {
-                moq: 200,
-                tiers: [
-                    { min: 200, max: 999, price: 95, discount: '47%' },
-                    { min: 1000, max: 2999, price: 80, discount: '55%' }
-                ],
-                productionTime: '10 - 15 يوم عمل',
-                customizationOptions: ['تعديل شكل الياقة', 'طباعة الشعار حرارياً']
-            }
-        },
-        {
-            id: 'briefs-classic-white',
-            name: 'سروال داخلي كلاسيك (Briefs) أبيض مريح',
-            category: 'briefs',
-            categoryName: 'سراويل كلاسيك',
-            price: 120,
-            originalPrice: 150,
-            rating: 4.6,
-            reviewsCount: 189,
-            badge: 'خصم خاص',
-            badgeType: 'sale',
-            image: 'assets/images/product_briefs.jpg',
-            gallery: [
-                'assets/images/product_briefs.jpg',
-                'assets/images/factory_production.jpg'
-            ],
-            colors: [
-                { name: 'أبيض', hex: '#ffffff', inStock: true },
+                { name: 'أبيض عاجي', hex: '#ffffff', inStock: true },
+                { name: 'سماوي كاجوال', hex: '#87ceeb', inStock: true },
                 { name: 'رمادي فاتح', hex: '#d1d5db', inStock: true }
             ],
             sizes: ['M', 'L', 'XL', '2XL', '3XL'],
             stock: 280,
-            fabric: '100% قطن مصري عالي الامتصاص',
+            fabric: 'مزيج الكتان الطبيعي الفاخر مع القطن المصري للتهوية والانسيابية',
             details: [
-                'قصة كلاسيكية تقليدية مريحة لأقصى درجات حرية الحركة',
-                'أستك داخلي مغطى بالقماش'
+                'أكمام طويلة أنيقة مع إمكانية طيها بسهولة بستايل كاجوال عصري',
+                'ياقة فرنسية كاجوال مريحة تناسب الإطلالات المفتوحة والمغلقة',
+                'نسيج خفيف يمنحك الانتعاش طوال اليوم مع مقاومة التجعد'
             ],
-            careInstructions: 'غسيل عادي مع ألوان مماثلة',
+            careInstructions: 'غسيل خفيف بالماء البارد، الكي بالبخار',
             b2b: {
-                moq: 300,
+                moq: 100,
                 tiers: [
-                    { min: 300, max: 999, price: 65, discount: '45%' },
-                    { min: 1000, max: 4999, price: 55, discount: '54%' }
+                    { min: 100, max: 499, price: 290, discount: '46%' },
+                    { min: 500, max: 999, price: 250, discount: '53%' }
                 ],
-                productionTime: '7 - 12 يوم عمل',
-                customizationOptions: ['تغليف علب متعددة']
+                productionTime: '10 - 15 يوم عمل',
+                customizationOptions: ['طباعة أو تطريز العلامة التجارية']
+            }
+        },
+        {
+            id: 'chino-pants-beige',
+            name: 'بنطلون كاجوال تشينو أنيق بيج (Slim Chino Pants)',
+            category: 'pants',
+            categoryName: 'بناطيل وجينز',
+            price: 480,
+            originalPrice: 620,
+            rating: 4.9,
+            reviewsCount: 390,
+            badge: 'الأعلى تقييماً',
+            badgeType: 'bestseller',
+            badges: ['الأعلى تقييماً', 'مرونة عالية'],
+            image: 'assets/images/product_trousers_beige.jpg',
+            gallery: [
+                'assets/images/product_trousers_beige.jpg',
+                'assets/images/fabrics_rolls.jpg'
+            ],
+            colors: [
+                { name: 'بيج رملي', hex: '#d2b48c', inStock: true },
+                { name: 'أسود فحمي', hex: '#111113', inStock: true },
+                { name: 'زيتي كاجوال', hex: '#4b5320', inStock: true }
+            ],
+            sizes: ['30', '32', '34', '36', '38', '40'],
+            stock: 310,
+            fabric: '98% قطن تويل جبردين مصري عالي المتانة + 2% إيلاستين لمرونة الحركة',
+            details: [
+                'قصة مريحة تمنحك حرية الحركة مع مظهر انسيابي متناسق ومتقن',
+                'جيوب أمامية وخلفية عملية ومبطنة بأقمشة قطنية قوية',
+                'ثبات كامل للألوان ضد الغسيل المتكرر دون أي انكماش'
+            ],
+            careInstructions: 'غسيل مقلوباً في الغسالة بماء بارد',
+            b2b: {
+                moq: 100,
+                tiers: [
+                    { min: 100, max: 499, price: 260, discount: '45%' },
+                    { min: 500, max: 999, price: 225, discount: '53%' }
+                ],
+                productionTime: '10 - 15 يوم عمل',
+                customizationOptions: ['علامة جلدية مخصصة على الخصر']
+            }
+        },
+        {
+            id: 'blazer-casual-grey',
+            name: 'بليزر كاجوال عصري رمادي إيطالي (Casual Blazer)',
+            category: 'shirts',
+            categoryName: 'قمصان وتيشرتات بكم',
+            price: 850,
+            originalPrice: 1100,
+            rating: 4.9,
+            reviewsCount: 165,
+            badge: 'قطعة فاخرة',
+            badgeType: 'sale',
+            badges: ['قطعة فاخرة', 'عرض محدود'],
+            image: 'assets/images/product_blazer_grey.jpg',
+            gallery: [
+                'assets/images/product_blazer_grey.jpg',
+                'assets/images/fabrics_rolls.jpg'
+            ],
+            colors: [
+                { name: 'رمادي ميلانج', hex: '#8c92ac', inStock: true },
+                { name: 'كحلي داكن', hex: '#1c2841', inStock: true }
+            ],
+            sizes: ['48', '50', '52', '54', '56'],
+            stock: 110,
+            fabric: 'مزيج صوف ناعم وقطن عالي الجودة مع بطانة مسامية خفيفة ومريحة',
+            details: [
+                'قصة كاجوال نصف مبطنة تمنحك إطلالة سمارت كاجوال عصرية وأنيقة',
+                'يمكن ارتداؤه فوق التيشيرت أو القميص لإطلالة شبابية راقية',
+                'جيوب رقعة خارجية وخياطة دقيقة وتشطيب إيطالي فاخر'
+            ],
+            careInstructions: 'تنظيف جاف فقط (Dry Clean)',
+            b2b: {
+                moq: 50,
+                tiers: [
+                    { min: 50, max: 199, price: 490, discount: '42%' },
+                    { min: 200, max: 499, price: 420, discount: '50%' }
+                ],
+                productionTime: '12 - 18 يوم عمل',
+                customizationOptions: ['أزرار مخصصة بشعارك']
             }
         }
     ];
@@ -138,8 +186,22 @@
 
         // Initialize Local Storage & Server DB
         init() {
-            if (!localStorage.getItem('mesiri_products')) {
+            const stored = localStorage.getItem('mesiri_products');
+            let needReset = !stored;
+            if (stored) {
+                try {
+                    const parsed = JSON.parse(stored);
+                    if (Array.isArray(parsed) && parsed.some(p => p.category === 'boxers' || p.category === 'briefs' || (p.id && p.id.includes('boxer')))) {
+                        needReset = true;
+                    }
+                } catch(e) {
+                    needReset = true;
+                }
+            }
+
+            if (needReset) {
                 localStorage.setItem('mesiri_products', JSON.stringify(DEFAULT_PRODUCTS));
+                localStorage.setItem('mesiri_db_version', 'v2_casual_wear');
             }
             if (!localStorage.getItem('mesiri_orders')) {
                 localStorage.setItem('mesiri_orders', JSON.stringify([]));
