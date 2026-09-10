@@ -86,14 +86,15 @@
                 </div>
 
                 <div class="store-search-sort">
-                    <div class="search-input-box" style="position: relative; display: flex; align-items: center;">
-                        <input type="text" id="search-products-input" placeholder="ابحث باسم الموديل، قميص بكم، بولو، جينز، كتان..." oninput="handleStoreSearch(this.value)" style="padding-left: 32px;">
-                        <button type="button" id="clear-search-btn" onclick="clearStoreSearch()" style="display: none; position: absolute; left: 10px; background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 4px;" title="مسح البحث">
+                    <div class="search-input-box">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="search-products-input" placeholder="ابحث باسم الموديل، قميص بكم، بولو، جينز..." oninput="handleStoreSearch(this.value)">
+                        <button type="button" id="clear-search-btn" onclick="clearStoreSearch()" title="مسح البحث">
                             <i class="fa-solid fa-xmark"></i>
                         </button>
-                        <i class="fa-solid fa-magnifying-glass" style="margin-right: 12px;"></i>
                     </div>
                     <div class="sort-select-box">
+                        <i class="fa-solid fa-arrow-down-short-wide sort-icon"></i>
                         <select id="sort-products-select" aria-label="ترتيب المنتجات" onchange="handleSortChange(this.value)">
                             <option value="default">الترتيب: الافتراضي (المقترح)</option>
                             <option value="price-low">السعر: من الأقل للأعلى (الأرخص أولاً)</option>
@@ -105,7 +106,7 @@
             </div>
 
             <!-- Active filter status indicator bar -->
-            <div id="store-filter-status" style="display: flex; justify-content: space-between; align-items: center; margin: 16px 0 24px; padding: 10px 16px; background: var(--bg-surface-elevated); border-radius: var(--radius-md); border: 1px solid var(--border-subtle); font-size: 0.88rem; color: var(--text-secondary);">
+            <div id="store-filter-status" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin: 16px 0 24px; padding: 10px 16px; background: var(--bg-surface-elevated); border-radius: var(--radius-md); border: 1px solid var(--border-subtle); font-size: 0.88rem; color: var(--text-secondary);">
                 <div id="store-filter-status-text">
                     <i class="fa-solid fa-layer-group" style="color: var(--accent-gold); margin-left: 6px;"></i>
                     <span>عرض <strong>كل المنتجات</strong> (4 قطع كاجوال)</span>
